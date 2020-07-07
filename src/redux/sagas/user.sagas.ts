@@ -5,7 +5,7 @@ export function* watchUserRequests() {
   yield takeEvery(UserTypes.REQUEST_LOGIN, requestLogin);
 }
 
-function* requestLogin(action) {
+function* requestLogin() {
   try {
   } catch (error) {}
 }

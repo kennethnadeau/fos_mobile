@@ -2,7 +2,13 @@ import React from "react";
 import { ImageBackground, SafeAreaView, View } from "react-native";
 import styles from "./screen.style";
 
-const Screen: () => React$Node = props => {
+interface Props {
+  hasHeader: boolean;
+  children: object;
+  style: object;
+}
+
+const Screen: React.FC<Props> = props => {
   const ContainerComponent = props.hasHeader ? View : SafeAreaView;
 
   return (

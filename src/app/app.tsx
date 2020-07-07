@@ -9,7 +9,7 @@ if (Platform.OS === "ios") {
   KeyboardManager.setKeyboardDistanceFromTextField(100);
 }
 
-const App: () => React$Node = props => {
+const App: React.FC = () => {
   return (
     <SafeAreaProvider>
       <StatusBar barStyle='dark-content' />
@@ -18,7 +18,7 @@ const App: () => React$Node = props => {
   );
 };
 
-function mapStateToProps(state) {
+function mapStateToProps() {
   return {};
 }
 

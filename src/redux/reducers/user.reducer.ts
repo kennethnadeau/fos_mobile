@@ -3,11 +3,10 @@ import { UserTypes } from "../actions";
 import storeInitialState from "../store/initial-state";
 export const INITIAL_STATE = storeInitialState.user;
 
-const logout = (state, action) => INITIAL_STATE;
+const logout = () => INITIAL_STATE;
 
-const schoolLoginSuccess = (state, action) => ({
+const schoolLoginSuccess = (state: object) => ({
   ...state,
-  ...action.user,
 });
 
 export const HANDLERS = {

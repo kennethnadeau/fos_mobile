@@ -5,7 +5,7 @@ export const INITIAL_STATE = storeInitialState.user;
 
 const logout = () => INITIAL_STATE;
 
-const schoolLoginSuccess = (state: object) => ({
+const schoolLoginSuccess = (state: any) => ({
   ...state,
 });
 

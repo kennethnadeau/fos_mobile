@@ -6,6 +6,5 @@ export function* watchUserRequests() {
 }
 
 function* requestLogin() {
-  try {
-  } catch (error) {}
+  yield null;
 }

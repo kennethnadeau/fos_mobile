@@ -19,14 +19,14 @@ middlewares.push(logger);
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export default function configureStore(initialState: object) {
-  let store = createStore(
+export default function configureStore(initialState: any) {
+  const store = createStore(
     persistedReducer,
     initialState,
     compose(applyMiddleware(...middlewares)),
   );
   // global.store = store;
-  let persistor = persistStore(store);
+  const persistor = persistStore(store);
   sagaMiddleware.run(rootSaga);
   return { store, persistor };
 }

@@ -1,5 +1,5 @@
 type projectState = {
-  user: object,
+  user: any;
 };
 
 export const userSelector = (state: projectState) => state.user;

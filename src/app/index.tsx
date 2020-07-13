@@ -5,9 +5,9 @@ import configureStore from "../redux/store";
 import "../locale/i18n";
 import App from "./app";
 
-const AppContainer: React.FC = () => {
-  const { store, persistor } = configureStore({});
+export const { store, persistor } = configureStore({});
 
+const AppContainer: React.FC = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>

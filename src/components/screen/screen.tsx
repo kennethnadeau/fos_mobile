@@ -1,11 +1,10 @@
 import React from "react";
-import { ImageBackground, SafeAreaView, View } from "react-native";
+import { ImageBackground, SafeAreaView, View, ViewStyle } from "react-native";
 import styles from "./screen.style";
 
 interface Props {
   hasHeader: boolean;
-  children: object;
-  style: object;
+  style: ViewStyle;
 }
 
 const Screen: React.FC<Props> = props => {

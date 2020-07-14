@@ -672,6 +672,13 @@
   dependencies:
     "@types/hammerjs" "^2.0.36"
 
+"@fos/shared@0.1.0":
+  version "0.1.0"
+  resolved "https://packagecloud.io/flatsorspikes/frontend/npm/@fos/shared/-/shared-0.1.0.tgz#56be1e3829073e50c12a21c7810c87204c69aae2"
+  integrity sha1-Vr4eOCkHPlDBKiHHgQyHIExpquI=
+  dependencies:
+    typescript "3.9.6"
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -6605,7 +6612,7 @@ typescript-tuple@^2.2.1:
   dependencies:
     typescript-compare "^0.0.2"
 
-typescript@^3.9.6:
+typescript@3.9.6, typescript@^3.9.6:
   version "3.9.6"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.6.tgz#8f3e0198a34c3ae17091b35571d3afd31999365a"
   integrity sha512-Pspx3oKAPJtjNwE92YS05HQoY7z2SFyOpHo9MqJor3BXAGNaPUs83CuVp9VISFkSjyRfiTpmKuAYGJB7S7hOxw==

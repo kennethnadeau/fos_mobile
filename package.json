@@ -10,6 +10,7 @@
     "lint": "tsc --noEmit && eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore ./"
   },
   "dependencies": {
+    "@fos/shared": "^0.1.0",
     "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/masked-view": "^0.1.10",
     "i18next": "^19.5.1",

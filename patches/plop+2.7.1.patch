@@ -1,0 +1,18 @@
+diff --git a/node_modules/plop/src/plop.d.ts b/node_modules/plop/src/plop.d.ts
+index 452d7c7..e5aa9e5 100644
+--- a/node_modules/plop/src/plop.d.ts
++++ b/node_modules/plop/src/plop.d.ts
+@@ -10,10 +10,11 @@ export {
+     CustomActionFunction,
+     ModifyActionConfig,
+     PlopCfg,
+-    PlopGenerator,
+-    NodePlopAPI
++    PlopGenerator
+ } from 'node-plop';
+ 
++export  {NodePlopAPI} from 'node-plop/types'
++
+ export const Plop: Liftoff;
+ export const run: (env: Liftoff.LiftoffEnv, _: any, passArgsBeforeDashes: boolean) => void;
+ export const progressSpinner: ora.Ora;

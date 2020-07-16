@@ -1,3 +1,3 @@
 export const COLOR = {
-  TEXT_PRIMARY: "#FFFFFF",
+  TEXT_PRIMARY: '#FFFFFF',
 };

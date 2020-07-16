@@ -1,4 +1,4 @@
-import { NavigationActions, NavigationAction } from "react-navigation";
+import {NavigationActions, NavigationAction} from 'react-navigation';
 
 export interface navigator {
   dispatch: (action: NavigationAction) => void;

@@ -1,23 +1,10 @@
 {
     "root": true,
-    "extends": [
-        "@react-native-community",
-        "plugin:prettier/recommended",
-        "prettier/flowtype",
-        "prettier/react",
-        "prettier/standard"
-    ],
+    "extends": "@react-native-community",
+    "parser": "@typescript-eslint/parser",
     "plugins": [
-        "prettier"
+        "@typescript-eslint"
     ],
-    "rules": {
-        "prettier/prettier": "error",
-        "func-names": [
-            "error",
-            "never"
-        ],
-        "global-require": 0
-    },
     "overrides": [
         {
             "files": [
@@ -28,9 +15,19 @@
             }
         }
     ],
-    "globals": {
-        "navigator": true,
-        "global": true,
-        "console": false
+    "rules": {
+        "react-native/no-unused-styles": "error",
+        "react-native/sort-styles": [
+            "error",
+            "asc"
+        ],
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "react/jsx-sort-props": [
+            "error",
+            {
+                "ignoreCase": true
+            }
+        ]
     }
 }

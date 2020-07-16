@@ -1,10 +1,10 @@
-import { takeEvery } from "redux-saga/effects";
-import { UserTypes } from "../actions";
-
-export function* watchUserRequests() {
-  yield takeEvery(UserTypes.REQUEST_LOGIN, requestLogin);
-}
+import {takeEvery} from 'redux-saga/effects';
+import {login} from '../slices/userSlice';
 
 function* requestLogin() {
   yield null;
+}
+
+export function* watchUserRequests() {
+  yield takeEvery(login.type, requestLogin);
 }

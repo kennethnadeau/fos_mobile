@@ -1,5 +1,3 @@
-type projectState = {
-  user: any;
-};
+import {RootState} from '../store/types';
 
-export const userSelector = (state: projectState) => state.user;
+export const userSelector = (state: RootState) => state.user;

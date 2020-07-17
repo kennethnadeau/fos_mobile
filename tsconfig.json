@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
@@ -10,7 +11,22 @@
     "noEmit": true,
     "strict": true,
     "target": "esnext",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "paths": {
+      "*": ["src/*"],
+      "@fos/assets/*": ["src/assets/*"],
+      "@fos/components/*": ["src/components/*"],
+      "@fos/config/*": ["src/config/*"],
+      "@fos/constants": ["src/constants"],
+      "@fos/containers/*": ["src/containers/*"],
+      "@fos/helpers/*": ["src/helpers/*"],
+      "@fos/locale/*": ["src/locale/*"],
+      "@fos/navigation/*": ["src/navigation/*"],
+      "@fos/redux/*": ["src/redux/*"],
+      "@fos/screens/*": ["src/screens/*"],
+      "@fos/themes": ["src/themes"],
+      "@fos/utils/*": ["src/utils/*"],
+    }
   },
   "exclude": [
     "node_modules",

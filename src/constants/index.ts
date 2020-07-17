@@ -1,1 +1,1 @@
-export * from "./screens";
+export {default as SCREENS} from './screens';

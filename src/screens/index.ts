@@ -1,18 +1,6 @@
-import { createSwitchNavigator, createAppContainer } from "react-navigation";
-import { AuthStack } from "../navigation/auth-navigator";
-import { SCREENS } from "@constants";
+import registerScreens from 'react-native-navigation-register-screens';
+import {wrapWithRequiredProviders} from '@fos/helpers/screens';
+import LoginScreen from './Login';
+import NavUx from './NavUx';
 
-const RootStack = createSwitchNavigator(
-  {
-    [SCREENS.LOGIN]: AuthStack,
-  },
-  {
-    navigationOptions: {
-      header: "none",
-    },
-  },
-);
-
-const AppContainer = createAppContainer(RootStack);
-
-export { AppContainer };
+registerScreens([NavUx, LoginScreen], '', wrapWithRequiredProviders);

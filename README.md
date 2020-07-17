@@ -52,3 +52,16 @@ Run the following command in a Terminal at root of source directory:
 ```sh
 $ npx react-native run-ios
 ```
+
+## File Generator
+
+We are using `plop` as a code generator.
+
+### Generating Screens
+
+```
+yarn plop
+
+$ ? Screen name: MyScreen
+```
+

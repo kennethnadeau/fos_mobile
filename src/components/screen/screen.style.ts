@@ -1,10 +1,10 @@
-import { StyleSheet } from "react-native";
+import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  imageBackground: {
+  container: {
     flex: 1,
   },
-  container: {
+  imageBackground: {
     flex: 1,
   },
 });

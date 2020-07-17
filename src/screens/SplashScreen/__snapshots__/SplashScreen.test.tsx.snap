@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SplashScreen /> should match snapshot 1`] = `
+<RNCSafeAreaView
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "space-around",
+      "marginTop": 39.23529411764706,
+    }
+  }
+>
+  <Image
+    accessibilityLabel="App logo"
+    accessible={true}
+    resizeMode="contain"
+    source={
+      Object {
+        "testUri": "../../../src/assets/images/logo.png",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "height": 213.83235294117645,
+          "width": 252.85714285714286,
+        },
+        undefined,
+      ]
+    }
+  />
+</RNCSafeAreaView>
+`;

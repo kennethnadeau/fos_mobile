@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Button, ButtonProps} from 'react-native-elements';
 import {s} from 'react-native-size-matters';
+import {ThemeContext} from 'react-native-elements';
 
 type Size = 'small' | 'medium' | 'large';
 
@@ -12,7 +13,7 @@ type Props = ButtonProps & {
 
 const borderRadiusMap: SizeMap = {
   small: s(8),
-  medium: s(15),
+  medium: s(30),
   large: s(30),
 };
 
@@ -33,15 +34,23 @@ const RoundedButton = ({
   titleStyle,
   size = 'small',
   ...props
-}: Props) => (
-  <Button
-    {...props}
-    buttonStyle={[
-      {borderRadius: borderRadiusMap[size], padding: paddingMap[size]},
-      buttonStyle,
-    ]}
-    titleStyle={[{fontSize: fontSizeMap[size]}, titleStyle]}
-  />
-);
+}: Props) => {
+  const {theme} = useContext(ThemeContext);
+
+  return (
+    <Button
+      {...props}
+      buttonStyle={[
+        {
+          borderRadius: borderRadiusMap[size],
+          padding: paddingMap[size],
+        },
+        theme.Button?.buttonStyle,
+        buttonStyle,
+      ]}
+      titleStyle={[{fontSize: fontSizeMap[size]}, titleStyle]}
+    />
+  );
+};
 
 export default RoundedButton;

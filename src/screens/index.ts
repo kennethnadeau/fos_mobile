@@ -3,9 +3,10 @@ import {wrapWithRequiredProviders} from '@fos/helpers/screens';
 import LoginScreen from './Login';
 import NavUx from './NavUx';
 import SplashScreen from './SplashScreen';
+import LandingScreen from './Landing';
 
 registerScreens(
-  [SplashScreen, NavUx, LoginScreen],
+  [SplashScreen, NavUx, LandingScreen, LoginScreen],
   '',
   wrapWithRequiredProviders,
 );

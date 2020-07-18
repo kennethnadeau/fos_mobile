@@ -1,5 +1,12 @@
 const enUs = {
   screens: {
+    landing: {
+      header: 'Data. Meets. People.',
+      button: {
+        createNewAccount: 'Create New Account',
+        login: 'Log In',
+      },
+    },
     navUx: {
       text: {
         selectYourExperience: 'Select Your Experience',

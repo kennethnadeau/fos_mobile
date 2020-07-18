@@ -34,8 +34,8 @@ exports[`<NavUxScreen /> should match snapshot 1`] = `
       Object {
         "fontSize": 34.285714285714285,
         "fontWeight": "900",
-        "lineHeight": 37.273529411764706,
-        "marginVertical": 51.00588235294117,
+        "lineHeight": 49.04411764705882,
+        "marginVertical": 58.85294117647059,
       }
     }
     theme={
@@ -81,7 +81,8 @@ exports[`<NavUxScreen /> should match snapshot 1`] = `
   <View
     style={
       Object {
-        "height": 353.11764705882354,
+        "alignItems": "center",
+        "height": 431.5882352941176,
         "justifyContent": "space-between",
         "marginHorizontal": 107.14285714285714,
         "width": 642.8571428571429,
@@ -129,8 +130,10 @@ exports[`<NavUxScreen /> should match snapshot 1`] = `
               "borderRadius": 64.28571428571428,
               "borderWidth": 0,
               "flexDirection": "row",
+              "height": 121.62941176470588,
               "justifyContent": "center",
-              "padding": 34.285714285714285,
+              "padding": 8,
+              "width": 471.42857142857144,
             }
           }
         >
@@ -191,8 +194,10 @@ exports[`<NavUxScreen /> should match snapshot 1`] = `
               "borderRadius": 64.28571428571428,
               "borderWidth": 0,
               "flexDirection": "row",
+              "height": 121.62941176470588,
               "justifyContent": "center",
-              "padding": 34.285714285714285,
+              "padding": 8,
+              "width": 471.42857142857144,
             }
           }
         >
@@ -253,8 +258,10 @@ exports[`<NavUxScreen /> should match snapshot 1`] = `
               "borderRadius": 64.28571428571428,
               "borderWidth": 0,
               "flexDirection": "row",
+              "height": 121.62941176470588,
               "justifyContent": "center",
-              "padding": 34.285714285714285,
+              "padding": 8,
+              "width": 471.42857142857144,
             }
           }
         >

@@ -23,8 +23,8 @@ exports[`<SplashScreen /> should match snapshot 1`] = `
     style={
       Array [
         Object {
-          "height": 213.83235294117645,
-          "width": 252.85714285714286,
+          "height": 270.7235294117647,
+          "width": 323.57142857142856,
         },
         undefined,
       ]

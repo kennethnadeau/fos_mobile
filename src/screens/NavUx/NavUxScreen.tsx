@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     alignItems: 'center',
-    height: vs(200),
+    height: vs(180),
     justifyContent: 'space-between',
     marginHorizontal: s(50),
     width: s(300),

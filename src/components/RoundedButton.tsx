@@ -24,8 +24,8 @@ const fontSizeMap: SizeMap = {
 
 const heightMap: SizeMap = {
   small: vs(40),
-  medium: vs(55),
-  large: vs(62),
+  medium: vs(45),
+  large: vs(50),
 };
 
 const RoundedButton = ({

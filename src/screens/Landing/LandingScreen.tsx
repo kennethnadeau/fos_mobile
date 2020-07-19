@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   createNewAccountBtnContainer: {
-    width: ms(320),
+    width: ms(300),
   },
   createNewAccountBtnTitle: {
     fontWeight: '700',
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: s(12),
   },
-  loginBtn: {backgroundColor: 'transparent'},
+  loginBtn: {backgroundColor: 'transparent', marginTop: vs(10)},
   logoContainer: {
     alignItems: 'center',
     flex: 1,

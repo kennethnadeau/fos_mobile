@@ -115,8 +115,8 @@ exports[`<LandingScreen /> should match snapshot 1`] = `
       style={
         Array [
           Object {
-            "height": 213.83235294117645,
-            "width": 252.85714285714286,
+            "height": 270.7235294117647,
+            "width": 323.57142857142856,
           },
           undefined,
         ]
@@ -138,7 +138,7 @@ exports[`<LandingScreen /> should match snapshot 1`] = `
         Object {
           "borderRadius": 3,
           "overflow": "hidden",
-          "width": 502.85714285714283,
+          "width": 471.42857142857144,
         }
       }
     >
@@ -175,7 +175,7 @@ exports[`<LandingScreen /> should match snapshot 1`] = `
               "borderRadius": 64.28571428571428,
               "borderWidth": 0,
               "flexDirection": "row",
-              "height": 107.8970588235294,
+              "height": 88.27941176470588,
               "justifyContent": "center",
               "padding": 8,
             }
@@ -240,6 +240,7 @@ exports[`<LandingScreen /> should match snapshot 1`] = `
               "borderWidth": 0,
               "flexDirection": "row",
               "justifyContent": "center",
+              "marginTop": 19.61764705882353,
               "padding": 8,
             }
           }

@@ -17,8 +17,8 @@ const Logo: FC<{style?: ImageStyle}> = ({style}) => {
 
 const styles = StyleSheet.create({
   image: {
-    height: vs(109),
-    width: s(118),
+    height: vs(138),
+    width: s(151),
   },
 });
 

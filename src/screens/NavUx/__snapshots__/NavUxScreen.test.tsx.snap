@@ -22,8 +22,8 @@ exports[`<NavUxScreen /> should match snapshot 1`] = `
     style={
       Array [
         Object {
-          "height": 213.83235294117645,
-          "width": 252.85714285714286,
+          "height": 270.7235294117647,
+          "width": 323.57142857142856,
         },
         undefined,
       ]
@@ -82,7 +82,7 @@ exports[`<NavUxScreen /> should match snapshot 1`] = `
     style={
       Object {
         "alignItems": "center",
-        "height": 392.35294117647055,
+        "height": 353.11764705882354,
         "justifyContent": "space-between",
         "marginHorizontal": 107.14285714285714,
         "width": 642.8571428571429,
@@ -130,7 +130,7 @@ exports[`<NavUxScreen /> should match snapshot 1`] = `
               "borderRadius": 64.28571428571428,
               "borderWidth": 0,
               "flexDirection": "row",
-              "height": 121.62941176470588,
+              "height": 98.08823529411764,
               "justifyContent": "center",
               "padding": 8,
               "width": 471.42857142857144,
@@ -194,7 +194,7 @@ exports[`<NavUxScreen /> should match snapshot 1`] = `
               "borderRadius": 64.28571428571428,
               "borderWidth": 0,
               "flexDirection": "row",
-              "height": 121.62941176470588,
+              "height": 98.08823529411764,
               "justifyContent": "center",
               "padding": 8,
               "width": 471.42857142857144,
@@ -258,7 +258,7 @@ exports[`<NavUxScreen /> should match snapshot 1`] = `
               "borderRadius": 64.28571428571428,
               "borderWidth": 0,
               "flexDirection": "row",
-              "height": 121.62941176470588,
+              "height": 98.08823529411764,
               "justifyContent": "center",
               "padding": 8,
               "width": 471.42857142857144,

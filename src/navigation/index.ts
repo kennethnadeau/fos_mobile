@@ -29,7 +29,7 @@ Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
       component: {
-        name: SCREENS.SPLASH_SCREEN,
+        name: SCREENS.NAV_UX,
       },
     },
   });

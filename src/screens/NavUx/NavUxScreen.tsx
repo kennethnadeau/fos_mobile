@@ -31,12 +31,14 @@ const NavUxScreen: ScreenFC = () => {
           accessible
           buttonStyle={styles.btn}
           onPress={() => {
-            Navigation.push('STACK.ROOT', {
-              component: {
-                name: SCREENS.LANDING,
-                options: {
-                  topBar: {
-                    visible: false,
+            Navigation.setRoot({
+              root: {
+                component: {
+                  name: SCREENS.SPLASH_SCREEN,
+                  options: {
+                    topBar: {
+                      visible: false,
+                    },
                   },
                 },
               },
@@ -76,7 +78,7 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     alignItems: 'center',
-    height: vs(220),
+    height: vs(200),
     justifyContent: 'space-between',
     marginHorizontal: s(50),
     width: s(300),

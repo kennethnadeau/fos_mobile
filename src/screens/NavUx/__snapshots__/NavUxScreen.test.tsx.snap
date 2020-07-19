@@ -82,7 +82,7 @@ exports[`<NavUxScreen /> should match snapshot 1`] = `
     style={
       Object {
         "alignItems": "center",
-        "height": 431.5882352941176,
+        "height": 392.35294117647055,
         "justifyContent": "space-between",
         "marginHorizontal": 107.14285714285714,
         "width": 642.8571428571429,

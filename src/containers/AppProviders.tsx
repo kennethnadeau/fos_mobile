@@ -5,14 +5,23 @@ import {ThemeProvider, Theme, colors} from 'react-native-elements';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import createStore from '@fos/redux/store';
 import {Colors} from '@fos/themes';
+import {s} from 'react-native-size-matters';
 
 const {store, persistor} = createStore();
 
 const defaultTheme: Theme = {
   Button: {
-    buttonStyle: {
-      backgroundColor: Colors.secondary,
-    },
+    buttonStyle: [
+      {
+        backgroundColor: Colors.secondary,
+      },
+    ],
+    titleStyle: [
+      {
+        color: 'white',
+        fontSize: s(16),
+      },
+    ],
   },
   Text: {
     style: {

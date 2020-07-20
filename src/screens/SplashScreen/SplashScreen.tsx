@@ -14,8 +14,20 @@ const SplashScreen: ScreenFC = () => {
       () =>
         Navigation.setRoot({
           root: {
-            component: {
-              name: SCREENS.NAV_UX,
+            stack: {
+              id: 'STACK.ROOT',
+              children: [
+                {
+                  component: {
+                    name: SCREENS.NAV_UX,
+                    options: {
+                      topBar: {
+                        visible: false,
+                      },
+                    },
+                  },
+                },
+              ],
             },
           },
         }),

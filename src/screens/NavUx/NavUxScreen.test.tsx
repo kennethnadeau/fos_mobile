@@ -1,13 +1,12 @@
 import React from 'react';
 import NavUxScreen from './NavUxScreen';
-import {RenderAPI} from 'react-native-testing-library';
-import renderForTest from '@fos/utils/testing/renderForTest';
+import {render, RenderAPI} from '@fos/utils/testing';
 
 describe('<NavUxScreen />', () => {
   let rendered: RenderAPI;
 
   beforeEach(() => {
-    rendered = renderForTest(<NavUxScreen componentId="id" />);
+    rendered = render(<NavUxScreen componentId="id" />);
   });
 
   it('should show logo at the top', () => {

@@ -3,11 +3,12 @@ import {View, StyleSheet} from 'react-native';
 import {Text} from 'react-native-elements';
 import {ScreenFC} from 'react-native-navigation-register-screens';
 import {SCREENS} from '@fos/constants';
-import {vs, s} from 'react-native-size-matters';
+import {vs, s, ms} from 'react-native-size-matters';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import RoundedButton from '@fos/components/RoundedButton';
 import Logo from '@fos/components/Logo';
 import {useTranslation} from 'react-i18next';
+import {Navigation} from 'react-native-navigation';
 
 const NavUxScreen: ScreenFC = () => {
   const {t} = useTranslation();
@@ -23,11 +24,24 @@ const NavUxScreen: ScreenFC = () => {
 
       <Text style={styles.header}>{headerText}</Text>
 
-      <View style={styles.buttonContainer}>
+      <View style={styles.btnContainer}>
         <RoundedButton
           accessibilityLabel={launchAppText}
           accessibilityRole="button"
           accessible
+          buttonStyle={styles.btn}
+          onPress={() => {
+            Navigation.push('STACK.ROOT', {
+              component: {
+                name: SCREENS.LANDING,
+                options: {
+                  topBar: {
+                    visible: false,
+                  },
+                },
+              },
+            });
+          }}
           size="large"
           title={launchAppText}
         />
@@ -36,6 +50,7 @@ const NavUxScreen: ScreenFC = () => {
           accessibilityLabel={newSubscriptionsText}
           accessibilityRole="button"
           accessible
+          buttonStyle={styles.btn}
           size="large"
           title={newSubscriptionsText}
         />
@@ -44,6 +59,7 @@ const NavUxScreen: ScreenFC = () => {
           accessibilityLabel={joinTeamInviteText}
           accessibilityRole="button"
           accessible
+          buttonStyle={styles.btn}
           size="large"
           title={joinTeamInviteText}
         />
@@ -55,8 +71,12 @@ const NavUxScreen: ScreenFC = () => {
 NavUxScreen.screenName = SCREENS.NAV_UX;
 
 const styles = StyleSheet.create({
-  buttonContainer: {
-    height: vs(180),
+  btn: {
+    width: ms(300),
+  },
+  btnContainer: {
+    alignItems: 'center',
+    height: vs(220),
     justifyContent: 'space-between',
     marginHorizontal: s(50),
     width: s(300),
@@ -69,8 +89,8 @@ const styles = StyleSheet.create({
   header: {
     fontSize: s(16),
     fontWeight: '900',
-    lineHeight: vs(19),
-    marginVertical: vs(26),
+    lineHeight: vs(25),
+    marginVertical: vs(30),
   },
 });
 

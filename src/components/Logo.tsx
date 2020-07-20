@@ -1,25 +1,16 @@
 import React, {FC} from 'react';
-import {Image, StyleSheet, ImageStyle} from 'react-native';
-import {Images} from '@fos/themes';
+import LogoSvg from '@fos/assets/svg/logo.svg';
 import {s, vs} from 'react-native-size-matters';
 
-const Logo: FC<{style?: ImageStyle}> = ({style}) => {
+const Logo: FC = () => {
   return (
-    <Image
+    <LogoSvg
       accessibilityLabel="App logo"
       accessible
-      resizeMode="contain"
-      source={Images.logo}
-      style={[styles.image, style]}
+      height={vs(109)}
+      width={s(118)}
     />
   );
 };
-
-const styles = StyleSheet.create({
-  image: {
-    height: vs(109),
-    width: s(118),
-  },
-});
 
 export default Logo;

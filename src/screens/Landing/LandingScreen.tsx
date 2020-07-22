@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   createNewAccountBtnContainer: {
-    width: ms(320),
+    width: ms(300),
   },
   createNewAccountBtnTitle: {
     fontWeight: '700',

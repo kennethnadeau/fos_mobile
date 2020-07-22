@@ -7,16 +7,6 @@ const enUs = {
         login: 'Log In',
       },
     },
-    navUx: {
-      text: {
-        selectYourExperience: 'Select Your Experience',
-      },
-      button: {
-        launchApp: 'Launch App',
-        newSubscriptions: 'New Subscriptions',
-        joinTeamInvite: 'Join Team Invite',
-      },
-    },
   },
 };
 

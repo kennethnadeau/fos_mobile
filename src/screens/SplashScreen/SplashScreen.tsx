@@ -19,7 +19,7 @@ const SplashScreen: ScreenFC = () => {
               children: [
                 {
                   component: {
-                    name: SCREENS.NAV_UX,
+                    name: SCREENS.LANDING,
                     options: {
                       topBar: {
                         visible: false,

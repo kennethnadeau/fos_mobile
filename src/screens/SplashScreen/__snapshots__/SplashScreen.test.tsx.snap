@@ -11,24 +11,11 @@ exports[`<SplashScreen /> should match snapshot 1`] = `
     }
   }
 >
-  <Image
+  <SvgMock
     accessibilityLabel="App logo"
     accessible={true}
-    resizeMode="contain"
-    source={
-      Object {
-        "testUri": "../../../src/assets/images/logo.png",
-      }
-    }
-    style={
-      Array [
-        Object {
-          "height": 270.7235294117647,
-          "width": 323.57142857142856,
-        },
-        undefined,
-      ]
-    }
+    height={213.83235294117645}
+    width={252.85714285714286}
   />
 </RNCSafeAreaView>
 `;

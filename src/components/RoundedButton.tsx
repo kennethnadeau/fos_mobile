@@ -13,7 +13,7 @@ type Props = ButtonProps & {
 const borderRadiusMap: SizeMap = {
   small: s(8),
   medium: s(30),
-  large: s(30),
+  large: s(40),
 };
 
 const fontSizeMap: SizeMap = {

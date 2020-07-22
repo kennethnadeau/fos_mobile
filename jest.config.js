@@ -5,6 +5,9 @@ module.exports = {
   transformIgnorePatterns: [
     'node_modules/(?!(jest-)?react-native|react-navigation|react-navigation-redux-helpers|@react-navigation|@fos/.*)',
   ],
+  moduleNameMapper: {
+    '\\.svg': '<rootDir>/__mocks__/svgMock.ts',
+  },
   setupFiles: ['./jest.setup.js'],
   silent: true,
 };

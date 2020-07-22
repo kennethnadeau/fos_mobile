@@ -1,286 +1,307 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<NavUxScreen /> should match snapshot 1`] = `
-<RNCSafeAreaView
+<RNCSafeAreaProvider
+  onInsetsChange={[Function]}
   style={
-    Object {
-      "alignItems": "center",
-      "flex": 1,
-      "paddingTop": 58.85294117647059,
-    }
+    Array [
+      Object {
+        "flex": 1,
+      },
+      undefined,
+    ]
   }
 >
-  <Image
-    accessibilityLabel="App logo"
-    accessible={true}
-    resizeMode="contain"
-    source={
-      Object {
-        "testUri": "../../../src/assets/images/logo.png",
-      }
-    }
-    style={
-      Array [
-        Object {
-          "height": 270.7235294117647,
-          "width": 323.57142857142856,
-        },
-        undefined,
-      ]
-    }
-  />
-  <Text
-    style={
-      Object {
-        "fontSize": 34.285714285714285,
-        "fontWeight": "900",
-        "lineHeight": 49.04411764705882,
-        "marginVertical": 58.85294117647059,
-      }
-    }
-    theme={
-      Object {
-        "colors": Object {
-          "disabled": "hsl(208, 8%, 90%)",
-          "divider": "#bcbbc1",
-          "error": "#ff190c",
-          "grey0": "#393e42",
-          "grey1": "#43484d",
-          "grey2": "#5e6977",
-          "grey3": "#86939e",
-          "grey4": "#bdc6cf",
-          "grey5": "#e1e8ee",
-          "greyOutline": "#bbb",
-          "platform": Object {
-            "android": Object {
-              "error": "#f44336",
-              "primary": "#2196f3",
-              "secondary": "#9C27B0",
-              "success": "#4caf50",
-              "warning": "#ffeb3b",
-            },
-            "ios": Object {
-              "error": "#ff3b30",
-              "primary": "#007aff",
-              "secondary": "#5856d6",
-              "success": "#4cd964",
-              "warning": "#ffcc00",
-            },
-          },
-          "primary": "#2089dc",
-          "searchBg": "#303337",
-          "secondary": "#8F0CE8",
-          "success": "#52c41a",
-          "warning": "#faad14",
-        },
-      }
-    }
-  >
-    Select Your Experience
-  </Text>
-  <View
+  <RNCSafeAreaView
     style={
       Object {
         "alignItems": "center",
-        "height": 353.11764705882354,
-        "justifyContent": "space-between",
-        "marginHorizontal": 107.14285714285714,
-        "width": 642.8571428571429,
+        "flex": 1,
+        "paddingTop": 58.85294117647059,
       }
     }
   >
+    <SvgMock
+      accessibilityLabel="App logo"
+      accessible={true}
+      height={213.83235294117645}
+      width={252.85714285714286}
+    />
+    <Text
+      style={
+        Object {
+          "color": "#e1e8ee",
+          "fontSize": 34.285714285714285,
+          "fontWeight": "900",
+          "lineHeight": 49.04411764705882,
+          "marginVertical": 58.85294117647059,
+        }
+      }
+      theme={
+        Object {
+          "Button": Object {
+            "buttonStyle": Array [
+              Object {
+                "backgroundColor": "#4CA1D6",
+              },
+            ],
+            "titleStyle": Array [
+              Object {
+                "color": "white",
+                "fontSize": 34.285714285714285,
+              },
+            ],
+          },
+          "Icon": Object {
+            "color": "#2089dc",
+          },
+          "Text": Object {
+            "style": Object {
+              "color": "#e1e8ee",
+            },
+          },
+          "colors": Object {
+            "disabled": "hsl(208, 8%, 90%)",
+            "divider": "#bcbbc1",
+            "error": "#ff190c",
+            "grey0": "#393e42",
+            "grey1": "#43484d",
+            "grey2": "#5e6977",
+            "grey3": "#86939e",
+            "grey4": "#bdc6cf",
+            "grey5": "#e1e8ee",
+            "greyOutline": "#bbb",
+            "platform": Object {
+              "android": Object {
+                "error": "#f44336",
+                "primary": "#2196f3",
+                "secondary": "#9C27B0",
+                "success": "#4caf50",
+                "warning": "#ffeb3b",
+              },
+              "ios": Object {
+                "error": "#ff3b30",
+                "primary": "#007aff",
+                "secondary": "#5856d6",
+                "success": "#4cd964",
+                "warning": "#ffcc00",
+              },
+            },
+            "primary": "#2089dc",
+            "searchBg": "#303337",
+            "secondary": "#8F0CE8",
+            "success": "#52c41a",
+            "warning": "#faad14",
+          },
+        }
+      }
+    >
+      Select Your Experience
+    </Text>
     <View
       style={
         Object {
-          "borderRadius": 3,
-          "overflow": "hidden",
+          "alignItems": "center",
+          "height": 353.11764705882354,
+          "justifyContent": "space-between",
+          "marginHorizontal": 107.14285714285714,
+          "width": 642.8571428571429,
         }
       }
     >
       <View
-        accessibilityLabel="Launch App"
-        accessibilityRole="button"
-        accessibilityState={
-          Object {
-            "busy": false,
-            "disabled": false,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           Object {
-            "opacity": 1,
+            "borderRadius": 3,
+            "overflow": "hidden",
           }
         }
       >
         <View
+          accessibilityLabel="Launch App"
+          accessibilityRole="button"
+          accessibilityState={
+            Object {
+              "busy": false,
+              "disabled": false,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#2089dc",
-              "borderColor": "#2089dc",
-              "borderRadius": 64.28571428571428,
-              "borderWidth": 0,
-              "flexDirection": "row",
-              "height": 98.08823529411764,
-              "justifyContent": "center",
-              "padding": 8,
-              "width": 471.42857142857144,
+              "opacity": 1,
             }
           }
         >
-          <Text
+          <View
             style={
               Object {
-                "color": "white",
-                "fontSize": 34.285714285714285,
-                "paddingBottom": 1,
-                "paddingTop": 2,
-                "textAlign": "center",
+                "alignItems": "center",
+                "backgroundColor": "#4CA1D6",
+                "borderColor": "#2089dc",
+                "borderRadius": 85.71428571428571,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "height": 98.08823529411764,
+                "justifyContent": "center",
+                "padding": 8,
+                "width": 471.42857142857144,
               }
             }
           >
-            Launch App
-          </Text>
+            <Text
+              style={
+                Object {
+                  "color": "white",
+                  "fontSize": 34.285714285714285,
+                  "paddingBottom": 1,
+                  "paddingTop": 2,
+                  "textAlign": "center",
+                }
+              }
+            >
+              Launch App
+            </Text>
+          </View>
         </View>
       </View>
-    </View>
-    <View
-      style={
-        Object {
-          "borderRadius": 3,
-          "overflow": "hidden",
-        }
-      }
-    >
       <View
-        accessibilityLabel="New Subscriptions"
-        accessibilityRole="button"
-        accessibilityState={
-          Object {
-            "busy": false,
-            "disabled": false,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           Object {
-            "opacity": 1,
+            "borderRadius": 3,
+            "overflow": "hidden",
           }
         }
       >
         <View
+          accessibilityLabel="New Subscriptions"
+          accessibilityRole="button"
+          accessibilityState={
+            Object {
+              "busy": false,
+              "disabled": false,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#2089dc",
-              "borderColor": "#2089dc",
-              "borderRadius": 64.28571428571428,
-              "borderWidth": 0,
-              "flexDirection": "row",
-              "height": 98.08823529411764,
-              "justifyContent": "center",
-              "padding": 8,
-              "width": 471.42857142857144,
+              "opacity": 1,
             }
           }
         >
-          <Text
+          <View
             style={
               Object {
-                "color": "white",
-                "fontSize": 34.285714285714285,
-                "paddingBottom": 1,
-                "paddingTop": 2,
-                "textAlign": "center",
+                "alignItems": "center",
+                "backgroundColor": "#4CA1D6",
+                "borderColor": "#2089dc",
+                "borderRadius": 85.71428571428571,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "height": 98.08823529411764,
+                "justifyContent": "center",
+                "padding": 8,
+                "width": 471.42857142857144,
               }
             }
           >
-            New Subscriptions
-          </Text>
+            <Text
+              style={
+                Object {
+                  "color": "white",
+                  "fontSize": 34.285714285714285,
+                  "paddingBottom": 1,
+                  "paddingTop": 2,
+                  "textAlign": "center",
+                }
+              }
+            >
+              New Subscriptions
+            </Text>
+          </View>
         </View>
       </View>
-    </View>
-    <View
-      style={
-        Object {
-          "borderRadius": 3,
-          "overflow": "hidden",
-        }
-      }
-    >
       <View
-        accessibilityLabel="Join Team Invite"
-        accessibilityRole="button"
-        accessibilityState={
-          Object {
-            "busy": false,
-            "disabled": false,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           Object {
-            "opacity": 1,
+            "borderRadius": 3,
+            "overflow": "hidden",
           }
         }
       >
         <View
+          accessibilityLabel="Join Team Invite"
+          accessibilityRole="button"
+          accessibilityState={
+            Object {
+              "busy": false,
+              "disabled": false,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#2089dc",
-              "borderColor": "#2089dc",
-              "borderRadius": 64.28571428571428,
-              "borderWidth": 0,
-              "flexDirection": "row",
-              "height": 98.08823529411764,
-              "justifyContent": "center",
-              "padding": 8,
-              "width": 471.42857142857144,
+              "opacity": 1,
             }
           }
         >
-          <Text
+          <View
             style={
               Object {
-                "color": "white",
-                "fontSize": 34.285714285714285,
-                "paddingBottom": 1,
-                "paddingTop": 2,
-                "textAlign": "center",
+                "alignItems": "center",
+                "backgroundColor": "#4CA1D6",
+                "borderColor": "#2089dc",
+                "borderRadius": 85.71428571428571,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "height": 98.08823529411764,
+                "justifyContent": "center",
+                "padding": 8,
+                "width": 471.42857142857144,
               }
             }
           >
-            Join Team Invite
-          </Text>
+            <Text
+              style={
+                Object {
+                  "color": "white",
+                  "fontSize": 34.285714285714285,
+                  "paddingBottom": 1,
+                  "paddingTop": 2,
+                  "textAlign": "center",
+                }
+              }
+            >
+              Join Team Invite
+            </Text>
+          </View>
         </View>
       </View>
     </View>
-  </View>
-</RNCSafeAreaView>
+  </RNCSafeAreaView>
+</RNCSafeAreaProvider>
 `;

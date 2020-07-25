@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {ScreenFC} from 'react-native-navigation-register-screens';
 import Logo from '@fos/components/Logo';
@@ -9,9 +9,12 @@ import {vs, s, ms} from 'react-native-size-matters';
 import RoundedButton from '@fos/components/RoundedButton';
 import {useTranslation} from 'react-i18next';
 import LandingHeaderBg from '@fos/assets/svg/landingHeaderBg.svg';
+import RNBootSplash from 'react-native-bootsplash';
 
 const LandingScreen: ScreenFC = () => {
   const {t} = useTranslation();
+
+  useEffect(() => RNBootSplash.hide({duration: 250}), []);
 
   const createNewAccountText = t('screens.landing.button.createNewAccount');
   const loginText = t('screens.landing.button.login');

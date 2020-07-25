@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug",
+    "android:clean": "cd ./android && ./gradlew clean",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
@@ -20,6 +21,7 @@
     "react": "16.11.0",
     "react-i18next": "^11.7.0",
     "react-native": "0.62.2",
+    "react-native-bootsplash": "^2.2.5",
     "react-native-elements": "^2.0.4",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-keyboard-manager": "^4.0.13-16",

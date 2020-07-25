@@ -18,6 +18,7 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* FlatsOrSpikesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* FlatsOrSpikesTests.m */; };
 		7064086CAE4930D62CA7AFA8 /* libPods-FlatsOrSpikes-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09129CE045E52BF0DA66D87C /* libPods-FlatsOrSpikes-tvOS.a */; };
+		9294BCD424CAF913009FF425 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9294BCD324CAF913009FF425 /* BootSplash.storyboard */; };
 		A3B322E0C8130BD8D9F3DCF5 /* libPods-FlatsOrSpikes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E37CFCAB0947D6EEB0D8CF0 /* libPods-FlatsOrSpikes.a */; };
 		C2F5B1C9B6C856DD859D58D9 /* libPods-FlatsOrSpikes-FlatsOrSpikesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B09F26827A4B86C47D4D4B /* libPods-FlatsOrSpikes-FlatsOrSpikesTests.a */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		92094A1A24BEDA540051B637 /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
 		92094A1B24BEDA540051B637 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		92094A1C24BEDA540051B637 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
+		9294BCD324CAF913009FF425 /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = FlatsOrSpikes/BootSplash.storyboard; sourceTree = "<group>"; };
 		964FA5D303B9DB91B0BE1A59 /* Pods-FlatsOrSpikes-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlatsOrSpikes-tvOS.release.xcconfig"; path = "Target Support Files/Pods-FlatsOrSpikes-tvOS/Pods-FlatsOrSpikes-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		AC0ACCAE8B4C893FE44F6599 /* Pods-FlatsOrSpikes-FlatsOrSpikesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlatsOrSpikes-FlatsOrSpikesTests.release.xcconfig"; path = "Target Support Files/Pods-FlatsOrSpikes-FlatsOrSpikesTests/Pods-FlatsOrSpikes-FlatsOrSpikesTests.release.xcconfig"; sourceTree = "<group>"; };
 		EC55A6472EC2621DFC26E9A5 /* Pods-FlatsOrSpikes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlatsOrSpikes.release.xcconfig"; path = "Target Support Files/Pods-FlatsOrSpikes/Pods-FlatsOrSpikes.release.xcconfig"; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		13B07FAE1A68108700A75B9A /* FlatsOrSpikes */ = {
 			isa = PBXGroup;
 			children = (
+				9294BCD324CAF913009FF425 /* BootSplash.storyboard */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -382,6 +385,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9294BCD424CAF913009FF425 /* BootSplash.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);

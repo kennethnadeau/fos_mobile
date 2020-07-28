@@ -1,7 +1,5 @@
 import ENV from 'react-native-config';
 
-const apiConfig = {
+export const apiConfig = {
   baseUrl: ENV.API_URL,
 };
-
-export default apiConfig;

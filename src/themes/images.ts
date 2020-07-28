@@ -1,5 +1,5 @@
 const images = {
-  question: require('@fos/assets/images/question.png'),
+  question: require('@fos/assets/svg/question.svg'),
 };
 
 export default images;

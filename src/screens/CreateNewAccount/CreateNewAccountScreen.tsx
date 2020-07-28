@@ -186,7 +186,7 @@ const CreateNewAccountScreen: ScreenFC = () => {
         // @ts-ignore for now
         ref={carouselRef}
         renderItem={({item}: {item: CarouselItem}) => carouselItemMap[item]}
-        // scrollEnabled={otpRequestStatus === 'sent'}
+        scrollEnabled={false}
         sliderWidth={Dimensions.get('window').width}
       />
       <Overlay isVisible={showSpinner}>

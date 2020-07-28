@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button, ButtonProps} from 'react-native-elements';
-import {s, vs} from 'react-native-size-matters';
+import {s} from 'react-native-size-matters';
+import {StyleSheet} from 'react-native';
 
 type Size = 'small' | 'medium' | 'large';
 
@@ -18,19 +19,20 @@ const borderRadiusMap: SizeMap = {
 
 const fontSizeMap: SizeMap = {
   small: s(8),
-  medium: s(12),
+  medium: s(16),
   large: s(16),
 };
 
 const heightMap: SizeMap = {
-  small: vs(40),
-  medium: vs(45),
-  large: vs(50),
+  small: s(30),
+  medium: s(40),
+  large: s(50),
 };
 
 const RoundedButton = ({
   buttonStyle,
   titleStyle,
+  containerStyle,
   size = 'small',
   ...props
 }: Props) => (
@@ -43,8 +45,15 @@ const RoundedButton = ({
       },
       buttonStyle,
     ]}
+    containerStyle={[defaultStyles.container, containerStyle]}
     titleStyle={[{fontSize: fontSizeMap[size]}, titleStyle]}
   />
 );
+
+const defaultStyles = StyleSheet.create({
+  container: {
+    width: '100%',
+  },
+});
 
 export default RoundedButton;

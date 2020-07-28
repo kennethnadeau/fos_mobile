@@ -8,6 +8,7 @@ import rootSaga from '../sagas';
 
 const persistConfig = {
   key: 'flats_or_spikes',
+  blacklist: ['navigation'],
   storage,
 };
 

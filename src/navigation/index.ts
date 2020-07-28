@@ -6,6 +6,17 @@ import {Colors} from '@fos/themes';
 
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setDefaultOptions({
+    topBar: {
+      noBorder: true,
+      background: {
+        color: Colors.primary,
+      },
+      backButton: {
+        title: 'Back',
+        showTitle: true,
+        color: 'white',
+      },
+    },
     layout: {
       backgroundColor: Colors.primary,
       componentBackgroundColor: Colors.primary,
@@ -28,8 +39,19 @@ Navigation.events().registerAppLaunchedListener(() => {
 
   Navigation.setRoot({
     root: {
-      component: {
-        name: SCREENS.LANDING,
+      stack: {
+        children: [
+          {
+            component: {
+              name: SCREENS.LANDING,
+              options: {
+                topBar: {
+                  visible: false,
+                },
+              },
+            },
+          },
+        ],
       },
     },
   });

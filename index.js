@@ -8,3 +8,7 @@ if (__DEV__) {
 
 import './src/locale/i18n';
 import './src/navigation';
+import {apiConfig} from './src/config/api';
+import {apiService} from '@fos/shared';
+
+apiService.configure(apiConfig.baseUrl);

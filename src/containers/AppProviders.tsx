@@ -5,7 +5,8 @@ import {ThemeProvider, Theme, colors} from 'react-native-elements';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import createStore from '@fos/redux/store';
 import {Colors} from '@fos/themes';
-import {s} from 'react-native-size-matters';
+import {s, ms} from 'react-native-size-matters';
+import {StyleSheet} from 'react-native';
 
 const {store, persistor} = createStore();
 
@@ -23,9 +24,27 @@ const defaultTheme: Theme = {
       },
     ],
   },
+  Input: {
+    placeholderTextColor: Colors.muted,
+    inputStyle: {
+      color: Colors.white,
+      padding: ms(6),
+      alignItems: 'center',
+    },
+    inputContainerStyle: {
+      borderColor: Colors.white,
+      alignItems: 'center',
+      borderBottomWidth: StyleSheet.hairlineWidth,
+      borderWidth: StyleSheet.hairlineWidth,
+      borderRadius: s(30),
+      overflow: 'hidden',
+      padding: ms(6),
+    },
+  },
   Text: {
     style: {
-      color: colors.grey5,
+      fontSize: s(16),
+      color: 'white',
     },
   },
   Icon: {
@@ -33,12 +52,20 @@ const defaultTheme: Theme = {
   },
 };
 
+export const NavigationComponentProviders: FC<{
+  children: React.ReactElement<any>;
+}> = ({children}) => (
+  <Provider store={store}>
+    <ThemeProvider theme={defaultTheme}>{children}</ThemeProvider>
+  </Provider>
+);
+
 const AppProviders: FC<{
   children: React.ReactElement<any>;
   testing?: boolean;
 }> = ({children, testing = false}) => (
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
+  <PersistGate loading={null} persistor={persistor}>
+    <Provider store={store}>
       <ThemeProvider theme={defaultTheme}>
         <SafeAreaProvider
           initialMetrics={
@@ -52,8 +79,8 @@ const AppProviders: FC<{
           {children}
         </SafeAreaProvider>
       </ThemeProvider>
-    </PersistGate>
-  </Provider>
+    </Provider>
+  </PersistGate>
 );
 
 export default AppProviders;

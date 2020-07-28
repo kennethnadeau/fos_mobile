@@ -7,8 +7,8 @@ const Logo: FC = () => {
     <LogoSvg
       accessibilityLabel="App logo"
       accessible
-      height={vs(109)}
-      width={s(118)}
+      height={vs(138)}
+      width={s(131)}
     />
   );
 };

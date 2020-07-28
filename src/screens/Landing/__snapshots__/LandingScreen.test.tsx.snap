@@ -24,7 +24,7 @@ exports[`<LandingScreen /> should match snapshot 1`] = `
       style={
         Object {
           "bottom": 0,
-          "color": "#e1e8ee",
+          "color": "white",
           "fontSize": 98.57142857142857,
           "fontWeight": "700",
           "left": 0,
@@ -53,9 +53,27 @@ exports[`<LandingScreen /> should match snapshot 1`] = `
           "Icon": Object {
             "color": "#2089dc",
           },
+          "Input": Object {
+            "inputContainerStyle": Object {
+              "alignItems": "center",
+              "borderBottomWidth": 0.5,
+              "borderColor": "#fff",
+              "borderRadius": 64.28571428571428,
+              "borderWidth": 0.5,
+              "overflow": "hidden",
+              "padding": 9.428571428571429,
+            },
+            "inputStyle": Object {
+              "alignItems": "center",
+              "color": "#fff",
+              "padding": 9.428571428571429,
+            },
+            "placeholderTextColor": "#7E8395",
+          },
           "Text": Object {
             "style": Object {
-              "color": "#e1e8ee",
+              "color": "white",
+              "fontSize": 34.285714285714285,
             },
           },
           "colors": Object {
@@ -109,8 +127,8 @@ exports[`<LandingScreen /> should match snapshot 1`] = `
       <SvgMock
         accessibilityLabel="App logo"
         accessible={true}
-        height={213.83235294117645}
-        width={252.85714285714286}
+        height={270.7235294117647}
+        width={280.7142857142857}
       />
     </View>
     <View
@@ -162,10 +180,10 @@ exports[`<LandingScreen /> should match snapshot 1`] = `
                 "alignItems": "center",
                 "backgroundColor": "#4CA1D6",
                 "borderColor": "#2089dc",
-                "borderRadius": 64.28571428571428,
+                "borderRadius": 85.71428571428571,
                 "borderWidth": 0,
                 "flexDirection": "row",
-                "height": 88.27941176470588,
+                "height": 107.14285714285714,
                 "justifyContent": "center",
                 "padding": 8,
               }
@@ -175,7 +193,7 @@ exports[`<LandingScreen /> should match snapshot 1`] = `
               style={
                 Object {
                   "color": "white",
-                  "fontSize": 25.714285714285715,
+                  "fontSize": 34.285714285714285,
                   "fontWeight": "700",
                   "paddingBottom": 1,
                   "paddingTop": 2,
@@ -224,7 +242,7 @@ exports[`<LandingScreen /> should match snapshot 1`] = `
             style={
               Object {
                 "alignItems": "center",
-                "backgroundColor": "transparent",
+                "backgroundColor": "rgba(0,0,0,0)",
                 "borderColor": "#2089dc",
                 "borderRadius": 3,
                 "borderWidth": 0,

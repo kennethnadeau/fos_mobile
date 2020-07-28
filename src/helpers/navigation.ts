@@ -1,25 +1,20 @@
-import {NavigationActions, NavigationAction} from 'react-navigation';
+import {Navigation} from 'react-native-navigation';
+import {SCREENS} from '@fos/constants';
 
-export interface navigator {
-  dispatch: (action: NavigationAction) => void;
+export function goToCreateNewAccount(componentId: string) {
+  Navigation.push(componentId, {
+    component: {
+      name: SCREENS.CREATE_NEW_ACCOUNT,
+      options: {
+        topBar: {
+          visible: true,
+          title: {
+            component: {
+              name: SCREENS.COMPONENTS.TOP_BAR.PAGINATION,
+            },
+          },
+        },
+      },
+    },
+  });
 }
-
-let _navigator: navigator;
-
-function setTopLevelNavigator(navigatorRef: navigator): void {
-  _navigator = navigatorRef;
-}
-
-function navigate(routeName: string, params: any): void {
-  _navigator.dispatch(
-    NavigationActions.navigate({
-      routeName,
-      params,
-    }),
-  );
-}
-
-export default {
-  navigate,
-  setTopLevelNavigator,
-};

@@ -2,16 +2,18 @@ import React, {useEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {ScreenFC} from 'react-native-navigation-register-screens';
 import Logo from '@fos/components/Logo';
+import RoundedButton from '@fos/components/RoundedButton';
 import {SCREENS} from '@fos/constants';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Text, Button} from 'react-native-elements';
 import {vs, s, ms} from 'react-native-size-matters';
-import RoundedButton from '@fos/components/RoundedButton';
 import {useTranslation} from 'react-i18next';
 import LandingHeaderBg from '@fos/assets/svg/landingHeaderBg.svg';
+import {goToCreateNewAccount} from '@fos/helpers/navigation';
+import {Colors} from '@fos/themes';
 import RNBootSplash from 'react-native-bootsplash';
 
-const LandingScreen: ScreenFC = () => {
+const LandingScreen: ScreenFC = ({componentId}) => {
   const {t} = useTranslation();
 
   useEffect(() => RNBootSplash.hide({duration: 250}), []);
@@ -31,7 +33,8 @@ const LandingScreen: ScreenFC = () => {
           accessibilityLabel={createNewAccountText}
           accessible
           containerStyle={styles.createNewAccountBtnContainer}
-          size="medium"
+          onPress={() => goToCreateNewAccount(componentId)}
+          size="large"
           title={createNewAccountText}
           titleStyle={styles.createNewAccountBtnTitle}
         />
@@ -72,7 +75,7 @@ const styles = StyleSheet.create({
     marginTop: vs(100),
     textAlign: 'center',
   },
-  loginBtn: {backgroundColor: 'transparent'},
+  loginBtn: {backgroundColor: Colors.transparent},
   logoContainer: {
     alignItems: 'center',
     flex: 1,

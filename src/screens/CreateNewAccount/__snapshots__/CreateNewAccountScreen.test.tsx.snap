@@ -364,7 +364,7 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                       }
                       testID="RNE__Input__text-input"
                       underlineColorAndroid="transparent"
-                      value="17272649460"
+                      value=""
                     />
                     <View
                       style={
@@ -409,7 +409,7 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                               style={
                                 Array [
                                   Object {
-                                    "color": "#7E8395",
+                                    "color": "rgba(0,0,0,0)",
                                     "fontSize": 24,
                                   },
                                   Object {
@@ -458,7 +458,7 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                   accessibilityState={
                     Object {
                       "busy": false,
-                      "disabled": false,
+                      "disabled": true,
                     }
                   }
                   accessible={true}
@@ -480,7 +480,7 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     style={
                       Object {
                         "alignItems": "center",
-                        "backgroundColor": "#4CA1D6",
+                        "backgroundColor": "hsl(208, 8%, 90%)",
                         "borderColor": "#2089dc",
                         "borderRadius": 85.71428571428571,
                         "borderWidth": 0,
@@ -494,7 +494,15 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     <Text
                       style={
                         Object {
-                          "color": "white",
+                          "color": Object {
+                            "color": Array [
+                              208,
+                              8,
+                              63,
+                            ],
+                            "model": "hsl",
+                            "valpha": 1,
+                          },
                           "fontSize": 34.285714285714285,
                           "paddingBottom": 1,
                           "paddingTop": 2,
@@ -1015,7 +1023,7 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                   }
                 }
               >
-                We texted a verification code to +117272649460. This can take a minute.
+                We texted a verification code to +1. This can take a minute.
               </Text>
               <Text
                 style={

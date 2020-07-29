@@ -4,16 +4,15 @@ import {Overlay} from 'react-native-elements';
 import {ScreenFC} from 'react-native-navigation-register-screens';
 import {SCREENS} from '@fos/constants';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {Images} from '@fos/themes';
 import Carousel from 'react-native-snap-carousel';
 import {useDispatch} from 'react-redux';
-import {updateActiveDotIndex} from 'redux/slices/navigationSlice';
-import RequestOtpCode from 'components/screen/CreateNewAccount/RequestOtpCode';
+import {updateActiveDotIndex} from '@fos/redux/slices/navigationSlice';
+import RequestOtpCode from '@fos/components/screen/CreateNewAccount/RequestOtpCode';
 import VerifyOtpCode, {
   VerificationCodeStatus,
-} from 'components/screen/CreateNewAccount/VerifyOtpCode';
-import EmailAddress from 'components/screen/CreateNewAccount/EmailAddress';
-import Name from 'components/screen/CreateNewAccount/Name';
+} from '@fos/components/screen/CreateNewAccount/VerifyOtpCode';
+import EmailAddress from '@fos/components/screen/CreateNewAccount/EmailAddress';
+import Name from '@fos/components/screen/CreateNewAccount/Name';
 import {apiService} from '@fos/shared';
 const {auth} = apiService;
 
@@ -30,7 +29,7 @@ const CreateNewAccountScreen: ScreenFC = () => {
   const dispatch = useDispatch();
   const carouselRef = useRef<Carousel<CarouselItem>>();
   const [countryCode, setCountryCode] = useState('+1');
-  const [mobileNumber, setMobileNumber] = useState('17272649460');
+  const [mobileNumber, setMobileNumber] = useState('');
   const [otpRequestStatus, setOtpRequestStatus] = useState<
     'sending' | 'sent' | 'idle'
   >('idle');
@@ -55,9 +54,9 @@ const CreateNewAccountScreen: ScreenFC = () => {
   const sendOtpCode = useCallback(
     () =>
       auth.postOtpRegistration({
-        phone: mobileNumber,
+        phone: `${countryCode.replace('+', '')}${mobileNumber}`,
       }),
-    [mobileNumber],
+    [countryCode, mobileNumber],
   );
 
   const handleOtpCodeRequest = () => {
@@ -202,8 +201,10 @@ CreateNewAccountScreen.options = {
     visible: false,
     rightButtons: [
       {
-        id: 'questionIcon',
-        icon: Images.question,
+        id: SCREENS.COMPONENTS.TOP_BAR.QUESTION_MARK,
+        component: {
+          name: SCREENS.COMPONENTS.TOP_BAR.QUESTION_MARK,
+        },
       },
     ],
   },

@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import RoundedButton from '@fos/components/RoundedButton';
 import TextInput from '@fos/components/TextInput';
 import {useTranslation} from 'react-i18next';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Keyboard} from 'react-native';
 import {Text} from 'react-native-elements';
 import {ms, s, vs} from 'react-native-size-matters';
 import CarouselItemContainer from './CarouselItemContainer';
@@ -31,6 +31,11 @@ const RequestOtpCode: FC<RequestCodeProps> = ({
 
   const t = (path: string) => translate(`screens.createNewAccount.${path}`);
 
+  const onSubmit = () => {
+    onRequestCodePress();
+    Keyboard.dismiss();
+  };
+
   return (
     <CarouselItemContainer
       containerProps={{
@@ -58,6 +63,7 @@ const RequestOtpCode: FC<RequestCodeProps> = ({
           keyboardType="phone-pad"
           onChangeText={onMobileNumberChangeText}
           onClear={onMobileNumberClear}
+          onSubmitEditing={onSubmit}
           placeholder={t('requestOtpCodeInput.mobileNumber')}
           value={mobileNumber}
         />
@@ -68,7 +74,7 @@ const RequestOtpCode: FC<RequestCodeProps> = ({
         containerStyle={styles.btnRequestCode}
         disabled={!mobileNumber || loading}
         loading={loading}
-        onPress={onRequestCodePress}
+        onPress={onSubmit}
         size="large"
         title={t('requestOtpCodeButton.requestCode')}
       />

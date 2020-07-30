@@ -348,6 +348,7 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                       editable={true}
                       keyboardType="phone-pad"
                       onChangeText={[Function]}
+                      onSubmitEditing={[Function]}
                       placeholder="Your Number"
                       placeholderTextColor="#7E8395"
                       rejectResponderTermination={true}

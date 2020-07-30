@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {forwardRef} from 'react';
 import CarouselItemContainer from './CarouselItemContainer';
 import {Text} from 'react-native-elements';
 import {s, vs} from 'react-native-size-matters';
@@ -19,69 +19,75 @@ export type VerifyCodeProps = {
   onResendPress: () => void;
 };
 
-const VerifyOtpCode: FC<VerifyCodeProps> = ({
-  mobileNumber,
-  code,
-  verificationStatus = 'unverified',
-  onCodeChange,
-  onCodeFilled,
-  onResendPress,
-}) => {
-  const {t: translate} = useTranslation();
+const VerifyOtpCode = forwardRef<OTPInputView, VerifyCodeProps>(
+  (
+    {
+      mobileNumber,
+      code,
+      verificationStatus = 'unverified',
+      onCodeChange,
+      onCodeFilled,
+      onResendPress,
+    },
+    ref,
+  ) => {
+    const {t: translate} = useTranslation();
 
-  const t = (path: string) => translate(`screens.createNewAccount.${path}`);
-  const verificationStatusBorderColor: {
-    [key in VerificationCodeStatus]: TextStyle;
-  } = {
-    unverified: styles.codeInputField,
-    invalid: {...styles.codeInputField, ...styles.invalid},
-    verified: {...styles.codeInputField, ...styles.verified},
-  };
+    const t = (path: string) => translate(`screens.createNewAccount.${path}`);
+    const verificationStatusBorderColor: {
+      [key in VerificationCodeStatus]: TextStyle;
+    } = {
+      unverified: styles.codeInputField,
+      invalid: {...styles.codeInputField, ...styles.invalid},
+      verified: {...styles.codeInputField, ...styles.verified},
+    };
 
-  return (
-    <CarouselItemContainer
-      containerProps={{
-        accessible: true,
-        accessibilityLabel: t('verifyOtpCodeHeader'),
-      }}
-      containerStyle={{
-        paddingHorizontal: s(16),
-      }}
-      header={t('verifyOtpCodeHeader')}>
-      <View
-        accessibilityLabel={t('verifyOtpCodeInput.otpCodeInput')}
-        accessible>
-        <OTPInputView
-          autoFocusOnLoad={false}
-          code={code}
-          codeInputFieldStyle={
-            verificationStatusBorderColor[verificationStatus]
-          }
-          onCodeChanged={onCodeChange}
-          onCodeFilled={onCodeFilled}
-          pinCount={6}
-          selectionColor={Colors.secondary}
-          style={styles.otpInput}
-        />
-      </View>
+    return (
+      <CarouselItemContainer
+        containerProps={{
+          accessible: true,
+          accessibilityLabel: t('verifyOtpCodeHeader'),
+        }}
+        containerStyle={{
+          paddingHorizontal: s(16),
+        }}
+        header={t('verifyOtpCodeHeader')}>
+        <View
+          accessibilityLabel={t('verifyOtpCodeInput.otpCodeInput')}
+          accessible>
+          <OTPInputView
+            autoFocusOnLoad={false}
+            code={code}
+            codeInputFieldStyle={
+              verificationStatusBorderColor[verificationStatus]
+            }
+            onCodeChanged={onCodeChange}
+            onCodeFilled={onCodeFilled}
+            pinCount={6}
+            ref={ref}
+            selectionColor={Colors.secondary}
+            style={styles.otpInput}
+          />
+        </View>
 
-      <FooterText style={styles.sentToDescription}>
-        <Trans
-          i18nKey="screens.createNewAccount.verifyOtpCodeFooter.sentToMobileNumber"
-          values={{mobileNumber}}
-        />
-      </FooterText>
-      <FooterText style={styles.resend}>
-        <Trans
-          components={{
-            Text: <Text onPress={onResendPress} />,
-          }}
-          i18nKey="screens.createNewAccount.verifyOtpCodeFooter.resendCode"
-        />
-      </FooterText>
-    </CarouselItemContainer>
-  );
-};
+        <FooterText style={styles.sentToDescription}>
+          <Trans
+            i18nKey="screens.createNewAccount.verifyOtpCodeFooter.sentToMobileNumber"
+            values={{mobileNumber}}
+          />
+        </FooterText>
+        <FooterText style={styles.resend}>
+          <Trans
+            components={{
+              Text: <Text onPress={onResendPress} />,
+            }}
+            i18nKey="screens.createNewAccount.verifyOtpCodeFooter.resendCode"
+          />
+        </FooterText>
+      </CarouselItemContainer>
+    );
+  },
+);
 
 const styles = StyleSheet.create({
   codeInputField: {

@@ -14,6 +14,7 @@ import VerifyOtpCode, {
 import EmailAddress from '@fos/components/screen/CreateNewAccount/EmailAddress';
 import Name from '@fos/components/screen/CreateNewAccount/Name';
 import {apiService} from '@fos/shared';
+import OTPInputView from '@twotalltotems/react-native-otp-input';
 const {auth} = apiService;
 
 type CarouselItem = 'requestCode' | 'verifyCode' | 'emailAddress' | 'name';
@@ -28,6 +29,8 @@ const carouselItems: Array<CarouselItem> = [
 const CreateNewAccountScreen: ScreenFC = () => {
   const dispatch = useDispatch();
   const carouselRef = useRef<Carousel<CarouselItem>>();
+  const otpCodeInputRef = useRef<OTPInputView | null>(null);
+
   const [countryCode, setCountryCode] = useState('+1');
   const [mobileNumber, setMobileNumber] = useState('');
   const [otpRequestStatus, setOtpRequestStatus] = useState<
@@ -49,7 +52,9 @@ const CreateNewAccountScreen: ScreenFC = () => {
   const clearFirstName = () => setFirstName('');
   const clearLastName = () => setLastName('');
 
-  const goToNextStep = () => carouselRef.current?.snapToNext();
+  const goToNextStep = () => {
+    carouselRef.current?.snapToNext();
+  };
 
   const sendOtpCode = useCallback(
     () =>
@@ -94,6 +99,9 @@ const CreateNewAccountScreen: ScreenFC = () => {
   };
 
   const handleOnSnapToItem = (slideIndex: number) => {
+    if (slideIndex === 1) {
+      otpCodeInputRef.current?.focusField(0);
+    }
     dispatch(updateActiveDotIndex(slideIndex));
   };
 
@@ -116,6 +124,24 @@ const CreateNewAccountScreen: ScreenFC = () => {
       .finally(() => setShowSpinner(false));
   };
 
+  const handleOnCreateUserPress = () => {
+    setShowSpinner(true);
+    auth
+      .postAccountRegistration({
+        email: emailAddress,
+        firstName,
+        lastName,
+        phone: mobileNumber,
+        registrationUuid,
+      })
+      .finally(() => {
+        setShowSpinner(false);
+      })
+      .catch(() => {
+        Alert.alert('Whoops!', 'Something went wrong.');
+      });
+  };
+
   const carouselItemMap: {[key in CarouselItem]: JSX.Element} = {
     requestCode: (
       <RequestOtpCode
@@ -134,6 +160,7 @@ const CreateNewAccountScreen: ScreenFC = () => {
         onCodeChange={setOtpCode}
         onCodeFilled={handleOtpCodeVerification}
         onResendPress={handleOtpCodeResend}
+        ref={otpCodeInputRef}
         verificationStatus={otpCodeVerificationStatus}
       />
     ),
@@ -148,23 +175,7 @@ const CreateNewAccountScreen: ScreenFC = () => {
     name: (
       <Name
         {...{firstName, lastName}}
-        onCreateUserPress={() => {
-          setShowSpinner(true);
-          auth
-            .postAccountRegistration({
-              email: emailAddress,
-              firstName,
-              lastName,
-              phone: mobileNumber,
-              registrationUuid,
-            })
-            .finally(() => {
-              setShowSpinner(false);
-            })
-            .catch(() => {
-              Alert.alert('Whoops!', 'Something went wrong.');
-            });
-        }}
+        onCreateUserPress={handleOnCreateUserPress}
         onFirstNameChangeText={setFirstName}
         onFirstNameClear={clearFirstName}
         onLastNameChangeText={setLastName}
@@ -184,6 +195,7 @@ const CreateNewAccountScreen: ScreenFC = () => {
         // FIXME outstanding TS issue https://github.com/archriss/react-native-snap-carousel/issues/718
         // @ts-ignore for now
         ref={carouselRef}
+        removeClippedSubviews
         renderItem={({item}: {item: CarouselItem}) => carouselItemMap[item]}
         scrollEnabled={false}
         sliderWidth={Dimensions.get('window').width}

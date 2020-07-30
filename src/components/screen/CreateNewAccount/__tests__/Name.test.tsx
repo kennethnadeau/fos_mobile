@@ -1,9 +1,6 @@
 import React from 'react';
 import {render, RenderAPI} from '@fos/utils/testing';
 import Name, {NameProps} from '../Name';
-import enUs from '@fos/locale/languages/en-US';
-
-const localization = enUs.translation.screens.createNewAccount;
 
 describe('<Name />', () => {
   let name: RenderAPI;
@@ -22,39 +19,37 @@ describe('<Name />', () => {
   });
 
   it('should show header', () => {
-    const actual = name.queryByText(localization.enterNameHeader);
+    const actual = name.queryByText('Enter Name');
 
     expect(actual).not.toBeNull();
   });
 
   it('should show first name input', () => {
-    const actual = name.queryByA11yLabel(localization.firstNameInput);
+    const actual = name.queryByA11yLabel('First Name');
 
-    const placeholder = name.queryByPlaceholder(localization.firstNameInput);
+    const placeholder = name.queryByPlaceholder('First Name');
 
     expect(actual).not.toBeNull();
     expect(placeholder).not.toBeNull();
   });
 
   it('should show last name input', () => {
-    const actual = name.queryByA11yLabel(localization.lastNameInput);
+    const actual = name.queryByA11yLabel('Last Name');
 
-    const placeholder = name.queryByPlaceholder(localization.lastNameInput);
+    const placeholder = name.queryByPlaceholder('Last Name');
 
     expect(actual).not.toBeNull();
     expect(placeholder).not.toBeNull();
   });
 
   it('should show create user button', () => {
-    const actual = name.queryByA11yLabel(
-      localization.enterNameButton.createUser,
-    );
+    const actual = name.queryByA11yLabel('Create User');
 
     expect(actual).not.toBeNull();
   });
 
   it('should show footer', () => {
-    const actual = name.queryByText(localization.enterNameFooter);
+    const actual = name.queryByText('Enter name footer text');
 
     expect(actual).not.toBeNull();
   });

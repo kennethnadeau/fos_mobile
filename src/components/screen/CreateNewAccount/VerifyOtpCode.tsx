@@ -27,9 +27,9 @@ const VerifyOtpCode: FC<VerifyCodeProps> = ({
   onCodeFilled,
   onResendPress,
 }) => {
-  const {t: translate} = useTranslation();
+  const {t} = useTranslation('carouselItems');
 
-  const t = (path: string) => translate(`screens.createNewAccount.${path}`);
+  // const t = (path: string) => translate(`screens.createNewAccount.${path}`);
   const verificationStatusBorderColor: {
     [key in VerificationCodeStatus]: TextStyle;
   } = {
@@ -42,15 +42,13 @@ const VerifyOtpCode: FC<VerifyCodeProps> = ({
     <CarouselItemContainer
       containerProps={{
         accessible: true,
-        accessibilityLabel: t('verifyOtpCodeHeader'),
+        accessibilityLabel: t('Enter Verification Code'),
       }}
       containerStyle={{
         paddingHorizontal: s(16),
       }}
-      header={t('verifyOtpCodeHeader')}>
-      <View
-        accessibilityLabel={t('verifyOtpCodeInput.otpCodeInput')}
-        accessible>
+      header={t('Enter Verification Code')}>
+      <View accessibilityLabel={t('OTP code input')} accessible>
         <OTPInputView
           autoFocusOnLoad={false}
           code={code}
@@ -66,18 +64,18 @@ const VerifyOtpCode: FC<VerifyCodeProps> = ({
       </View>
 
       <FooterText style={styles.sentToDescription}>
-        <Trans
-          i18nKey="screens.createNewAccount.verifyOtpCodeFooter.sentToMobileNumber"
-          values={{mobileNumber}}
-        />
+        <Trans t={t} values={{mobileNumber}}>
+          We texted a verification code
+        </Trans>
       </FooterText>
       <FooterText style={styles.resend}>
         <Trans
           components={{
             Text: <Text onPress={onResendPress} />,
           }}
-          i18nKey="screens.createNewAccount.verifyOtpCodeFooter.resendCode"
-        />
+          t={t}>
+          Resend Code
+        </Trans>
       </FooterText>
     </CarouselItemContainer>
   );

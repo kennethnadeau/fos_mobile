@@ -22,46 +22,44 @@ const EmailAddress: FC<EmailAddressProps> = ({
   onNextPress,
   loading = false,
 }) => {
-  const {t} = useTranslation();
+  const {t} = useTranslation('carouselItems');
+
+  const enterEmailAddressText = t('Enter Email Address');
+  const yourEmailText = t('Your Email');
+  const nextText = t('Next');
 
   return (
     <CarouselItemContainer
       containerProps={{
         accessible: true,
-        accessibilityLabel: t(
-          'screens.createNewAccount.enterEmailAddressHeader',
-        ),
+        accessibilityLabel: enterEmailAddressText,
       }}
       containerStyle={styles.carouselContainer}
-      header={t('screens.createNewAccount.enterEmailAddressHeader')}>
+      header={enterEmailAddressText}>
       <TextInput
-        accessibilityLabel={t('screens.createNewAccount.emailAddressInput')}
+        accessibilityLabel={yourEmailText}
         accessible
         autoCapitalize="none"
         containerStyle={styles.emailAddressInput}
         keyboardType="email-address"
         onChangeText={onEmailAddressChangeText}
         onClear={onEmailClear}
-        placeholder={t('screens.createNewAccount.emailAddressInput')}
+        placeholder={yourEmailText}
         textContentType="emailAddress"
         value={emailAddress}
       />
 
       <RoundedButton
-        accessibilityLabel={t(
-          'screens.createNewAccount.enterEmailAddressButton.next',
-        )}
+        accessibilityLabel={nextText}
         accessible
         disabled={!emailAddress || loading}
         loading={loading}
         onPress={onNextPress}
         size="large"
-        title={t('screens.createNewAccount.enterEmailAddressButton.next')}
+        title={nextText}
       />
 
-      <FooterText style={styles.footer}>
-        {t('screens.createNewAccount.enterEmailAddressFooter')}
-      </FooterText>
+      <FooterText style={styles.footer}>{t('Email Usage')}</FooterText>
     </CarouselItemContainer>
   );
 };

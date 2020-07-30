@@ -143,13 +143,13 @@ exports[`<Name /> should match snapshot 1`] = `
         }
       >
         <TextInput
-          accessibilityLabel="Fist Name"
+          accessibilityLabel="First Name"
           accessible={true}
           allowFontScaling={true}
           autoCapitalize="words"
           editable={true}
           onChangeText={[MockFunction]}
-          placeholder="Fist Name"
+          placeholder="First Name"
           placeholderTextColor="#7E8395"
           rejectResponderTermination={true}
           style={
@@ -520,7 +520,7 @@ exports[`<Name /> should match snapshot 1`] = `
         }
       }
     >
-      Your name will let others know who you are.
+      Enter name footer text
     </Text>
   </View>
 </RNCSafeAreaProvider>

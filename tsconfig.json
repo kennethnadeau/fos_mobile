@@ -16,7 +16,7 @@
       "*": ["src/*"],
       "@fos/assets/*": ["src/assets/*"],
       "@fos/components/*": ["src/components/*"],
-      "@fos/config/*": ["src/config/*"],
+      "@fos/config": ["src/config"],
       "@fos/constants": ["src/constants"],
       "@fos/containers/*": ["src/containers/*"],
       "@fos/helpers/*": ["src/helpers/*"],

@@ -28,51 +28,54 @@ const Name: FC<NameProps> = ({
   onCreateUserPress,
   loading = false,
 }) => {
-  const {t} = useTranslation();
+  const {t} = useTranslation('carouselItems');
+
+  const enterNameText = t('Enter Name');
+  const firstNameText = t('First Name');
+  const lastNameText = t('Last Name');
+  const createUserText = t('Create User');
 
   return (
     <CarouselItemContainer
       containerProps={{
         accessible: true,
-        accessibilityLabel: t('screens.createNewAccount.enterNameHeader'),
+        accessibilityLabel: enterNameText,
       }}
       containerStyle={styles.carouselContainer}
-      header={t('screens.createNewAccount.enterNameHeader')}>
+      header={enterNameText}>
       <TextInput
-        accessibilityLabel={t('screens.createNewAccount.firstNameInput')}
+        accessibilityLabel={firstNameText}
         accessible
         autoCapitalize="words"
         containerStyle={styles.nameInput}
         onChangeText={onFirstNameChangeText}
         onClear={onFirstNameClear}
-        placeholder={t('screens.createNewAccount.firstNameInput')}
+        placeholder={firstNameText}
         value={firstName}
       />
 
       <TextInput
-        accessibilityLabel={t('screens.createNewAccount.lastNameInput')}
+        accessibilityLabel={lastNameText}
         accessible
         containerStyle={styles.nameInput}
         onChangeText={onLastNameChangeText}
         onClear={onLastNameClear}
-        placeholder={t('screens.createNewAccount.lastNameInput')}
+        placeholder={lastNameText}
         value={lastName}
       />
 
       <RoundedButton
-        accessibilityLabel={t(
-          'screens.createNewAccount.enterNameButton.createUser',
-        )}
+        accessibilityLabel={createUserText}
         accessible
         disabled={!firstName || !lastName || loading}
         loading={loading}
         onPress={onCreateUserPress}
         size="large"
-        title={t('screens.createNewAccount.enterNameButton.createUser')}
+        title={createUserText}
       />
 
       <FooterText style={styles.footer}>
-        {t('screens.createNewAccount.enterNameFooter')}
+        {t('Enter name footer text')}
       </FooterText>
     </CarouselItemContainer>
   );

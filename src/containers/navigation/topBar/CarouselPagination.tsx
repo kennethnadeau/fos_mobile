@@ -13,9 +13,7 @@ const CarouselPagination: ScreenFC = () => {
   const pagination = useSelector(selectPagination);
 
   return (
-    <View
-      accessibilityLabel={t('navigation.component.carouselPagination')}
-      accessible>
+    <View accessibilityLabel={t('Carousel Pagination')} accessible>
       <Pagination
         {...pagination}
         containerStyle={styles.paginationContainer}

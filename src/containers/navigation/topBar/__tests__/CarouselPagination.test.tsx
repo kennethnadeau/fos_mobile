@@ -1,9 +1,6 @@
 import React from 'react';
 import {render, RenderAPI} from '@fos/utils/testing';
 import CarouselPagination from '../CarouselPagination';
-import enUs from '@fos/locale/languages/en-US';
-
-const localization = enUs.translation.navigation;
 
 describe('<CarouselPagination />', () => {
   let carouselPagination: RenderAPI;
@@ -13,9 +10,7 @@ describe('<CarouselPagination />', () => {
   });
 
   it('should show carousel pagination', () => {
-    const actual = carouselPagination.getByA11yLabel(
-      localization.component.carouselPagination,
-    );
+    const actual = carouselPagination.getByA11yLabel('Carousel Pagination');
 
     expect(actual).not.toBeNull();
     expect(actual.children).toHaveLength(1);

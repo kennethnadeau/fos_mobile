@@ -395,7 +395,7 @@ exports[`<EmailAddress /> should match snapshot 1`] = `
         }
       }
     >
-      Your email will be used for account recovery and occasional communication.
+      Email Usage
     </Text>
   </View>
 </RNCSafeAreaProvider>

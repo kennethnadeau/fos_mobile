@@ -1,5 +1,3 @@
-const images = {
-  question: require('@fos/assets/svg/question.svg'),
-};
+const images = {};
 
 export default images;

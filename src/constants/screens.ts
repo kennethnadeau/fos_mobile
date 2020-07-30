@@ -4,6 +4,7 @@ const screens = {
   COMPONENTS: {
     TOP_BAR: {
       PAGINATION: 'COMPONENTS.TOP_BAR.PAGINATION',
+      QUESTION_MARK: 'COMPONENTS.TOP_BAR.QUESTION_MARK',
     },
   },
 };

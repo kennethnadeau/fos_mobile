@@ -1,0 +1,7 @@
+{
+    "Enter Verification Code": "Enter Verification Code",
+    "OTP code input": "OTP code input",
+    "We texted a verification code": "We texted a verification code to {{mobileNumber}}. This can take a minute.",
+    "Resend Code": "Didn't receive a code? <Text>$t(Resend).</Text>",
+    "Resend": "Resend"
+}

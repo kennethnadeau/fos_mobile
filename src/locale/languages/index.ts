@@ -1,7 +1,7 @@
-import enUs from './en-US';
+import en from './en';
 
 const languages = {
-  'en-US': enUs,
+  en,
 };
 
 export default languages;

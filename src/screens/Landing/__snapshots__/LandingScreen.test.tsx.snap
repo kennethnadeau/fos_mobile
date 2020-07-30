@@ -56,10 +56,10 @@ exports[`<LandingScreen /> should match snapshot 1`] = `
           "Input": Object {
             "inputContainerStyle": Object {
               "alignItems": "center",
-              "borderBottomWidth": 0.5,
+              "borderBottomWidth": 1.4999999999999998,
               "borderColor": "#fff",
               "borderRadius": 64.28571428571428,
-              "borderWidth": 0.5,
+              "borderWidth": 1.4999999999999998,
               "overflow": "hidden",
               "padding": 9.428571428571429,
             },

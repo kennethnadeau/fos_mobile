@@ -183,10 +183,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -263,10 +263,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     style={
                       Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "flexDirection": "row",
                         "overflow": "hidden",
                         "padding": 17.142857142857142,
@@ -326,10 +326,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     style={
                       Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "flexDirection": "row",
                         "overflow": "hidden",
                         "padding": 8.571428571428571,
@@ -348,6 +348,7 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                       editable={true}
                       keyboardType="phone-pad"
                       onChangeText={[Function]}
+                      onSubmitEditing={[Function]}
                       placeholder="Your Number"
                       placeholderTextColor="#7E8395"
                       rejectResponderTermination={true}
@@ -364,7 +365,7 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                       }
                       testID="RNE__Input__text-input"
                       underlineColorAndroid="transparent"
-                      value="17272649460"
+                      value=""
                     />
                     <View
                       style={
@@ -409,7 +410,7 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                               style={
                                 Array [
                                   Object {
-                                    "color": "#7E8395",
+                                    "color": "rgba(0,0,0,0)",
                                     "fontSize": 24,
                                   },
                                   Object {
@@ -458,7 +459,7 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                   accessibilityState={
                     Object {
                       "busy": false,
-                      "disabled": false,
+                      "disabled": true,
                     }
                   }
                   accessible={true}
@@ -480,7 +481,7 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     style={
                       Object {
                         "alignItems": "center",
-                        "backgroundColor": "#4CA1D6",
+                        "backgroundColor": "hsl(208, 8%, 90%)",
                         "borderColor": "#2089dc",
                         "borderRadius": 85.71428571428571,
                         "borderWidth": 0,
@@ -494,7 +495,15 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     <Text
                       style={
                         Object {
-                          "color": "white",
+                          "color": Object {
+                            "color": Array [
+                              208,
+                              8,
+                              63,
+                            ],
+                            "model": "hsl",
+                            "valpha": 1,
+                          },
                           "fontSize": 34.285714285714285,
                           "paddingBottom": 1,
                           "paddingTop": 2,
@@ -537,10 +546,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -625,10 +634,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -756,10 +765,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -872,10 +881,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -960,10 +969,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -1091,10 +1100,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -1161,10 +1170,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderBottomWidth": 0.5,
+                      "borderBottomWidth": 1.4999999999999998,
                       "borderColor": "#fff",
                       "borderRadius": 64.28571428571428,
-                      "borderWidth": 0.5,
+                      "borderWidth": 1.4999999999999998,
                       "flexDirection": "row",
                       "overflow": "hidden",
                       "padding": 9.428571428571429,
@@ -1381,10 +1390,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -1512,10 +1521,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -1582,10 +1591,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderBottomWidth": 0.5,
+                      "borderBottomWidth": 1.4999999999999998,
                       "borderColor": "#fff",
                       "borderRadius": 64.28571428571428,
-                      "borderWidth": 0.5,
+                      "borderWidth": 1.4999999999999998,
                       "flexDirection": "row",
                       "overflow": "hidden",
                       "padding": 9.428571428571429,
@@ -1710,10 +1719,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderBottomWidth": 0.5,
+                      "borderBottomWidth": 1.4999999999999998,
                       "borderColor": "#fff",
                       "borderRadius": 64.28571428571428,
-                      "borderWidth": 0.5,
+                      "borderWidth": 1.4999999999999998,
                       "flexDirection": "row",
                       "overflow": "hidden",
                       "padding": 9.428571428571429,
@@ -1927,10 +1936,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -2015,10 +2024,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
           "Input": Object {
             "inputContainerStyle": Object {
               "alignItems": "center",
-              "borderBottomWidth": 0.5,
+              "borderBottomWidth": 1.4999999999999998,
               "borderColor": "#fff",
               "borderRadius": 64.28571428571428,
-              "borderWidth": 0.5,
+              "borderWidth": 1.4999999999999998,
               "overflow": "hidden",
               "padding": 9.428571428571429,
             },

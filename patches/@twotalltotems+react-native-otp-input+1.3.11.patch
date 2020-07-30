@@ -1,0 +1,13 @@
+diff --git a/node_modules/@twotalltotems/react-native-otp-input/index.d.ts b/node_modules/@twotalltotems/react-native-otp-input/index.d.ts
+index aec5d5b..87c0a5b 100644
+--- a/node_modules/@twotalltotems/react-native-otp-input/index.d.ts
++++ b/node_modules/@twotalltotems/react-native-otp-input/index.d.ts
+@@ -94,7 +94,7 @@ declare module '@twotalltotems/react-native-otp-input' {
+   }
+ 
+   export default class OTPInputView extends React.Component<InputProps, OTPInputViewState> {
+-
++    focusField: (index: number) => void;
+   }
+ }
+ 

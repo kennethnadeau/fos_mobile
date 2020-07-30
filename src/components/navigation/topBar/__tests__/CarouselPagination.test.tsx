@@ -1,12 +1,14 @@
 import React from 'react';
 import {render, RenderAPI} from '@fos/utils/testing';
-import CarouselPagination from '../CarouselPagination';
+import {CarouselPagination} from '../CarouselPagination';
 
 describe('<CarouselPagination />', () => {
   let carouselPagination: RenderAPI;
 
   beforeEach(() => {
-    carouselPagination = render(<CarouselPagination componentId="id" />);
+    carouselPagination = render(
+      <CarouselPagination activeDotIndex={0} dotsLength={4} />,
+    );
   });
 
   it('should show carousel pagination', () => {

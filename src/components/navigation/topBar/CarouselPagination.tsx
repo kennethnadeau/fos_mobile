@@ -1,21 +1,21 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {ScreenFC} from 'react-native-navigation-register-screens';
 import {Pagination} from 'react-native-snap-carousel';
-import {SCREENS} from '@fos/constants';
 import {Colors} from '@fos/themes';
-import {useSelector} from 'react-redux';
-import {selectPagination} from '@fos/redux/selectors/navigationSelectors';
 import {useTranslation} from 'react-i18next';
 
-const CarouselPagination: ScreenFC = () => {
+type CarouselPaginationProps = {
+  dotsLength: number;
+  activeDotIndex: number;
+};
+
+export const CarouselPagination: FC<CarouselPaginationProps> = (props) => {
   const {t} = useTranslation();
-  const pagination = useSelector(selectPagination);
 
   return (
     <View accessibilityLabel={t('Carousel Pagination')} accessible>
       <Pagination
-        {...pagination}
+        {...props}
         containerStyle={styles.paginationContainer}
         dotColor={Colors.white}
         inactiveDotColor={Colors.muted}
@@ -25,12 +25,8 @@ const CarouselPagination: ScreenFC = () => {
   );
 };
 
-CarouselPagination.screenName = SCREENS.COMPONENTS.TOP_BAR.PAGINATION;
-
 const styles = StyleSheet.create({
   paginationContainer: {
     paddingVertical: 0,
   },
 });
-
-export default CarouselPagination;

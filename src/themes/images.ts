@@ -1,5 +1,3 @@
-const images = {
-  question: require('@fos/assets/images/question.png'),
-};
+const images = {};
 
 export default images;

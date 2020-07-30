@@ -55,10 +55,10 @@ exports[`<RequestOtpCode /> should match snapshot 1`] = `
           "Input": Object {
             "inputContainerStyle": Object {
               "alignItems": "center",
-              "borderBottomWidth": 0.5,
+              "borderBottomWidth": 1.4999999999999998,
               "borderColor": "#fff",
               "borderRadius": 64.28571428571428,
-              "borderWidth": 0.5,
+              "borderWidth": 1.4999999999999998,
               "overflow": "hidden",
               "padding": 9.428571428571429,
             },
@@ -135,10 +135,10 @@ exports[`<RequestOtpCode /> should match snapshot 1`] = `
           style={
             Object {
               "alignItems": "center",
-              "borderBottomWidth": 0.5,
+              "borderBottomWidth": 1.4999999999999998,
               "borderColor": "#fff",
               "borderRadius": 64.28571428571428,
-              "borderWidth": 0.5,
+              "borderWidth": 1.4999999999999998,
               "flexDirection": "row",
               "overflow": "hidden",
               "padding": 17.142857142857142,
@@ -198,10 +198,10 @@ exports[`<RequestOtpCode /> should match snapshot 1`] = `
           style={
             Object {
               "alignItems": "center",
-              "borderBottomWidth": 0.5,
+              "borderBottomWidth": 1.4999999999999998,
               "borderColor": "#fff",
               "borderRadius": 64.28571428571428,
-              "borderWidth": 0.5,
+              "borderWidth": 1.4999999999999998,
               "flexDirection": "row",
               "overflow": "hidden",
               "padding": 8.571428571428571,
@@ -220,6 +220,7 @@ exports[`<RequestOtpCode /> should match snapshot 1`] = `
             editable={true}
             keyboardType="phone-pad"
             onChangeText={[MockFunction]}
+            onSubmitEditing={[Function]}
             placeholder="Your Number"
             placeholderTextColor="#7E8395"
             rejectResponderTermination={true}
@@ -417,10 +418,10 @@ exports[`<RequestOtpCode /> should match snapshot 1`] = `
           "Input": Object {
             "inputContainerStyle": Object {
               "alignItems": "center",
-              "borderBottomWidth": 0.5,
+              "borderBottomWidth": 1.4999999999999998,
               "borderColor": "#fff",
               "borderRadius": 64.28571428571428,
-              "borderWidth": 0.5,
+              "borderWidth": 1.4999999999999998,
               "overflow": "hidden",
               "padding": 9.428571428571429,
             },
@@ -505,10 +506,10 @@ exports[`<RequestOtpCode /> should match snapshot 1`] = `
           "Input": Object {
             "inputContainerStyle": Object {
               "alignItems": "center",
-              "borderBottomWidth": 0.5,
+              "borderBottomWidth": 1.4999999999999998,
               "borderColor": "#fff",
               "borderRadius": 64.28571428571428,
-              "borderWidth": 0.5,
+              "borderWidth": 1.4999999999999998,
               "overflow": "hidden",
               "padding": 9.428571428571429,
             },

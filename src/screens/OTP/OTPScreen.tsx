@@ -6,14 +6,21 @@ import {SCREENS} from '@fos/constants';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Carousel from 'react-native-snap-carousel';
 import {useDispatch} from 'react-redux';
-import {updateActiveDotIndex} from '@fos/redux/slices/navigationSlice';
-import RequestOtpCode from '@fos/components/screen/CreateNewAccount/RequestOtpCode';
+import {
+  updatePaginationActiveDotIndex,
+  setPaginationDotsLength,
+} from 'redux/slices/navigationSlice';
+import RequestOtpCode from '@fos/components/carouselItems/RequestOtpCode';
 import VerifyOtpCode, {
   VerificationCodeStatus,
-} from '@fos/components/screen/CreateNewAccount/VerifyOtpCode';
-import EmailAddress from '@fos/components/screen/CreateNewAccount/EmailAddress';
-import Name from '@fos/components/screen/CreateNewAccount/Name';
+} from '@fos/components/carouselItems/VerifyOtpCode';
+import EnterEmailAddress from '@fos/components/carouselItems/EnterEmailAddress';
+import Name from '@fos/components/carouselItems/EnterName';
 import {apiService} from '@fos/shared';
+import {
+  useNavigationComponentDidAppear,
+  useNavigationComponentDidDisappear,
+} from 'react-native-navigation-hooks/dist';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 const {auth} = apiService;
 
@@ -26,8 +33,13 @@ const carouselItems: Array<CarouselItem> = [
   'name',
 ];
 
-const CreateNewAccountScreen: ScreenFC = () => {
+type OTPScreenProps = {
+  login?: boolean;
+};
+
+const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
   const dispatch = useDispatch();
+
   const carouselRef = useRef<Carousel<CarouselItem>>();
   const otpCodeInputRef = useRef<OTPInputView | null>(null);
 
@@ -102,7 +114,7 @@ const CreateNewAccountScreen: ScreenFC = () => {
     if (slideIndex === 1) {
       otpCodeInputRef.current?.focusField(0);
     }
-    dispatch(updateActiveDotIndex(slideIndex));
+    dispatch(updatePaginationActiveDotIndex(slideIndex));
   };
 
   const handleOtpCodeVerification = (code: string) => {
@@ -165,7 +177,7 @@ const CreateNewAccountScreen: ScreenFC = () => {
       />
     ),
     emailAddress: (
-      <EmailAddress
+      <EnterEmailAddress
         emailAddress={emailAddress}
         onEmailAddressChangeText={setEmailAddress}
         onEmailClear={clearEmailAddress}
@@ -184,10 +196,20 @@ const CreateNewAccountScreen: ScreenFC = () => {
     ),
   };
 
+  useNavigationComponentDidAppear(
+    () => dispatch(setPaginationDotsLength(login ? 2 : 4)),
+    componentId,
+  );
+
+  useNavigationComponentDidDisappear(
+    () => dispatch(setPaginationDotsLength(0)),
+    componentId,
+  );
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <Carousel
-        data={carouselItems}
+        data={login ? carouselItems.slice(0, 2) : carouselItems}
         itemWidth={Dimensions.get('window').width}
         keyboardShouldPersistTaps="always"
         lockScrollWhileSnapping
@@ -207,8 +229,8 @@ const CreateNewAccountScreen: ScreenFC = () => {
   );
 };
 
-CreateNewAccountScreen.screenName = SCREENS.CREATE_NEW_ACCOUNT;
-CreateNewAccountScreen.options = {
+OTPScreen.screenName = SCREENS.OTP;
+OTPScreen.options = {
   topBar: {
     visible: false,
     rightButtons: [
@@ -222,7 +244,7 @@ CreateNewAccountScreen.options = {
   },
 };
 
-export default CreateNewAccountScreen;
+export default OTPScreen;
 
 const styles = StyleSheet.create({
   safeArea: {

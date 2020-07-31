@@ -23,7 +23,7 @@ const LandingScreen: ScreenFC = ({componentId}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <LandingHeaderBg />
+      <LandingHeaderBg width="100%" />
       <Text style={styles.headerText}>{t('Data. Meets. People.')}</Text>
       <View style={styles.logoContainer}>
         <Logo />

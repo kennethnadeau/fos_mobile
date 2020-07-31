@@ -1,15 +1,7 @@
 import i18n from 'i18next';
 import {initReactI18next} from 'react-i18next';
-import resources from './languages';
+import {i18nextConfig} from '@fos/config';
 
-i18n.use(initReactI18next).init({
-  resources,
-  debug: __DEV__,
-  lng: 'en-US',
-  fallbackLng: 'en-US',
-  interpolation: {
-    escapeValue: false,
-  },
-});
+i18n.use(initReactI18next).init(i18nextConfig);
 
 export default i18n;

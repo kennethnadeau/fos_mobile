@@ -6,7 +6,6 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import createStore from '@fos/redux/store';
 import {Colors} from '@fos/themes';
 import {s, ms} from 'react-native-size-matters';
-import {StyleSheet} from 'react-native';
 
 const {store, persistor} = createStore();
 
@@ -34,8 +33,8 @@ const defaultTheme: Theme = {
     inputContainerStyle: {
       borderColor: Colors.white,
       alignItems: 'center',
-      borderBottomWidth: StyleSheet.hairlineWidth,
-      borderWidth: StyleSheet.hairlineWidth,
+      borderBottomWidth: s(0.7),
+      borderWidth: s(0.7),
       borderRadius: s(30),
       overflow: 'hidden',
       padding: ms(6),

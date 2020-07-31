@@ -1,9 +1,6 @@
 import React from 'react';
 import RequestOtpCode, {RequestCodeProps} from '../RequestOtpCode';
 import {render, RenderAPI} from '@fos/utils/testing';
-import enUS from '@fos/locale/languages/en-US';
-
-const localization = enUS.translation.screens.createNewAccount;
 
 describe('<RequestOtpCode />', () => {
   const props: RequestCodeProps = {
@@ -22,40 +19,30 @@ describe('<RequestOtpCode />', () => {
   });
 
   it('should have carousel item description', () => {
-    const actual = requestCodeComponent.queryByA11yLabel(
-      localization.requestOtpCodeHeader,
-    );
+    const actual = requestCodeComponent.queryByA11yLabel('Enter Mobile Number');
 
     expect(actual).not.toBeNull();
   });
 
   it('should show header', () => {
-    const actual = requestCodeComponent.queryByText(
-      localization.requestOtpCodeHeader,
-    );
+    const actual = requestCodeComponent.queryByText('Enter Mobile Number');
     expect(actual).not.toBeNull();
   });
 
   it('should show country code input', () => {
-    const actual = requestCodeComponent.queryByA11yLabel(
-      localization.requestOtpCodeInput.countryCode,
-    );
+    const actual = requestCodeComponent.queryByA11yLabel('Country code');
 
     expect(actual).not.toBeNull();
   });
 
   it('should show mobile number input', () => {
-    const actual = requestCodeComponent.queryByPlaceholder(
-      localization.requestOtpCodeInput.mobileNumber,
-    );
+    const actual = requestCodeComponent.queryByPlaceholder('Your Number');
 
     expect(actual).not.toBeNull();
   });
 
   it('should show request code button', () => {
-    const actual = requestCodeComponent.queryByA11yLabel(
-      localization.requestOtpCodeButton.requestCode,
-    );
+    const actual = requestCodeComponent.queryByA11yLabel('Request Code');
     expect(actual).not.toBeNull();
   });
 

@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import RoundedButton from '@fos/components/RoundedButton';
 import TextInput from '@fos/components/TextInput';
-import {useTranslation} from 'react-i18next';
+import {useTranslation, Trans} from 'react-i18next';
 import {StyleSheet, View, Keyboard} from 'react-native';
 import {Text} from 'react-native-elements';
 import {ms, s, vs} from 'react-native-size-matters';
@@ -27,9 +27,11 @@ const RequestOtpCode: FC<RequestCodeProps> = ({
   onRequestCodePress,
   loading,
 }) => {
-  const {t: translate} = useTranslation();
+  const {t} = useTranslation('carouselItems');
 
-  const t = (path: string) => translate(`screens.createNewAccount.${path}`);
+  const enterMobileNumberText = t('Enter Mobile Number');
+  const yourNumberText = t('Your Number');
+  const requestCodeText = t('Request Code');
 
   const onSubmit = () => {
     onRequestCodePress();
@@ -40,12 +42,12 @@ const RequestOtpCode: FC<RequestCodeProps> = ({
     <CarouselItemContainer
       containerProps={{
         accessible: true,
-        accessibilityLabel: t('requestOtpCodeHeader'),
+        accessibilityLabel: enterMobileNumberText,
       }}
-      header={t('requestOtpCodeHeader')}>
+      header={enterMobileNumberText}>
       <View style={styles.inputContainer}>
         <TextInput
-          accessibilityLabel={t('requestOtpCodeInput.countryCode')}
+          accessibilityLabel={t('Country code')}
           accessible
           containerStyle={styles.countryCodeContainer}
           hideClearIcon
@@ -56,7 +58,7 @@ const RequestOtpCode: FC<RequestCodeProps> = ({
           value={countryCode}
         />
         <TextInput
-          accessibilityLabel={t('requestOtpCodeInput.mobileNumber')}
+          accessibilityLabel={yourNumberText}
           accessible
           containerStyle={styles.mobileNumberContainer}
           inputContainerStyle={styles.mobileNumberInputContainer}
@@ -64,28 +66,25 @@ const RequestOtpCode: FC<RequestCodeProps> = ({
           onChangeText={onMobileNumberChangeText}
           onClear={onMobileNumberClear}
           onSubmitEditing={onSubmit}
-          placeholder={t('requestOtpCodeInput.mobileNumber')}
+          placeholder={yourNumberText}
           value={mobileNumber}
         />
       </View>
       <RoundedButton
-        accessibilityLabel={t('requestOtpCodeButton.requestCode')}
+        accessibilityLabel={requestCodeText}
         accessible
         containerStyle={styles.btnRequestCode}
         disabled={!mobileNumber || loading}
         loading={loading}
         onPress={onSubmit}
         size="large"
-        title={t('requestOtpCodeButton.requestCode')}
+        title={requestCodeText}
       />
       <FooterText style={styles.terms}>
-        {t('requestOtpCodeFooter.terms')}
+        <Trans components={{Text: <Text />}}>Agree to Terms of Use</Trans>
       </FooterText>
-      <Text>{t('requestOtpCodeFooter.termsOfUse')}.</Text>
 
-      <FooterText style={styles.disclaimer}>
-        {t('requestOtpCodeFooter.disclaimer')}
-      </FooterText>
+      <FooterText style={styles.disclaimer}>{t('OTP Disclaimer')}</FooterText>
     </CarouselItemContainer>
   );
 };

@@ -14,17 +14,17 @@ import {Colors} from '@fos/themes';
 import RNBootSplash from 'react-native-bootsplash';
 
 const LandingScreen: ScreenFC = ({componentId}) => {
-  const {t} = useTranslation();
+  const {t} = useTranslation(['screens']);
 
   useEffect(() => RNBootSplash.hide({duration: 250}), []);
 
-  const createNewAccountText = t('screens.landing.button.createNewAccount');
-  const loginText = t('screens.landing.button.login');
+  const createNewAccountText = t('Create New Account');
+  const loginText = t('Log In');
 
   return (
     <SafeAreaView style={styles.container}>
       <LandingHeaderBg />
-      <Text style={styles.headerText}>{t('screens.landing.header')}</Text>
+      <Text style={styles.headerText}>{t('Data. Meets. People.')}</Text>
       <View style={styles.logoContainer}>
         <Logo />
       </View>

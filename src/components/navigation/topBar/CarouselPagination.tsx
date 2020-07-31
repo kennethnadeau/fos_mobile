@@ -13,9 +13,7 @@ export const CarouselPagination: FC<CarouselPaginationProps> = (props) => {
   const {t} = useTranslation();
 
   return (
-    <View
-      accessibilityLabel={t('navigation.component.carouselPagination')}
-      accessible>
+    <View accessibilityLabel={t('Carousel Pagination')} accessible>
       <Pagination
         {...props}
         containerStyle={styles.paginationContainer}

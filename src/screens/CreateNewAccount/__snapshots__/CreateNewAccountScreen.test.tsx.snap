@@ -183,10 +183,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -263,10 +263,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     style={
                       Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "flexDirection": "row",
                         "overflow": "hidden",
                         "padding": 17.142857142857142,
@@ -326,10 +326,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     style={
                       Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "flexDirection": "row",
                         "overflow": "hidden",
                         "padding": 8.571428571428571,
@@ -546,10 +546,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -602,94 +602,7 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                   }
                 }
               >
-                By continuing, you agree to our
-              </Text>
-              <Text
-                style={
-                  Object {
-                    "color": "white",
-                    "fontSize": 34.285714285714285,
-                  }
-                }
-                theme={
-                  Object {
-                    "Button": Object {
-                      "buttonStyle": Array [
-                        Object {
-                          "backgroundColor": "#4CA1D6",
-                        },
-                      ],
-                      "titleStyle": Array [
-                        Object {
-                          "color": "white",
-                          "fontSize": 34.285714285714285,
-                        },
-                      ],
-                    },
-                    "Icon": Object {
-                      "color": "#2089dc",
-                    },
-                    "Input": Object {
-                      "inputContainerStyle": Object {
-                        "alignItems": "center",
-                        "borderBottomWidth": 0.5,
-                        "borderColor": "#fff",
-                        "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
-                        "overflow": "hidden",
-                        "padding": 9.428571428571429,
-                      },
-                      "inputStyle": Object {
-                        "alignItems": "center",
-                        "color": "#fff",
-                        "padding": 9.428571428571429,
-                      },
-                      "placeholderTextColor": "#7E8395",
-                    },
-                    "Text": Object {
-                      "style": Object {
-                        "color": "white",
-                        "fontSize": 34.285714285714285,
-                      },
-                    },
-                    "colors": Object {
-                      "disabled": "hsl(208, 8%, 90%)",
-                      "divider": "#bcbbc1",
-                      "error": "#ff190c",
-                      "grey0": "#393e42",
-                      "grey1": "#43484d",
-                      "grey2": "#5e6977",
-                      "grey3": "#86939e",
-                      "grey4": "#bdc6cf",
-                      "grey5": "#e1e8ee",
-                      "greyOutline": "#bbb",
-                      "platform": Object {
-                        "android": Object {
-                          "error": "#f44336",
-                          "primary": "#2196f3",
-                          "secondary": "#9C27B0",
-                          "success": "#4caf50",
-                          "warning": "#ffeb3b",
-                        },
-                        "ios": Object {
-                          "error": "#ff3b30",
-                          "primary": "#007aff",
-                          "secondary": "#5856d6",
-                          "success": "#4cd964",
-                          "warning": "#ffcc00",
-                        },
-                      },
-                      "primary": "#2089dc",
-                      "searchBg": "#303337",
-                      "secondary": "#8F0CE8",
-                      "success": "#52c41a",
-                      "warning": "#faad14",
-                    },
-                  }
-                }
-              >
-                Terms Of Use
-                .
+                Agree to Terms of Use
               </Text>
               <Text
                 style={
@@ -721,10 +634,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -777,7 +690,7 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                   }
                 }
               >
-                Your phone number is how we identify your account. We will send a text to verify your mobile device - message and data rates may apply.
+                OTP Disclaimer
               </Text>
             </View>
           </View>
@@ -852,10 +765,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -968,10 +881,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -1024,7 +937,7 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                   }
                 }
               >
-                We texted a verification code to +1. This can take a minute.
+                We texted a verification code
               </Text>
               <Text
                 style={
@@ -1056,10 +969,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -1112,94 +1025,7 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                   }
                 }
               >
-                Didn’t receive a code? 
-                <Text
-                  onPress={[Function]}
-                  style={
-                    Object {
-                      "color": "white",
-                      "fontSize": 34.285714285714285,
-                    }
-                  }
-                  theme={
-                    Object {
-                      "Button": Object {
-                        "buttonStyle": Array [
-                          Object {
-                            "backgroundColor": "#4CA1D6",
-                          },
-                        ],
-                        "titleStyle": Array [
-                          Object {
-                            "color": "white",
-                            "fontSize": 34.285714285714285,
-                          },
-                        ],
-                      },
-                      "Icon": Object {
-                        "color": "#2089dc",
-                      },
-                      "Input": Object {
-                        "inputContainerStyle": Object {
-                          "alignItems": "center",
-                          "borderBottomWidth": 0.5,
-                          "borderColor": "#fff",
-                          "borderRadius": 64.28571428571428,
-                          "borderWidth": 0.5,
-                          "overflow": "hidden",
-                          "padding": 9.428571428571429,
-                        },
-                        "inputStyle": Object {
-                          "alignItems": "center",
-                          "color": "#fff",
-                          "padding": 9.428571428571429,
-                        },
-                        "placeholderTextColor": "#7E8395",
-                      },
-                      "Text": Object {
-                        "style": Object {
-                          "color": "white",
-                          "fontSize": 34.285714285714285,
-                        },
-                      },
-                      "colors": Object {
-                        "disabled": "hsl(208, 8%, 90%)",
-                        "divider": "#bcbbc1",
-                        "error": "#ff190c",
-                        "grey0": "#393e42",
-                        "grey1": "#43484d",
-                        "grey2": "#5e6977",
-                        "grey3": "#86939e",
-                        "grey4": "#bdc6cf",
-                        "grey5": "#e1e8ee",
-                        "greyOutline": "#bbb",
-                        "platform": Object {
-                          "android": Object {
-                            "error": "#f44336",
-                            "primary": "#2196f3",
-                            "secondary": "#9C27B0",
-                            "success": "#4caf50",
-                            "warning": "#ffeb3b",
-                          },
-                          "ios": Object {
-                            "error": "#ff3b30",
-                            "primary": "#007aff",
-                            "secondary": "#5856d6",
-                            "success": "#4cd964",
-                            "warning": "#ffcc00",
-                          },
-                        },
-                        "primary": "#2089dc",
-                        "searchBg": "#303337",
-                        "secondary": "#8F0CE8",
-                        "success": "#52c41a",
-                        "warning": "#faad14",
-                      },
-                    }
-                  }
-                >
-                  Resend
-                </Text>
+                Resend Code
               </Text>
             </View>
           </View>
@@ -1274,10 +1100,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -1344,10 +1170,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderBottomWidth": 0.5,
+                      "borderBottomWidth": 1.4999999999999998,
                       "borderColor": "#fff",
                       "borderRadius": 64.28571428571428,
-                      "borderWidth": 0.5,
+                      "borderWidth": 1.4999999999999998,
                       "flexDirection": "row",
                       "overflow": "hidden",
                       "padding": 9.428571428571429,
@@ -1564,10 +1390,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -1620,7 +1446,7 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                   }
                 }
               >
-                Your email will be used for account recovery and occasional communication.
+                Email Usage
               </Text>
             </View>
           </View>
@@ -1695,10 +1521,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -1765,10 +1591,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderBottomWidth": 0.5,
+                      "borderBottomWidth": 1.4999999999999998,
                       "borderColor": "#fff",
                       "borderRadius": 64.28571428571428,
-                      "borderWidth": 0.5,
+                      "borderWidth": 1.4999999999999998,
                       "flexDirection": "row",
                       "overflow": "hidden",
                       "padding": 9.428571428571429,
@@ -1781,13 +1607,13 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                   }
                 >
                   <TextInput
-                    accessibilityLabel="Fist Name"
+                    accessibilityLabel="First Name"
                     accessible={true}
                     allowFontScaling={true}
                     autoCapitalize="words"
                     editable={true}
                     onChangeText={[Function]}
-                    placeholder="Fist Name"
+                    placeholder="First Name"
                     placeholderTextColor="#7E8395"
                     rejectResponderTermination={true}
                     style={
@@ -1893,10 +1719,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderBottomWidth": 0.5,
+                      "borderBottomWidth": 1.4999999999999998,
                       "borderColor": "#fff",
                       "borderRadius": 64.28571428571428,
-                      "borderWidth": 0.5,
+                      "borderWidth": 1.4999999999999998,
                       "flexDirection": "row",
                       "overflow": "hidden",
                       "padding": 9.428571428571429,
@@ -2110,10 +1936,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                     "Input": Object {
                       "inputContainerStyle": Object {
                         "alignItems": "center",
-                        "borderBottomWidth": 0.5,
+                        "borderBottomWidth": 1.4999999999999998,
                         "borderColor": "#fff",
                         "borderRadius": 64.28571428571428,
-                        "borderWidth": 0.5,
+                        "borderWidth": 1.4999999999999998,
                         "overflow": "hidden",
                         "padding": 9.428571428571429,
                       },
@@ -2166,7 +1992,7 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
                   }
                 }
               >
-                Your name will let others know who you are.
+                Enter name footer text
               </Text>
             </View>
           </View>
@@ -2198,10 +2024,10 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
           "Input": Object {
             "inputContainerStyle": Object {
               "alignItems": "center",
-              "borderBottomWidth": 0.5,
+              "borderBottomWidth": 1.4999999999999998,
               "borderColor": "#fff",
               "borderRadius": 64.28571428571428,
-              "borderWidth": 0.5,
+              "borderWidth": 1.4999999999999998,
               "overflow": "hidden",
               "padding": 9.428571428571429,
             },

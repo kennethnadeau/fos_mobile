@@ -1,9 +1,6 @@
 import React from 'react';
 import {render, RenderAPI} from '@fos/utils/testing';
 import EmailAddress, {EmailAddressProps} from '../EmailAddress';
-import enUs from '@fos/locale/languages/en-US';
-
-const localization = enUs.translation.screens.createNewAccount;
 
 describe('<EmailAddress />', () => {
   let emailAddress: RenderAPI;
@@ -19,38 +16,28 @@ describe('<EmailAddress />', () => {
   });
 
   it('should show header', () => {
-    const actual = emailAddress.queryByText(
-      localization.enterEmailAddressHeader,
-    );
+    const actual = emailAddress.queryByText('Enter Email Address');
 
     expect(actual).not.toBeNull();
   });
 
   it('should show input', () => {
-    const actual = emailAddress.queryByA11yLabel(
-      localization.emailAddressInput,
-    );
+    const actual = emailAddress.queryByA11yLabel('Your Email');
 
-    const placeholder = emailAddress.queryByPlaceholder(
-      localization.emailAddressInput,
-    );
+    const placeholder = emailAddress.queryByPlaceholder('Your Email');
 
     expect(actual).not.toBeNull();
     expect(placeholder).not.toBeNull();
   });
 
   it('should show next button', () => {
-    const actual = emailAddress.queryByA11yLabel(
-      localization.enterEmailAddressButton.next,
-    );
+    const actual = emailAddress.queryByA11yLabel('Next');
 
     expect(actual).not.toBeNull();
   });
 
   it('should show footer', () => {
-    const actual = emailAddress.queryByText(
-      localization.enterEmailAddressFooter,
-    );
+    const actual = emailAddress.queryByText('Email Usage');
 
     expect(actual).not.toBeNull();
   });

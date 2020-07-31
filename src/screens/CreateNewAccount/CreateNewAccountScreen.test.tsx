@@ -1,9 +1,6 @@
 import React from 'react';
 import CreateNewAccountScreen from './CreateNewAccountScreen';
 import {render, RenderAPI} from '@fos/utils/testing';
-import enUs from '@fos/locale/languages/en-US';
-
-const localization = enUs.translation.screens.createNewAccount;
 
 describe('<CreateNewAccountScreen />', () => {
   let createNewAccountScreen: RenderAPI;
@@ -16,29 +13,25 @@ describe('<CreateNewAccountScreen />', () => {
 
   it('should show request code slider item', () => {
     expect(
-      createNewAccountScreen.queryByA11yLabel(
-        localization.requestOtpCodeHeader,
-      ),
+      createNewAccountScreen.queryByA11yLabel('Enter Mobile Number'),
     ).not.toBeNull();
   });
 
   it('should show verify code slider item', () => {
     expect(
-      createNewAccountScreen.queryByA11yLabel(localization.verifyOtpCodeHeader),
+      createNewAccountScreen.queryByA11yLabel('Enter Verification Code'),
     ).not.toBeNull();
   });
 
   it('should show email address slider item', () => {
     expect(
-      createNewAccountScreen.queryByA11yLabel(
-        localization.enterEmailAddressHeader,
-      ),
+      createNewAccountScreen.queryByA11yLabel('Enter Email Address'),
     ).not.toBeNull();
   });
 
   it('should show new user slider item', () => {
     expect(
-      createNewAccountScreen.queryAllByA11yLabel(localization.enterNameHeader),
+      createNewAccountScreen.queryAllByA11yLabel('Enter Name'),
     ).not.toBeNull();
   });
 

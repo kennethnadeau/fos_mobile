@@ -13,7 +13,7 @@ exports[`<CarouselPaginationContainer /> should match snapshot 1`] = `
   }
 >
   <View
-    accessibilityLabel="Carousel pagination"
+    accessibilityLabel="Carousel Pagination"
     accessible={true}
   >
     <View

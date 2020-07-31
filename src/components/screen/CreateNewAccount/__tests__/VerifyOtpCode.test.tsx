@@ -1,9 +1,6 @@
 import React from 'react';
 import {render, RenderAPI} from '@fos/utils/testing';
 import VerifyOtpCode from '../VerifyOtpCode';
-import enUS from '@fos/locale/languages/en-US';
-
-const localization = enUS.translation.screens.createNewAccount;
 
 describe('<VerifyOtpCode />', () => {
   let verifyOtpCode: RenderAPI;
@@ -15,23 +12,19 @@ describe('<VerifyOtpCode />', () => {
   });
 
   it('should have carousel item description', () => {
-    const actual = verifyOtpCode.queryByA11yLabel(
-      localization.verifyOtpCodeHeader,
-    );
+    const actual = verifyOtpCode.queryByA11yLabel('Enter Verification Code');
 
     expect(actual).not.toBeNull();
   });
 
   it('should show header', () => {
-    const actual = verifyOtpCode.queryByText(localization.verifyOtpCodeHeader);
+    const actual = verifyOtpCode.queryByText('Enter Verification Code');
 
     expect(actual).not.toBeNull();
   });
 
   it('should show OTP code input', () => {
-    const actual = verifyOtpCode.queryByA11yLabel(
-      localization.verifyOtpCodeInput.otpCodeInput,
-    );
+    const actual = verifyOtpCode.queryByA11yLabel('OTP code input');
 
     expect(actual).not.toBeNull();
     expect(actual?.children).toHaveLength(1);

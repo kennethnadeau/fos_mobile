@@ -38,10 +38,12 @@ type OTPScreenProps = {
   login?: boolean;
 };
 
+const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
+
 const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
   const dispatch = useDispatch();
 
-  const carouselRef = useRef<Carousel<CarouselItem>>();
+  const carouselRef = useRef<Carousel<CarouselItem>>(null);
   const otpCodeInputRef = useRef<OTPInputView | null>(null);
 
   const [countryCode, setCountryCode] = useState('+1');
@@ -132,15 +134,27 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
     };
 
     if (login) {
-      auth
-        .postOtpAuthenticateVerify(requestData)
-        .then((data) => {
-          console.log(data);
+      const runAsync = async () => {
+        try {
+          const {
+            data: otpVerificationResponse,
+          } = await auth.postOtpAuthenticateVerify(requestData);
+          const {data: userInfo} = await auth.getUserInfo(
+            // @ts-ignore
+            otpVerificationResponse.token,
+          );
+
           setOtpCodeVerificationStatus('verified');
-          goToWelcomeScreen('John Doe');
-        })
-        .catch(() => setOtpCodeVerificationStatus('invalid'))
-        .finally(() => setShowSpinner(false));
+          // @ts-ignore
+          goToWelcomeScreen(`${userInfo.firstName} ${userInfo.lastName}`);
+        } catch (error) {
+          setOtpCodeVerificationStatus('invalid');
+        } finally {
+          setShowSpinner(false);
+        }
+      };
+
+      runAsync();
     } else {
       auth
         .postOtpRegistrationVerify(requestData)
@@ -227,21 +241,22 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
     componentId,
   );
 
+  const renderSlides = ({item}: {item: CarouselItem}) => carouselItemMap[item];
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <Carousel
         data={login ? carouselItems.slice(0, 2) : carouselItems}
-        itemWidth={Dimensions.get('window').width}
+        itemHeight={viewportHeight}
+        itemWidth={viewportWidth}
         keyboardShouldPersistTaps="always"
         lockScrollWhileSnapping
         onSnapToItem={handleOnSnapToItem}
-        // FIXME outstanding TS issue https://github.com/archriss/react-native-snap-carousel/issues/718
-        // @ts-ignore for now
         ref={carouselRef}
         removeClippedSubviews
-        renderItem={({item}: {item: CarouselItem}) => carouselItemMap[item]}
+        renderItem={renderSlides}
         scrollEnabled={false}
-        sliderWidth={Dimensions.get('window').width}
+        sliderWidth={viewportWidth}
       />
       <Overlay isVisible={showSpinner}>
         <ActivityIndicator />

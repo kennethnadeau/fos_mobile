@@ -2,17 +2,18 @@ import React, {FC} from 'react';
 import QuestionMarkSvg from '@fos/assets/svg/questionMark.svg';
 import {s} from 'react-native-size-matters';
 import {TouchableOpacity} from 'react-native';
+import {useTranslation} from 'react-i18next';
 
 type Props = {
   onPress: () => void;
 };
 
 export const QuestionMarkIcon: FC<Props> = ({onPress}) => {
+  const {t} = useTranslation();
   return (
     <TouchableOpacity onPress={onPress}>
       <QuestionMarkSvg
-        // FIXME Add i18n key for Support
-        accessibilityLabel="Support"
+        accessibilityLabel={t('Support')}
         accessible
         fill="white"
         height={s(30)}

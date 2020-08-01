@@ -22,6 +22,7 @@ import {
   useNavigationComponentDidDisappear,
 } from 'react-native-navigation-hooks/dist';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
+import {goToWelcomeScreen} from 'helpers/navigation';
 const {auth} = apiService;
 
 type CarouselItem = 'requestCode' | 'verifyCode' | 'emailAddress' | 'name';
@@ -68,13 +69,18 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
     carouselRef.current?.snapToNext();
   };
 
-  const sendOtpCode = useCallback(
-    () =>
-      auth.postOtpRegistration({
-        phone: `${countryCode.replace('+', '')}${mobileNumber}`,
-      }),
+  const formatPhoneNumber = useCallback(
+    () => `${countryCode.replace('+', '')}${mobileNumber}`,
     [countryCode, mobileNumber],
   );
+
+  const sendOtpCode = useCallback(() => {
+    const postRequestMethod = login
+      ? auth.postOtpAuthenticate
+      : auth.postOtpRegistration;
+
+    return postRequestMethod({phone: formatPhoneNumber()});
+  }, [formatPhoneNumber, login]);
 
   const handleOtpCodeRequest = () => {
     setOtpRequestStatus('sending');
@@ -119,21 +125,36 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
 
   const handleOtpCodeVerification = (code: string) => {
     setShowSpinner(true);
-    auth
-      .postOtpRegistrationVerify({
-        code,
-        phone: mobileNumber,
-      })
-      // FIXME Provide proper typing!
-      .then(({data}: any) => {
-        setRegistrationUuid(data.uuid);
-        setOtpCodeVerificationStatus('verified');
-        goToNextStep();
-      })
-      .catch(() => {
-        setOtpCodeVerificationStatus('invalid');
-      })
-      .finally(() => setShowSpinner(false));
+
+    const requestData = {
+      code,
+      phone: formatPhoneNumber(),
+    };
+
+    if (login) {
+      auth
+        .postOtpAuthenticateVerify(requestData)
+        .then((data) => {
+          console.log(data);
+          setOtpCodeVerificationStatus('verified');
+          goToWelcomeScreen('John Doe');
+        })
+        .catch(() => setOtpCodeVerificationStatus('invalid'))
+        .finally(() => setShowSpinner(false));
+    } else {
+      auth
+        .postOtpRegistrationVerify(requestData)
+        // FIXME Provide proper typing!
+        .then(({data}: any) => {
+          setRegistrationUuid(data.uuid);
+          setOtpCodeVerificationStatus('verified');
+          goToNextStep();
+        })
+        .catch(() => {
+          setOtpCodeVerificationStatus('invalid');
+        })
+        .finally(() => setShowSpinner(false));
+    }
   };
 
   const handleOnCreateUserPress = () => {

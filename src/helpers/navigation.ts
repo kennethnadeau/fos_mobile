@@ -23,3 +23,21 @@ export function goToOTPScreen(componentId: string, login = false) {
     },
   });
 }
+
+export function goToWelcomeScreen(fullName: string) {
+  Navigation.setRoot({
+    root: {
+      component: {
+        name: SCREENS.WELCOME,
+        passProps: {
+          fullName,
+        },
+        options: {
+          topBar: {
+            visible: false,
+          },
+        },
+      },
+    },
+  });
+}

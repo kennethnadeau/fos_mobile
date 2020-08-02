@@ -7,7 +7,7 @@ import {s, vs} from 'react-native-size-matters';
 import CarouselItemContainer from './CarouselItemContainer';
 import FooterText from './FooterText';
 
-export type EmailAddressProps = {
+export type EnterEmailAddressProps = {
   emailAddress: string;
   onEmailAddressChangeText: (email: string) => void;
   onEmailClear: () => void;
@@ -15,7 +15,7 @@ export type EmailAddressProps = {
   loading?: boolean;
 };
 
-const EmailAddress: FC<EmailAddressProps> = ({
+const EmailAddress: FC<EnterEmailAddressProps> = ({
   emailAddress,
   onEmailAddressChangeText,
   onEmailClear,

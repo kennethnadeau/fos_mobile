@@ -6,15 +6,23 @@ import {SCREENS} from '@fos/constants';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Carousel from 'react-native-snap-carousel';
 import {useDispatch} from 'react-redux';
-import {updateActiveDotIndex} from '@fos/redux/slices/navigationSlice';
-import RequestOtpCode from '@fos/components/screen/CreateNewAccount/RequestOtpCode';
+import {
+  updatePaginationActiveDotIndex,
+  setPaginationDotsLength,
+} from 'redux/slices/navigationSlice';
+import RequestOtpCode from '@fos/components/carouselItems/RequestOtpCode';
 import VerifyOtpCode, {
   VerificationCodeStatus,
-} from '@fos/components/screen/CreateNewAccount/VerifyOtpCode';
-import EmailAddress from '@fos/components/screen/CreateNewAccount/EmailAddress';
-import Name from '@fos/components/screen/CreateNewAccount/Name';
+} from '@fos/components/carouselItems/VerifyOtpCode';
+import EnterEmailAddress from '@fos/components/carouselItems/EnterEmailAddress';
+import Name from '@fos/components/carouselItems/EnterName';
 import {apiService} from '@fos/shared';
+import {
+  useNavigationComponentDidAppear,
+  useNavigationComponentDidDisappear,
+} from 'react-native-navigation-hooks/dist';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
+import {goToWelcomeScreen} from 'helpers/navigation';
 const {auth} = apiService;
 
 type CarouselItem = 'requestCode' | 'verifyCode' | 'emailAddress' | 'name';
@@ -26,9 +34,16 @@ const carouselItems: Array<CarouselItem> = [
   'name',
 ];
 
-const CreateNewAccountScreen: ScreenFC = () => {
+type OTPScreenProps = {
+  login?: boolean;
+};
+
+const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
+
+const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
   const dispatch = useDispatch();
-  const carouselRef = useRef<Carousel<CarouselItem>>();
+
+  const carouselRef = useRef<Carousel<CarouselItem>>(null);
   const otpCodeInputRef = useRef<OTPInputView | null>(null);
 
   const [countryCode, setCountryCode] = useState('+1');
@@ -56,13 +71,18 @@ const CreateNewAccountScreen: ScreenFC = () => {
     carouselRef.current?.snapToNext();
   };
 
-  const sendOtpCode = useCallback(
-    () =>
-      auth.postOtpRegistration({
-        phone: `${countryCode.replace('+', '')}${mobileNumber}`,
-      }),
+  const formatPhoneNumber = useCallback(
+    () => `${countryCode.replace('+', '')}${mobileNumber}`,
     [countryCode, mobileNumber],
   );
+
+  const sendOtpCode = useCallback(() => {
+    const postRequestMethod = login
+      ? auth.postOtpAuthenticate
+      : auth.postOtpRegistration;
+
+    return postRequestMethod({phone: formatPhoneNumber()});
+  }, [formatPhoneNumber, login]);
 
   const handleOtpCodeRequest = () => {
     setOtpRequestStatus('sending');
@@ -102,26 +122,53 @@ const CreateNewAccountScreen: ScreenFC = () => {
     if (slideIndex === 1) {
       otpCodeInputRef.current?.focusField(0);
     }
-    dispatch(updateActiveDotIndex(slideIndex));
+    dispatch(updatePaginationActiveDotIndex(slideIndex));
   };
 
   const handleOtpCodeVerification = (code: string) => {
     setShowSpinner(true);
-    auth
-      .postOtpRegistrationVerify({
-        code,
-        phone: mobileNumber,
-      })
-      // FIXME Provide proper typing!
-      .then(({data}: any) => {
-        setRegistrationUuid(data.uuid);
-        setOtpCodeVerificationStatus('verified');
-        goToNextStep();
-      })
-      .catch(() => {
-        setOtpCodeVerificationStatus('invalid');
-      })
-      .finally(() => setShowSpinner(false));
+
+    const requestData = {
+      code,
+      phone: formatPhoneNumber(),
+    };
+
+    if (login) {
+      const runAsync = async () => {
+        try {
+          const {
+            data: otpVerificationResponse,
+          } = await auth.postOtpAuthenticateVerify(requestData);
+          const {data: userInfo} = await auth.getUserInfo(
+            // @ts-ignore
+            otpVerificationResponse.token,
+          );
+
+          setOtpCodeVerificationStatus('verified');
+          // @ts-ignore
+          goToWelcomeScreen(`${userInfo.firstName} ${userInfo.lastName}`);
+        } catch (error) {
+          setOtpCodeVerificationStatus('invalid');
+        } finally {
+          setShowSpinner(false);
+        }
+      };
+
+      runAsync();
+    } else {
+      auth
+        .postOtpRegistrationVerify(requestData)
+        // FIXME Provide proper typing!
+        .then(({data}: any) => {
+          setRegistrationUuid(data.uuid);
+          setOtpCodeVerificationStatus('verified');
+          goToNextStep();
+        })
+        .catch(() => {
+          setOtpCodeVerificationStatus('invalid');
+        })
+        .finally(() => setShowSpinner(false));
+    }
   };
 
   const handleOnCreateUserPress = () => {
@@ -165,7 +212,7 @@ const CreateNewAccountScreen: ScreenFC = () => {
       />
     ),
     emailAddress: (
-      <EmailAddress
+      <EnterEmailAddress
         emailAddress={emailAddress}
         onEmailAddressChangeText={setEmailAddress}
         onEmailClear={clearEmailAddress}
@@ -184,21 +231,32 @@ const CreateNewAccountScreen: ScreenFC = () => {
     ),
   };
 
+  useNavigationComponentDidAppear(
+    () => dispatch(setPaginationDotsLength(login ? 2 : 4)),
+    componentId,
+  );
+
+  useNavigationComponentDidDisappear(
+    () => dispatch(setPaginationDotsLength(0)),
+    componentId,
+  );
+
+  const renderSlides = ({item}: {item: CarouselItem}) => carouselItemMap[item];
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <Carousel
-        data={carouselItems}
-        itemWidth={Dimensions.get('window').width}
+        data={login ? carouselItems.slice(0, 2) : carouselItems}
+        itemHeight={viewportHeight}
+        itemWidth={viewportWidth}
         keyboardShouldPersistTaps="always"
         lockScrollWhileSnapping
         onSnapToItem={handleOnSnapToItem}
-        // FIXME outstanding TS issue https://github.com/archriss/react-native-snap-carousel/issues/718
-        // @ts-ignore for now
         ref={carouselRef}
         removeClippedSubviews
-        renderItem={({item}: {item: CarouselItem}) => carouselItemMap[item]}
+        renderItem={renderSlides}
         scrollEnabled={false}
-        sliderWidth={Dimensions.get('window').width}
+        sliderWidth={viewportWidth}
       />
       <Overlay isVisible={showSpinner}>
         <ActivityIndicator />
@@ -207,8 +265,8 @@ const CreateNewAccountScreen: ScreenFC = () => {
   );
 };
 
-CreateNewAccountScreen.screenName = SCREENS.CREATE_NEW_ACCOUNT;
-CreateNewAccountScreen.options = {
+OTPScreen.screenName = SCREENS.OTP;
+OTPScreen.options = {
   topBar: {
     visible: false,
     rightButtons: [
@@ -222,7 +280,7 @@ CreateNewAccountScreen.options = {
   },
 };
 
-export default CreateNewAccountScreen;
+export default OTPScreen;
 
 const styles = StyleSheet.create({
   safeArea: {

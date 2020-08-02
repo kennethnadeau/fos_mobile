@@ -19,7 +19,9 @@ exports[`<LandingScreen /> should match snapshot 1`] = `
       }
     }
   >
-    <SvgMock />
+    <SvgMock
+      width="100%"
+    />
     <Text
       style={
         Object {

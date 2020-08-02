@@ -1,10 +1,10 @@
 import React from 'react';
 import {render, RenderAPI} from '@fos/utils/testing';
-import EmailAddress, {EmailAddressProps} from '../EmailAddress';
+import EmailAddress, {EnterEmailAddressProps} from '../EnterEmailAddress';
 
 describe('<EmailAddress />', () => {
-  let emailAddress: RenderAPI;
-  const props: EmailAddressProps = {
+  let enterEmailAddress: RenderAPI;
+  const props: EnterEmailAddressProps = {
     onEmailClear: jest.fn(),
     emailAddress: 'foo@example.com',
     onNextPress: jest.fn(),
@@ -12,37 +12,37 @@ describe('<EmailAddress />', () => {
   };
 
   beforeEach(() => {
-    emailAddress = render(<EmailAddress {...props} />);
+    enterEmailAddress = render(<EmailAddress {...props} />);
   });
 
   it('should show header', () => {
-    const actual = emailAddress.queryByText('Enter Email Address');
+    const actual = enterEmailAddress.queryByText('Enter Email Address');
 
     expect(actual).not.toBeNull();
   });
 
   it('should show input', () => {
-    const actual = emailAddress.queryByA11yLabel('Your Email');
+    const actual = enterEmailAddress.queryByA11yLabel('Your Email');
 
-    const placeholder = emailAddress.queryByPlaceholder('Your Email');
+    const placeholder = enterEmailAddress.queryByPlaceholder('Your Email');
 
     expect(actual).not.toBeNull();
     expect(placeholder).not.toBeNull();
   });
 
   it('should show next button', () => {
-    const actual = emailAddress.queryByA11yLabel('Next');
+    const actual = enterEmailAddress.queryByA11yLabel('Next');
 
     expect(actual).not.toBeNull();
   });
 
   it('should show footer', () => {
-    const actual = emailAddress.queryByText('Email Usage');
+    const actual = enterEmailAddress.queryByText('Email Usage');
 
     expect(actual).not.toBeNull();
   });
 
   it('should match snapshot', () => {
-    expect(emailAddress.toJSON()).toMatchSnapshot();
+    expect(enterEmailAddress.toJSON()).toMatchSnapshot();
   });
 });

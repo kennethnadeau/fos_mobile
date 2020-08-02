@@ -1,14 +1,12 @@
 import React from 'react';
-import CreateNewAccountScreen from './CreateNewAccountScreen';
+import OTPScreen from './OTPScreen';
 import {render, RenderAPI} from '@fos/utils/testing';
 
 describe('<CreateNewAccountScreen />', () => {
   let createNewAccountScreen: RenderAPI;
 
   beforeEach(() => {
-    createNewAccountScreen = render(
-      <CreateNewAccountScreen componentId="id" />,
-    );
+    createNewAccountScreen = render(<OTPScreen componentId="id" />);
   });
 
   it('should show request code slider item', () => {

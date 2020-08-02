@@ -7,7 +7,7 @@ import {s, vs} from 'react-native-size-matters';
 import CarouselItemContainer from './CarouselItemContainer';
 import FooterText from './FooterText';
 
-export type NameProps = {
+export type EnterNameProps = {
   firstName: string;
   lastName: string;
   onFirstNameChangeText: (name: string) => void;
@@ -18,7 +18,7 @@ export type NameProps = {
   loading?: boolean;
 };
 
-const Name: FC<NameProps> = ({
+const EnterName: FC<EnterNameProps> = ({
   firstName,
   lastName,
   onFirstNameChangeText,
@@ -91,4 +91,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Name;
+export default EnterName;

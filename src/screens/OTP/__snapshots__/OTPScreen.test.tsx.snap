@@ -66,6 +66,7 @@ exports[`<CreateNewAccountScreen /> should match snapshot 1`] = `
       initialNumToRender={6}
       invertStickyHeaders={false}
       inverted={false}
+      itemHeight={1334}
       itemWidth={750}
       keyExtractor={[Function]}
       keyboardShouldPersistTaps="always"

@@ -1,7 +1,10 @@
 {
+    "App Name": "Flats or Spikes",
     "Next": "Next",
     "Agree to Terms of Use": "By continuing, you agree to our <Text>$t(Terms of Use).</Text>",
     "Terms of Use": "Terms of Use",
     "OTP Disclaimer": "Your phone number is how we identify your account. We will send a text to verify your mobile device - message and data rates may apply.",
-    "Carousel Pagination": "Carousel Pagination"
+    "Carousel Pagination": "Carousel Pagination",
+    "Welcome Back": "Welcome back to $t(App Name), \n{{fullName}}!",
+    "Support": "Support"
 }

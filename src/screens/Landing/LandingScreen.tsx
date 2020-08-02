@@ -9,7 +9,7 @@ import {Text, Button} from 'react-native-elements';
 import {vs, s, ms} from 'react-native-size-matters';
 import {useTranslation} from 'react-i18next';
 import LandingHeaderBg from '@fos/assets/svg/landingHeaderBg.svg';
-import {goToCreateNewAccount} from '@fos/helpers/navigation';
+import {goToOTPScreen} from '@fos/helpers/navigation';
 import {Colors} from '@fos/themes';
 import RNBootSplash from 'react-native-bootsplash';
 
@@ -23,7 +23,7 @@ const LandingScreen: ScreenFC = ({componentId}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <LandingHeaderBg />
+      <LandingHeaderBg width="100%" />
       <Text style={styles.headerText}>{t('Data. Meets. People.')}</Text>
       <View style={styles.logoContainer}>
         <Logo />
@@ -33,7 +33,7 @@ const LandingScreen: ScreenFC = ({componentId}) => {
           accessibilityLabel={createNewAccountText}
           accessible
           containerStyle={styles.createNewAccountBtnContainer}
-          onPress={() => goToCreateNewAccount(componentId)}
+          onPress={() => goToOTPScreen(componentId)}
           size="large"
           title={createNewAccountText}
           titleStyle={styles.createNewAccountBtnTitle}
@@ -42,6 +42,7 @@ const LandingScreen: ScreenFC = ({componentId}) => {
           accessibilityLabel={loginText}
           accessible
           buttonStyle={styles.loginBtn}
+          onPress={() => goToOTPScreen(componentId, true)}
           title={loginText}
           type="clear"
         />

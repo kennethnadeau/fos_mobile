@@ -1,10 +1,10 @@
 import React from 'react';
 import {render, RenderAPI} from '@fos/utils/testing';
-import Name, {NameProps} from '../Name';
+import EnterName, {EnterNameProps} from '../EnterName';
 
 describe('<Name />', () => {
   let name: RenderAPI;
-  const props: NameProps = {
+  const props: EnterNameProps = {
     onFirstNameClear: jest.fn(),
     onLastNameClear: jest.fn(),
     firstName: 'John',
@@ -15,7 +15,7 @@ describe('<Name />', () => {
   };
 
   beforeEach(() => {
-    name = render(<Name {...props} />);
+    name = render(<EnterName {...props} />);
   });
 
   it('should show header', () => {

@@ -10,7 +10,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;echo &quot;API_URL=${API_URL}&quot; &gt; &quot;${PROJECT_DIR}/.env&quot;&#10;echo &quot;FLURRY_API_KEY=${FLURRY_API_KEY}&quot; &gt;&gt; &quot;${PROJECT_DIR}/.env&quot;&#10;">
+               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;echo &quot;APPCENTER_SOURCE_DIRECTORY=${APPCENTER_SOURCE_DIRECTORY}&quot;&#10;echo &quot;API_URL=${API_URL}&quot; &gt; &quot;${APPCENTER_SOURCE_DIRECTORY}/.env&quot;&#10;echo &quot;FLURRY_API_KEY=${FLURRY_API_KEY}&quot; &gt;&gt; &quot;${APPCENTER_SOURCE_DIRECTORY}/.env&quot;&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"

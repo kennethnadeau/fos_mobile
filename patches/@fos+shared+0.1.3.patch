@@ -1,0 +1,32 @@
+diff --git a/node_modules/@fos/shared/dist/services/api/auth/get.d.ts b/node_modules/@fos/shared/dist/services/api/auth/get.d.ts
+index 552dd26..2ed3c40 100644
+--- a/node_modules/@fos/shared/dist/services/api/auth/get.d.ts
++++ b/node_modules/@fos/shared/dist/services/api/auth/get.d.ts
+@@ -1,8 +1,6 @@
+ import { UserInfoResponse } from './types';
+ export declare const getUserInfo: (token: string) => Promise<{
+-    data: {
+-        data: UserInfoResponse;
+-    };
++    data: UserInfoResponse;
+     status: number;
+     statusText: string;
+     headers: any;
+diff --git a/node_modules/@fos/shared/dist/services/api/auth/post.d.ts b/node_modules/@fos/shared/dist/services/api/auth/post.d.ts
+index 7918d39..40e4308 100644
+--- a/node_modules/@fos/shared/dist/services/api/auth/post.d.ts
++++ b/node_modules/@fos/shared/dist/services/api/auth/post.d.ts
+@@ -1,11 +1,7 @@
+ import { OtpRequest, OtpVerificationRequest, OtpRegVerificationResponse, AccountRegistrationRequest, OtpAuthVerificationResponse } from './types';
+ export declare const postOtpRegistration: (data: OtpRequest) => Promise<import("axios").AxiosResponse<void>>;
+-export declare const postOtpRegistrationVerify: (data: OtpVerificationRequest) => Promise<import("axios").AxiosResponse<{
+-    data: OtpRegVerificationResponse;
+-}>>;
++export declare const postOtpRegistrationVerify: (data: OtpVerificationRequest) => Promise<import("axios").AxiosResponse<OtpRegVerificationResponse>>;
+ export declare const postOtpAuthenticate: (data: OtpRequest) => Promise<import("axios").AxiosResponse<void>>;
+-export declare const postOtpAuthenticateVerify: (data: OtpVerificationRequest) => Promise<import("axios").AxiosResponse<{
+-    data: OtpAuthVerificationResponse;
+-}>>;
++export declare const postOtpAuthenticateVerify: (data: OtpVerificationRequest) => Promise<import("axios").AxiosResponse<OtpAuthVerificationResponse>>;
+ export declare const postAccountRegistration: (data: AccountRegistrationRequest) => Promise<import("axios").AxiosResponse<any>>;
+ export declare const postLogout: () => Promise<import("axios").AxiosResponse<any>>;

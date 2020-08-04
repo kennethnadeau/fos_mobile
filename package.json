@@ -11,7 +11,8 @@
     "test": "jest",
     "test:watch": "jest --runInBand --detectOpenHandles --watchAll",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint --fix . --ext .js,.jsx,.ts,.tsx"
+    "lint:fix": "eslint --fix . --ext .js,.jsx,.ts,.tsx",
+    "postinstall": "npx patch-package"
   },
   "dependencies": {
     "@fos/shared": "^0.1.3",

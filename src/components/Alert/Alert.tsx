@@ -9,7 +9,7 @@ export type AlertButton = {id: string; title: string; onPress: () => void};
 
 export type AlertProps = {
   header: string;
-  body: string;
+  body?: string;
   isVisible?: boolean;
   renderButtons?: () => JSX.Element;
   width?: number;

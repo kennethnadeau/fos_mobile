@@ -1,6 +1,6 @@
 import { apiConfig } from '@fos/config';
 
-describe.only('apiConfig', () => {
+describe('apiConfig', () => {
   it('should check for the baseUrl', () => {
     expect(apiConfig.baseUrl).not.toBeNull();
   });

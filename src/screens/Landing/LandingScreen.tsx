@@ -12,6 +12,7 @@ import LandingHeaderBg from '@fos/assets/svg/landingHeaderBg.svg';
 import {goToOTPScreen} from '@fos/helpers/navigation';
 import {Colors} from '@fos/themes';
 import RNBootSplash from 'react-native-bootsplash';
+import { apiConfig } from '@fos/config';
 
 const LandingScreen: ScreenFC = ({componentId}) => {
   const {t} = useTranslation(['screens']);
@@ -46,6 +47,7 @@ const LandingScreen: ScreenFC = ({componentId}) => {
           title={loginText}
           type="clear"
         />
+        <Text>{apiConfig.baseUrl}</Text>
       </View>
     </SafeAreaView>
   );

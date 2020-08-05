@@ -9,7 +9,4 @@ describe('<{{> ScreenName }} />', () => {
     rendered = render(<{{> ScreenName }} componentId="id" />);
   });
 
-  it('should match snapshot', () => {
-    expect(rendered.toJSON()).toMatchSnapshot();
-  });
 });

@@ -32,8 +32,4 @@ describe("<CreateNewAccountScreen />", () => {
       createNewAccountScreen.queryAllByA11yLabel("Enter Name"),
     ).not.toBeNull();
   });
-
-  it("should match snapshot", () => {
-    expect(createNewAccountScreen.toJSON()).toMatchSnapshot();
-  });
 });

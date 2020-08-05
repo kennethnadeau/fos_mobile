@@ -17,7 +17,4 @@ describe("<CarouselPagination />", () => {
     expect(actual).not.toBeNull();
     expect(actual.children).toHaveLength(1);
   });
-
-  it("should match snapshot", () =>
-    expect(carouselPagination.toJSON()).toMatchSnapshot());
 });

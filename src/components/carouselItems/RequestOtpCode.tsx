@@ -1,12 +1,12 @@
-import React, {FC} from 'react';
-import RoundedButton from '@fos/components/RoundedButton';
-import TextInput from '@fos/components/TextInput';
-import {useTranslation, Trans} from 'react-i18next';
-import {StyleSheet, View, Keyboard} from 'react-native';
-import {Text} from 'react-native-elements';
-import {ms, s, vs} from 'react-native-size-matters';
-import CarouselItemContainer from './CarouselItemContainer';
-import FooterText from './FooterText';
+import React, { FC } from "react";
+import RoundedButton from "@fos/components/RoundedButton";
+import TextInput from "@fos/components/TextInput";
+import { useTranslation, Trans } from "react-i18next";
+import { StyleSheet, View, Keyboard } from "react-native";
+import { Text } from "react-native-elements";
+import { ms, s, vs } from "react-native-size-matters";
+import CarouselItemContainer from "./CarouselItemContainer";
+import FooterText from "./FooterText";
 
 export type RequestCodeProps = {
   mobileNumber: string;
@@ -27,11 +27,11 @@ const RequestOtpCode: FC<RequestCodeProps> = ({
   onRequestCodePress,
   loading,
 }) => {
-  const {t} = useTranslation('carouselItems');
+  const { t } = useTranslation("carouselItems");
 
-  const enterMobileNumberText = t('Enter Mobile Number');
-  const yourNumberText = t('Your Number');
-  const requestCodeText = t('Request Code');
+  const enterMobileNumberText = t("Enter Mobile Number");
+  const yourNumberText = t("Your Number");
+  const requestCodeText = t("Request Code");
 
   const onSubmit = () => {
     onRequestCodePress();
@@ -47,7 +47,7 @@ const RequestOtpCode: FC<RequestCodeProps> = ({
       header={enterMobileNumberText}>
       <View style={styles.inputContainer}>
         <TextInput
-          accessibilityLabel={t('Country code')}
+          accessibilityLabel={t("Country code")}
           accessible
           containerStyle={styles.countryCodeContainer}
           hideClearIcon
@@ -81,39 +81,39 @@ const RequestOtpCode: FC<RequestCodeProps> = ({
         title={requestCodeText}
       />
       <FooterText style={styles.terms}>
-        <Trans components={{Text: <Text />}}>Agree to Terms of Use</Trans>
+        <Trans components={{ Text: <Text /> }}>Agree to Terms of Use</Trans>
       </FooterText>
 
-      <FooterText style={styles.disclaimer}>{t('OTP Disclaimer')}</FooterText>
+      <FooterText style={styles.disclaimer}>{t("OTP Disclaimer")}</FooterText>
     </CarouselItemContainer>
   );
 };
 
 const styles = StyleSheet.create({
   btnRequestCode: {
-    width: '100%',
+    width: "100%",
   },
 
   countryCodeContainer: {
     paddingHorizontal: 0,
     paddingRight: ms(10),
-    width: '35%',
+    width: "35%",
   },
   countryCodeInputContainer: {
     padding: s(8),
   },
   disclaimer: {
     marginVertical: vs(25),
-    textAlign: 'center',
+    textAlign: "center",
   },
   inputContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginVertical: vs(10),
   },
   mobileNumberContainer: {
     paddingHorizontal: 0,
-    width: '65%',
+    width: "65%",
   },
   mobileNumberInputContainer: {
     padding: s(4),
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
 
   terms: {
     marginTop: vs(30),
-    textAlign: 'center',
+    textAlign: "center",
   },
 });
 

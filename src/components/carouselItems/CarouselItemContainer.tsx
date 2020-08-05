@@ -1,7 +1,7 @@
-import React, {FC} from 'react';
-import {View, StyleSheet, ViewStyle, ViewProps} from 'react-native';
-import {Text} from 'react-native-elements';
-import {vs, s} from 'react-native-size-matters';
+import React, { FC } from "react";
+import { View, StyleSheet, ViewStyle, ViewProps } from "react-native";
+import { Text } from "react-native-elements";
+import { vs, s } from "react-native-size-matters";
 
 export type SliderItemContainerProps = {
   header: string;
@@ -26,11 +26,11 @@ const CarouselItemContainer: FC<SliderItemContainerProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
+    alignItems: "center",
     flex: 1,
     paddingHorizontal: s(40),
   },
-  header: {marginVertical: vs(20)},
+  header: { marginVertical: vs(20) },
 });
 
 export default CarouselItemContainer;

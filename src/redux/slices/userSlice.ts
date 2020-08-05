@@ -1,12 +1,12 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import storeInitialState from '../store/initial-state';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import storeInitialState from "../store/initial-state";
 export const initialState = storeInitialState.user;
 
-const {actions, reducer} = createSlice({
-  name: 'users',
+const { actions, reducer } = createSlice({
+  name: "users",
   initialState,
   reducers: {
-    login(_state, _action: PayloadAction<{params: object}>) {},
+    login(_state, _action: PayloadAction<{ params: object }>) {},
     loginSuccess(state, _: PayloadAction<void>) {
       return state;
     },
@@ -17,6 +17,6 @@ const {actions, reducer} = createSlice({
   },
 });
 
-export const {login, loginSuccess, loginFailure, logout} = actions;
+export const { login, loginSuccess, loginFailure, logout } = actions;
 
 export default reducer;

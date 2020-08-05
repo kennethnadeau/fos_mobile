@@ -16,6 +16,14 @@
         }
     ],
     "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+                "singleQuote": false,
+                "trailingComma": "all",
+                "bracketSpacing": true
+            }
+        ],
         "react-native/no-unused-styles": "error",
         "react-native/sort-styles": [
             "error",
@@ -28,6 +36,17 @@
             {
                 "ignoreCase": true
             }
-        ]
+        ],
+        "no-unused-vars": "error",
+        "no-console": "error",
+        "object-curly-spacing": [2, "always"],
+        "prefer-object-spread": "error",
+        "quotes": [2, "double"],
+        "semi": [2, "always"],
+        "space-before-function-paren": ["error", {
+            "anonymous": "always",
+            "named": "never",
+            "asyncArrow": "always"
+        }]
     }
 }

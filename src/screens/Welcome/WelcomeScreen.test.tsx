@@ -1,8 +1,8 @@
-import React from 'react';
-import WelcomeScreen from './WelcomeScreen';
-import {render, RenderAPI} from 'react-native-testing-library';
+import React from "react";
+import WelcomeScreen from "./WelcomeScreen";
+import { render, RenderAPI } from "react-native-testing-library";
 
-describe('<WelcomeScreen />', () => {
+describe("<WelcomeScreen />", () => {
   let welcomeScreen: RenderAPI;
 
   beforeEach(() => {
@@ -11,12 +11,12 @@ describe('<WelcomeScreen />', () => {
     );
   });
 
-  it('should show welcome back text', () => {
-    const actual = welcomeScreen.queryByText('Welcome Back');
+  it("should show welcome back text", () => {
+    const actual = welcomeScreen.queryByText("Welcome Back");
     expect(actual).not.toBeNull();
   });
 
-  it('should match snapshot', () => {
+  it("should match snapshot", () => {
     expect(welcomeScreen.toJSON()).toMatchSnapshot();
   });
 });

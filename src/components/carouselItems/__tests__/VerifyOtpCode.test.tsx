@@ -1,8 +1,8 @@
-import React from 'react';
-import {render, RenderAPI} from '@fos/utils/testing';
-import VerifyOtpCode from '../VerifyOtpCode';
+import React from "react";
+import { render, RenderAPI } from "@fos/utils/testing";
+import VerifyOtpCode from "../VerifyOtpCode";
 
-describe('<VerifyOtpCode />', () => {
+describe("<VerifyOtpCode />", () => {
   let verifyOtpCode: RenderAPI;
 
   beforeEach(() => {
@@ -11,26 +11,26 @@ describe('<VerifyOtpCode />', () => {
     );
   });
 
-  it('should have carousel item description', () => {
-    const actual = verifyOtpCode.queryByA11yLabel('Enter Verification Code');
+  it("should have carousel item description", () => {
+    const actual = verifyOtpCode.queryByA11yLabel("Enter Verification Code");
 
     expect(actual).not.toBeNull();
   });
 
-  it('should show header', () => {
-    const actual = verifyOtpCode.queryByText('Enter Verification Code');
+  it("should show header", () => {
+    const actual = verifyOtpCode.queryByText("Enter Verification Code");
 
     expect(actual).not.toBeNull();
   });
 
-  it('should show OTP code input', () => {
-    const actual = verifyOtpCode.queryByA11yLabel('OTP code input');
+  it("should show OTP code input", () => {
+    const actual = verifyOtpCode.queryByA11yLabel("OTP code input");
 
     expect(actual).not.toBeNull();
     expect(actual?.children).toHaveLength(1);
   });
 
-  it('should match snapshot', () => {
+  it("should match snapshot", () => {
     expect(verifyOtpCode.toJSON()).toMatchSnapshot();
   });
 });

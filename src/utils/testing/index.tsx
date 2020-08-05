@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import {
   render as rntlRender,
   RenderOptions,
-} from 'react-native-testing-library';
-import AppProviders from 'containers/AppProviders';
+} from "react-native-testing-library";
+import AppProviders from "containers/AppProviders";
 // import '@fos/locale/i18n';
 
-export function Wrapper({children}: {children: React.ReactElement<any>}) {
+export function Wrapper({ children }: { children: React.ReactElement<any> }) {
   return <AppProviders testing>{children}</AppProviders>;
 }
 
@@ -20,4 +20,4 @@ export function render(
   });
 }
 
-export * from 'react-native-testing-library';
+export * from "react-native-testing-library";

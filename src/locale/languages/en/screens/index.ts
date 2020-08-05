@@ -1,3 +1,3 @@
-import landingScreen from './landingScreen.json';
+import landingScreen from "./landingScreen.json";
 
-export default {...landingScreen};
+export default { ...landingScreen };

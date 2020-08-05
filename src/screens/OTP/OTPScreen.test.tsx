@@ -1,39 +1,39 @@
-import React from 'react';
-import OTPScreen from './OTPScreen';
-import {render, RenderAPI} from '@fos/utils/testing';
+import React from "react";
+import OTPScreen from "./OTPScreen";
+import { render, RenderAPI } from "@fos/utils/testing";
 
-describe('<CreateNewAccountScreen />', () => {
+describe("<CreateNewAccountScreen />", () => {
   let createNewAccountScreen: RenderAPI;
 
   beforeEach(() => {
     createNewAccountScreen = render(<OTPScreen componentId="id" />);
   });
 
-  it('should show request code slider item', () => {
+  it("should show request code slider item", () => {
     expect(
-      createNewAccountScreen.queryByA11yLabel('Enter Mobile Number'),
+      createNewAccountScreen.queryByA11yLabel("Enter Mobile Number"),
     ).not.toBeNull();
   });
 
-  it('should show verify code slider item', () => {
+  it("should show verify code slider item", () => {
     expect(
-      createNewAccountScreen.queryByA11yLabel('Enter Verification Code'),
+      createNewAccountScreen.queryByA11yLabel("Enter Verification Code"),
     ).not.toBeNull();
   });
 
-  it('should show email address slider item', () => {
+  it("should show email address slider item", () => {
     expect(
-      createNewAccountScreen.queryByA11yLabel('Enter Email Address'),
+      createNewAccountScreen.queryByA11yLabel("Enter Email Address"),
     ).not.toBeNull();
   });
 
-  it('should show new user slider item', () => {
+  it("should show new user slider item", () => {
     expect(
-      createNewAccountScreen.queryAllByA11yLabel('Enter Name'),
+      createNewAccountScreen.queryAllByA11yLabel("Enter Name"),
     ).not.toBeNull();
   });
 
-  it('should match snapshot', () => {
+  it("should match snapshot", () => {
     expect(createNewAccountScreen.toJSON()).toMatchSnapshot();
   });
 });

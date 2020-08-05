@@ -1,13 +1,13 @@
-import React, {FC} from 'react';
-import {Provider} from 'react-redux';
-import {PersistGate} from 'redux-persist/integration/react';
-import {ThemeProvider, Theme, colors} from 'react-native-elements';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import createStore from '@fos/redux/store';
-import {Colors} from '@fos/themes';
-import {s, ms} from 'react-native-size-matters';
+import React, { FC } from "react";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { ThemeProvider, Theme, colors } from "react-native-elements";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import createStore from "@fos/redux/store";
+import { Colors } from "@fos/themes";
+import { s, ms } from "react-native-size-matters";
 
-const {store, persistor} = createStore();
+const { store, persistor } = createStore();
 
 const defaultTheme: Theme = {
   Button: {
@@ -18,7 +18,7 @@ const defaultTheme: Theme = {
     ],
     titleStyle: [
       {
-        color: 'white',
+        color: "white",
         fontSize: s(16),
       },
     ],
@@ -28,22 +28,22 @@ const defaultTheme: Theme = {
     inputStyle: {
       color: Colors.white,
       padding: ms(6),
-      alignItems: 'center',
+      alignItems: "center",
     },
     inputContainerStyle: {
       borderColor: Colors.white,
-      alignItems: 'center',
+      alignItems: "center",
       borderBottomWidth: s(0.7),
       borderWidth: s(0.7),
       borderRadius: s(30),
-      overflow: 'hidden',
+      overflow: "hidden",
       padding: ms(6),
     },
   },
   Text: {
     style: {
       fontSize: s(16),
-      color: 'white',
+      color: "white",
     },
   },
   Icon: {
@@ -53,7 +53,7 @@ const defaultTheme: Theme = {
 
 export const NavigationComponentProviders: FC<{
   children: React.ReactElement<any>;
-}> = ({children}) => (
+}> = ({ children }) => (
   <Provider store={store}>
     <ThemeProvider theme={defaultTheme}>{children}</ThemeProvider>
   </Provider>
@@ -62,7 +62,7 @@ export const NavigationComponentProviders: FC<{
 const AppProviders: FC<{
   children: React.ReactElement<any>;
   testing?: boolean;
-}> = ({children, testing = false}) => (
+}> = ({ children, testing = false }) => (
   <PersistGate loading={null} persistor={persistor}>
     <Provider store={store}>
       <ThemeProvider theme={defaultTheme}>
@@ -70,8 +70,8 @@ const AppProviders: FC<{
           initialMetrics={
             testing
               ? {
-                  frame: {x: 0, y: 0, width: 0, height: 0},
-                  insets: {top: 0, left: 0, right: 0, bottom: 0},
+                  frame: { x: 0, y: 0, width: 0, height: 0 },
+                  insets: { top: 0, left: 0, right: 0, bottom: 0 },
                 }
               : undefined
           }>

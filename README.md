@@ -12,8 +12,7 @@ You will need Node, Yarn, Watchman, React Native CLI, Xcode 11.4.1 (11E503a), an
 We recommend installing Node, Yarn, and Watchman using Homebrew. Run the following commands in a Terminal after installing Homebrew:
 
 ```sh
-$ brew install node
-$ brew install yarn --without-node
+$ brew install yarn
 $ brew install watchman
 ```
 
@@ -43,14 +42,15 @@ Run the following commands in a Terminal at root of source directory:
 
 ```sh
 $ yarn
-$ npx pod-install
+$ yarn pod
 ```
 ## Run
 
-Run the following command in a Terminal at root of source directory:
+Run the following commands in separate Terminal windows at root of source directory:
 
 ```sh
-$ npx react-native run-ios
+$ yarn start
+$ yarn ios
 ```
 
 ## File Generator
@@ -65,3 +65,13 @@ yarn plop
 $ ? Screen name: MyScreen
 ```
 
+## Troubleshooting
+
+If "yarn ios" builds with errors:
+- yarn pod
+
+If the simulator has errors, but the build works:
+
+- delete and reinstall node_modules
+- yarn start --reset-cache
+- delete the Derived Data folder in XCode

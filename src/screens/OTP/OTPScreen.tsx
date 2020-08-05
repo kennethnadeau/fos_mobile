@@ -226,18 +226,18 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({ login }) => {
     {
       id: "yes",
       title: t("YES"),
-      onPress: () => {
+      onPress: async () => {
         setShowSpinner(true);
         setShowResendAlert(false);
 
-        sendOtpCode()
-          .then(() => {
-            setToastMessage(t("Code Resent"));
-          })
-          .catch(() => setToastMessage(t("Code Resend Failed")))
-          .finally(() => {
-            setShowSpinner(false);
-          });
+        try {
+          await sendOtpCode();
+          setToastMessage(t("Code Resent"));
+        } catch {
+          setToastMessage(t("Code Resend Failed"));
+        } finally {
+          setShowSpinner(false);
+        }
       },
     },
   ];

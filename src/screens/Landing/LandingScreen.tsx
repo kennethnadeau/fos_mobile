@@ -47,7 +47,6 @@ const LandingScreen: ScreenFC = ({componentId}) => {
           title={loginText}
           type="clear"
         />
-        <Text>{apiConfig.baseUrl}</Text>
       </View>
     </SafeAreaView>
   );

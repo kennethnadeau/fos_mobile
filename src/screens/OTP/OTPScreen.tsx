@@ -84,18 +84,18 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
     return postRequestMethod({phone: formatPhoneNumber()});
   }, [formatPhoneNumber, login]);
 
-  const handleOtpCodeRequest = () => {
+  const handleOtpCodeRequest = async () => {
     setOtpRequestStatus('sending');
 
-    return sendOtpCode()
-      .then(() => {
-        setOtpRequestStatus('sent');
-        goToNextStep();
-      })
-      .catch(() => Alert.alert('Whoops!', 'Something went wrong!'))
-      .finally(() => {
-        setOtpRequestStatus('idle');
-      });
+    try {
+      await sendOtpCode();
+      setOtpRequestStatus('sent');
+      goToNextStep();
+    } catch (e) {
+      Alert.alert('Whoops!', 'Something went wrong!');
+    } finally {
+      setOtpRequestStatus('idle');
+    }
   };
 
   const handleOtpCodeResend = () => {
@@ -105,14 +105,15 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
       },
       {
         text: 'YES',
-        onPress: () => {
+        onPress: async () => {
           setShowSpinner(true);
-
-          sendOtpCode()
-            .then(() => {
-              Alert.alert('Success', 'Code resent!');
-            })
-            .finally(() => setShowSpinner(false));
+          // TODO: add error-handling
+          try {
+            await sendOtpCode();
+            Alert.alert('Success', 'Code resent!');
+          } finally {
+            setShowSpinner(false);
+          }
         },
       },
     ]);
@@ -125,7 +126,7 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
     dispatch(updatePaginationActiveDotIndex(slideIndex));
   };
 
-  const handleOtpCodeVerification = (code: string) => {
+  const handleOtpCodeVerification = async (code: string) => {
     setShowSpinner(true);
 
     const requestData = {
@@ -134,59 +135,53 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
     };
 
     if (login) {
-      const runAsync = async () => {
-        try {
-          const {
-            data: otpVerificationResponse,
-          } = await auth.postOtpAuthenticateVerify(requestData);
-          const {data: userInfo} = await auth.getUserInfo(
-            // @ts-ignore
-            otpVerificationResponse.token,
-          );
-
-          setOtpCodeVerificationStatus('verified');
+      try {
+        const {
+          data: otpVerificationResponse,
+        } = await auth.postOtpAuthenticateVerify(requestData);
+        const {data: userInfo} = await auth.getUserInfo(
           // @ts-ignore
-          goToWelcomeScreen(`${userInfo.firstName} ${userInfo.lastName}`);
-        } catch (error) {
-          setOtpCodeVerificationStatus('invalid');
-        } finally {
-          setShowSpinner(false);
-        }
-      };
+          otpVerificationResponse.token,
+        );
 
-      runAsync();
+        setOtpCodeVerificationStatus('verified');
+        // @ts-ignore
+        goToWelcomeScreen(`${userInfo.firstName} ${userInfo.lastName}`);
+      } catch (error) {
+        setOtpCodeVerificationStatus('invalid');
+      } finally {
+        setShowSpinner(false);
+      }
     } else {
-      auth
-        .postOtpRegistrationVerify(requestData)
-        // FIXME Provide proper typing!
-        .then(({data}: any) => {
-          setRegistrationUuid(data.uuid);
-          setOtpCodeVerificationStatus('verified');
-          goToNextStep();
-        })
-        .catch(() => {
-          setOtpCodeVerificationStatus('invalid');
-        })
-        .finally(() => setShowSpinner(false));
+      try {
+        const { data } = await auth.postOtpRegistrationVerify(requestData);
+        setRegistrationUuid(data.uuid);
+        setOtpCodeVerificationStatus('verified');
+        goToNextStep();
+      } catch (e) {
+        setOtpCodeVerificationStatus('invalid');
+      } finally {
+        setShowSpinner(false);
+      }
     }
   };
 
-  const handleOnCreateUserPress = () => {
+  const handleOnCreateUserPress = async () => {
     setShowSpinner(true);
-    auth
-      .postAccountRegistration({
-        email: emailAddress,
-        firstName,
-        lastName,
-        phone: mobileNumber,
-        registrationUuid,
-      })
-      .finally(() => {
-        setShowSpinner(false);
-      })
-      .catch(() => {
-        Alert.alert('Whoops!', 'Something went wrong.');
-      });
+    try {
+      await auth
+        .postAccountRegistration({
+          email: emailAddress,
+          firstName,
+          lastName,
+          phone: mobileNumber,
+          registrationUuid,
+        })
+    } catch (e) {
+      Alert.alert('Whoops!', 'Something went wrong.');
+    } finally {
+      setShowSpinner(false);
+    }
   };
 
   const carouselItemMap: {[key in CarouselItem]: JSX.Element} = {

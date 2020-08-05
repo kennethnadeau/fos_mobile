@@ -1,78 +1,80 @@
-import React, {useState, useRef, useCallback} from 'react';
-import {StyleSheet, Dimensions, Alert, ActivityIndicator} from 'react-native';
-import {Overlay} from 'react-native-elements';
-import {ScreenFC} from 'react-native-navigation-register-screens';
-import {SCREENS} from '@fos/constants';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import Carousel from 'react-native-snap-carousel';
-import {useDispatch} from 'react-redux';
+import React, { useState, useRef, useCallback } from "react";
+import { StyleSheet, Dimensions, Alert, ActivityIndicator } from "react-native";
+import { Overlay } from "react-native-elements";
+import { ScreenFC } from "react-native-navigation-register-screens";
+import { SCREENS } from "@fos/constants";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Carousel from "react-native-snap-carousel";
+import { useDispatch } from "react-redux";
 import {
   updatePaginationActiveDotIndex,
   setPaginationDotsLength,
-} from 'redux/slices/navigationSlice';
-import RequestOtpCode from '@fos/components/carouselItems/RequestOtpCode';
+} from "redux/slices/navigationSlice";
+import RequestOtpCode from "@fos/components/carouselItems/RequestOtpCode";
 import VerifyOtpCode, {
   VerificationCodeStatus,
-} from '@fos/components/carouselItems/VerifyOtpCode';
-import EnterEmailAddress from '@fos/components/carouselItems/EnterEmailAddress';
-import Name from '@fos/components/carouselItems/EnterName';
-import {apiService} from '@fos/shared';
+} from "@fos/components/carouselItems/VerifyOtpCode";
+import EnterEmailAddress from "@fos/components/carouselItems/EnterEmailAddress";
+import Name from "@fos/components/carouselItems/EnterName";
+import { apiService } from "@fos/shared";
 import {
   useNavigationComponentDidAppear,
   useNavigationComponentDidDisappear,
-} from 'react-native-navigation-hooks/dist';
-import OTPInputView from '@twotalltotems/react-native-otp-input';
-import {goToWelcomeScreen} from 'helpers/navigation';
-const {auth} = apiService;
+} from "react-native-navigation-hooks/dist";
+import OTPInputView from "@twotalltotems/react-native-otp-input";
+import { goToWelcomeScreen } from "helpers/navigation";
+const { auth } = apiService;
 
-type CarouselItem = 'requestCode' | 'verifyCode' | 'emailAddress' | 'name';
+type CarouselItem = "requestCode" | "verifyCode" | "emailAddress" | "name";
 
 const carouselItems: Array<CarouselItem> = [
-  'requestCode',
-  'verifyCode',
-  'emailAddress',
-  'name',
+  "requestCode",
+  "verifyCode",
+  "emailAddress",
+  "name",
 ];
 
 type OTPScreenProps = {
   login?: boolean;
 };
 
-const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
+const { width: viewportWidth, height: viewportHeight } = Dimensions.get(
+  "window",
+);
 
-const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
+const OTPScreen: ScreenFC<OTPScreenProps> = ({ componentId, login }) => {
   const dispatch = useDispatch();
 
   const carouselRef = useRef<Carousel<CarouselItem>>(null);
   const otpCodeInputRef = useRef<OTPInputView | null>(null);
 
-  const [countryCode, setCountryCode] = useState('+1');
-  const [mobileNumber, setMobileNumber] = useState('');
+  const [countryCode, setCountryCode] = useState("+1");
+  const [mobileNumber, setMobileNumber] = useState("");
   const [otpRequestStatus, setOtpRequestStatus] = useState<
-    'sending' | 'sent' | 'idle'
-  >('idle');
-  const [otpCode, setOtpCode] = useState('');
+    "sending" | "sent" | "idle"
+  >("idle");
+  const [otpCode, setOtpCode] = useState("");
   const [otpCodeVerificationStatus, setOtpCodeVerificationStatus] = useState<
     VerificationCodeStatus
-  >('unverified');
-  const [emailAddress, setEmailAddress] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [registrationUuid, setRegistrationUuid] = useState('');
+  >("unverified");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [registrationUuid, setRegistrationUuid] = useState("");
 
   const [showSpinner, setShowSpinner] = useState(false);
 
-  const clearMobileNumber = () => setMobileNumber('');
-  const clearEmailAddress = () => setEmailAddress('');
-  const clearFirstName = () => setFirstName('');
-  const clearLastName = () => setLastName('');
+  const clearMobileNumber = () => setMobileNumber("");
+  const clearEmailAddress = () => setEmailAddress("");
+  const clearFirstName = () => setFirstName("");
+  const clearLastName = () => setLastName("");
 
   const goToNextStep = () => {
     carouselRef.current?.snapToNext();
   };
 
   const formatPhoneNumber = useCallback(
-    () => `${countryCode.replace('+', '')}${mobileNumber}`,
+    () => `${countryCode.replace("+", "")}${mobileNumber}`,
     [countryCode, mobileNumber],
   );
 
@@ -81,36 +83,36 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
       ? auth.postOtpAuthenticate
       : auth.postOtpRegistration;
 
-    return postRequestMethod({phone: formatPhoneNumber()});
+    return postRequestMethod({ phone: formatPhoneNumber() });
   }, [formatPhoneNumber, login]);
 
   const handleOtpCodeRequest = async () => {
-    setOtpRequestStatus('sending');
+    setOtpRequestStatus("sending");
 
     try {
       await sendOtpCode();
-      setOtpRequestStatus('sent');
+      setOtpRequestStatus("sent");
       goToNextStep();
     } catch (e) {
-      Alert.alert('Whoops!', 'Something went wrong!');
+      Alert.alert("Whoops!", "Something went wrong!");
     } finally {
-      setOtpRequestStatus('idle');
+      setOtpRequestStatus("idle");
     }
   };
 
   const handleOtpCodeResend = () => {
-    Alert.alert('Resend Code', 'Are you sure?', [
+    Alert.alert("Resend Code", "Are you sure?", [
       {
-        text: 'NO',
+        text: "NO",
       },
       {
-        text: 'YES',
+        text: "YES",
         onPress: async () => {
           setShowSpinner(true);
           // TODO: add error-handling
           try {
             await sendOtpCode();
-            Alert.alert('Success', 'Code resent!');
+            Alert.alert("Success", "Code resent!");
           } finally {
             setShowSpinner(false);
           }
@@ -139,27 +141,27 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
         const {
           data: otpVerificationResponse,
         } = await auth.postOtpAuthenticateVerify(requestData);
-        const {data: userInfo} = await auth.getUserInfo(
+        const { data: userInfo } = await auth.getUserInfo(
           // @ts-ignore
           otpVerificationResponse.token,
         );
 
-        setOtpCodeVerificationStatus('verified');
+        setOtpCodeVerificationStatus("verified");
         // @ts-ignore
         goToWelcomeScreen(`${userInfo.firstName} ${userInfo.lastName}`);
       } catch (error) {
-        setOtpCodeVerificationStatus('invalid');
+        setOtpCodeVerificationStatus("invalid");
       } finally {
         setShowSpinner(false);
       }
     } else {
       try {
-        const {data} = await auth.postOtpRegistrationVerify(requestData);
+        const { data } = await auth.postOtpRegistrationVerify(requestData);
         setRegistrationUuid(data.uuid);
-        setOtpCodeVerificationStatus('verified');
+        setOtpCodeVerificationStatus("verified");
         goToNextStep();
       } catch (e) {
-        setOtpCodeVerificationStatus('invalid');
+        setOtpCodeVerificationStatus("invalid");
       } finally {
         setShowSpinner(false);
       }
@@ -177,17 +179,17 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
         registrationUuid,
       });
     } catch (e) {
-      Alert.alert('Whoops!', 'Something went wrong.');
+      Alert.alert("Whoops!", "Something went wrong.");
     } finally {
       setShowSpinner(false);
     }
   };
 
-  const carouselItemMap: {[key in CarouselItem]: JSX.Element} = {
+  const carouselItemMap: { [key in CarouselItem]: JSX.Element } = {
     requestCode: (
       <RequestOtpCode
-        {...{countryCode, mobileNumber}}
-        loading={otpRequestStatus === 'sending'}
+        {...{ countryCode, mobileNumber }}
+        loading={otpRequestStatus === "sending"}
         onCountryCodeChange={setCountryCode}
         onMobileNumberChangeText={setMobileNumber}
         onMobileNumberClear={clearMobileNumber}
@@ -215,7 +217,7 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
     ),
     name: (
       <Name
-        {...{firstName, lastName}}
+        {...{ firstName, lastName }}
         onCreateUserPress={handleOnCreateUserPress}
         onFirstNameChangeText={setFirstName}
         onFirstNameClear={clearFirstName}
@@ -235,7 +237,8 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
     componentId,
   );
 
-  const renderSlides = ({item}: {item: CarouselItem}) => carouselItemMap[item];
+  const renderSlides = ({ item }: { item: CarouselItem }) =>
+    carouselItemMap[item];
 
   return (
     <SafeAreaView style={styles.safeArea}>

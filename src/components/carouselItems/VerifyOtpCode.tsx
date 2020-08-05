@@ -1,14 +1,14 @@
-import React, {forwardRef} from 'react';
-import CarouselItemContainer from './CarouselItemContainer';
-import {Text} from 'react-native-elements';
-import {s, vs} from 'react-native-size-matters';
-import {Colors} from '@fos/themes';
-import {useTranslation, Trans} from 'react-i18next';
-import OTPInputView from '@twotalltotems/react-native-otp-input';
-import {View, StyleSheet, TextStyle} from 'react-native';
-import FooterText from './FooterText';
+import React, { forwardRef } from "react";
+import CarouselItemContainer from "./CarouselItemContainer";
+import { Text } from "react-native-elements";
+import { s, vs } from "react-native-size-matters";
+import { Colors } from "@fos/themes";
+import { useTranslation, Trans } from "react-i18next";
+import OTPInputView from "@twotalltotems/react-native-otp-input";
+import { View, StyleSheet, TextStyle } from "react-native";
+import FooterText from "./FooterText";
 
-export type VerificationCodeStatus = 'unverified' | 'verified' | 'invalid';
+export type VerificationCodeStatus = "unverified" | "verified" | "invalid";
 
 export type VerifyCodeProps = {
   mobileNumber?: string;
@@ -24,34 +24,34 @@ const VerifyOtpCode = forwardRef<OTPInputView, VerifyCodeProps>(
     {
       mobileNumber,
       code,
-      verificationStatus = 'unverified',
+      verificationStatus = "unverified",
       onCodeChange,
       onCodeFilled,
       onResendPress,
     },
     ref,
   ) => {
-    const {t} = useTranslation('carouselItems');
+    const { t } = useTranslation("carouselItems");
 
     const verificationStatusBorderColor: {
       [key in VerificationCodeStatus]: TextStyle;
     } = {
       unverified: styles.codeInputField,
-      invalid: {...styles.codeInputField, ...styles.invalid},
-      verified: {...styles.codeInputField, ...styles.verified},
+      invalid: { ...styles.codeInputField, ...styles.invalid },
+      verified: { ...styles.codeInputField, ...styles.verified },
     };
 
     return (
       <CarouselItemContainer
         containerProps={{
           accessible: true,
-          accessibilityLabel: t('Enter Verification Code'),
+          accessibilityLabel: t("Enter Verification Code"),
         }}
         containerStyle={{
           paddingHorizontal: s(16),
         }}
-        header={t('Enter Verification Code')}>
-        <View accessibilityLabel={t('OTP code input')} accessible>
+        header={t("Enter Verification Code")}>
+        <View accessibilityLabel={t("OTP code input")} accessible>
           <OTPInputView
             autoFocusOnLoad={false}
             code={code}
@@ -68,7 +68,7 @@ const VerifyOtpCode = forwardRef<OTPInputView, VerifyCodeProps>(
         </View>
 
         <FooterText style={styles.sentToDescription}>
-          <Trans t={t} values={{mobileNumber}}>
+          <Trans t={t} values={{ mobileNumber }}>
             We texted a verification code
           </Trans>
         </FooterText>
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   codeInputField: {
     borderRadius: s(8),
     fontSize: s(32),
-    fontWeight: '900',
+    fontWeight: "900",
     height: s(60),
   },
   invalid: {
@@ -102,12 +102,12 @@ const styles = StyleSheet.create({
   },
   resend: {
     marginTop: vs(50),
-    textAlign: 'center',
+    textAlign: "center",
   },
   sentToDescription: {
     marginTop: vs(20),
     paddingHorizontal: s(30),
-    textAlign: 'center',
+    textAlign: "center",
   },
   verified: {
     borderColor: Colors.success,

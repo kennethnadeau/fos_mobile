@@ -1,1 +1,1 @@
-export {default} from './OTPScreen';
+export { default } from "./OTPScreen";

@@ -1,11 +1,11 @@
-import {apiConfig} from '@fos/config';
+import { apiConfig } from "@fos/config";
 
-describe('apiConfig', () => {
-  it('should check for the baseUrl', () => {
+describe("apiConfig", () => {
+  it("should check for the baseUrl", () => {
     expect(apiConfig.baseUrl).not.toBeNull();
   });
 
-  it('should check the flurry api key', () => {
+  it("should check the flurry api key", () => {
     expect(apiConfig.flurryApiKey).not.toBeNull();
   });
 });

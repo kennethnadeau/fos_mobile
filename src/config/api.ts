@@ -1,4 +1,4 @@
-import ENV from 'react-native-config';
+import ENV from "react-native-config";
 
 export const apiConfig = {
   baseUrl: ENV.API_URL,

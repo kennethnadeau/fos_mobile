@@ -1,8 +1,8 @@
-import {Navigation} from 'react-native-navigation';
+import { Navigation } from "react-native-navigation";
 
-import '@fos/screens';
-import {SCREENS} from '@fos/constants';
-import {Colors} from '@fos/themes';
+import "@fos/screens";
+import { SCREENS } from "@fos/constants";
+import { Colors } from "@fos/themes";
 
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setDefaultOptions({
@@ -12,9 +12,9 @@ Navigation.events().registerAppLaunchedListener(() => {
         color: Colors.primary,
       },
       backButton: {
-        title: 'Back',
+        title: "Back",
         showTitle: true,
-        color: 'white',
+        color: "white",
       },
     },
     layout: {
@@ -22,7 +22,7 @@ Navigation.events().registerAppLaunchedListener(() => {
       componentBackgroundColor: Colors.primary,
     },
     statusBar: {
-      style: 'light',
+      style: "light",
     },
     animations: {
       setRoot: {
@@ -31,7 +31,7 @@ Navigation.events().registerAppLaunchedListener(() => {
           to: 1,
           duration: 500,
           startDelay: 100,
-          interpolation: 'accelerate',
+          interpolation: "accelerate",
         },
       },
     },

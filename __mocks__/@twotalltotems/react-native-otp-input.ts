@@ -1,2 +1,2 @@
-export const ReactComponent = 'OtpInputViewMock';
-export default 'OtpInputViewMock';
+export const ReactComponent = "OtpInputViewMock";
+export default "OtpInputViewMock";

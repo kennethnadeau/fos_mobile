@@ -1,4 +1,4 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
   topBar: {
@@ -9,14 +9,14 @@ const initialState = {
   },
 };
 
-const {actions, reducer} = createSlice({
-  name: 'navigation',
+const { actions, reducer } = createSlice({
+  name: "navigation",
   initialState,
   reducers: {
-    setPaginationDotsLength(state, {payload}: PayloadAction<number>) {
+    setPaginationDotsLength(state, { payload }: PayloadAction<number>) {
       state.topBar.pagination.dotsLength = payload;
     },
-    updatePaginationActiveDotIndex(state, {payload}: PayloadAction<number>) {
+    updatePaginationActiveDotIndex(state, { payload }: PayloadAction<number>) {
       state.topBar.pagination.activeDotIndex = payload;
     },
   },

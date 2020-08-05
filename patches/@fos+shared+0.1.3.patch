@@ -12,6 +12,40 @@ index 552dd26..2ed3c40 100644
      status: number;
      statusText: string;
      headers: any;
+diff --git a/node_modules/@fos/shared/dist/services/api/auth/index.d.ts b/node_modules/@fos/shared/dist/services/api/auth/index.d.ts
+index 594d7a4..b787f57 100644
+--- a/node_modules/@fos/shared/dist/services/api/auth/index.d.ts
++++ b/node_modules/@fos/shared/dist/services/api/auth/index.d.ts
+@@ -1,8 +1,6 @@
+ declare const auth: {
+     getUserInfo: (token: string) => Promise<{
+-        data: {
+-            data: import("./types").UserInfoResponse;
+-        };
++        data: import("./types").UserInfoResponse;
+         status: number;
+         statusText: string;
+         headers: any;
+@@ -10,13 +8,13 @@ declare const auth: {
+         request?: any;
+     }>;
+     postOtpRegistration: (data: import("./types").OtpRequest) => Promise<import("axios").AxiosResponse<void>>;
+-    postOtpRegistrationVerify: (data: import("./types").OtpVerificationRequest) => Promise<import("axios").AxiosResponse<{
+-        data: import("./types").OtpRegVerificationResponse;
+-    }>>;
++    postOtpRegistrationVerify: (data: import("./types").OtpVerificationRequest) => Promise<import("axios").AxiosResponse< 
++        import("./types").OtpRegVerificationResponse
++    >>;
+     postOtpAuthenticate: (data: import("./types").OtpRequest) => Promise<import("axios").AxiosResponse<void>>;
+-    postOtpAuthenticateVerify: (data: import("./types").OtpVerificationRequest) => Promise<import("axios").AxiosResponse<{
+-        data: import("./types").OtpAuthVerificationResponse;
+-    }>>;
++    postOtpAuthenticateVerify: (data: import("./types").OtpVerificationRequest) => Promise<import("axios").AxiosResponse<
++        import("./types").OtpAuthVerificationResponse
++    >>;
+     postAccountRegistration: (data: import("./types").AccountRegistrationRequest) => Promise<import("axios").AxiosResponse<any>>;
+     postLogout: () => Promise<import("axios").AxiosResponse<any>>;
+ };
 diff --git a/node_modules/@fos/shared/dist/services/api/auth/post.d.ts b/node_modules/@fos/shared/dist/services/api/auth/post.d.ts
 index 7918d39..40e4308 100644
 --- a/node_modules/@fos/shared/dist/services/api/auth/post.d.ts

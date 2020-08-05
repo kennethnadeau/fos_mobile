@@ -1,11 +1,11 @@
-import React, {FC} from 'react';
-import RoundedButton from '@fos/components/RoundedButton';
-import TextInput from '@fos/components/TextInput';
-import {useTranslation} from 'react-i18next';
-import {StyleSheet} from 'react-native';
-import {s, vs} from 'react-native-size-matters';
-import CarouselItemContainer from './CarouselItemContainer';
-import FooterText from './FooterText';
+import React, { FC } from "react";
+import RoundedButton from "@fos/components/RoundedButton";
+import TextInput from "@fos/components/TextInput";
+import { useTranslation } from "react-i18next";
+import { StyleSheet } from "react-native";
+import { s, vs } from "react-native-size-matters";
+import CarouselItemContainer from "./CarouselItemContainer";
+import FooterText from "./FooterText";
 
 export type EnterEmailAddressProps = {
   emailAddress: string;
@@ -22,11 +22,11 @@ const EmailAddress: FC<EnterEmailAddressProps> = ({
   onNextPress,
   loading = false,
 }) => {
-  const {t} = useTranslation('carouselItems');
+  const { t } = useTranslation("carouselItems");
 
-  const enterEmailAddressText = t('Enter Email Address');
-  const yourEmailText = t('Your Email');
-  const nextText = t('Next');
+  const enterEmailAddressText = t("Enter Email Address");
+  const yourEmailText = t("Your Email");
+  const nextText = t("Next");
 
   return (
     <CarouselItemContainer
@@ -59,7 +59,7 @@ const EmailAddress: FC<EnterEmailAddressProps> = ({
         title={nextText}
       />
 
-      <FooterText style={styles.footer}>{t('Email Usage')}</FooterText>
+      <FooterText style={styles.footer}>{t("Email Usage")}</FooterText>
     </CarouselItemContainer>
   );
 };
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   emailAddressInput: {
     paddingHorizontal: 0,
   },
-  footer: {marginTop: vs(16), textAlign: 'center'},
+  footer: { marginTop: vs(16), textAlign: "center" },
 });
 
 export default EmailAddress;

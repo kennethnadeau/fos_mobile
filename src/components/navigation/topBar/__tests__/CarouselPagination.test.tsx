@@ -1,8 +1,8 @@
-import React from 'react';
-import {render, RenderAPI} from '@fos/utils/testing';
-import {CarouselPagination} from '../CarouselPagination';
+import React from "react";
+import { render, RenderAPI } from "@fos/utils/testing";
+import { CarouselPagination } from "../CarouselPagination";
 
-describe('<CarouselPagination />', () => {
+describe("<CarouselPagination />", () => {
   let carouselPagination: RenderAPI;
 
   beforeEach(() => {
@@ -11,13 +11,10 @@ describe('<CarouselPagination />', () => {
     );
   });
 
-  it('should show carousel pagination', () => {
-    const actual = carouselPagination.getByA11yLabel('Carousel Pagination');
+  it("should show carousel pagination", () => {
+    const actual = carouselPagination.getByA11yLabel("Carousel Pagination");
 
     expect(actual).not.toBeNull();
     expect(actual.children).toHaveLength(1);
   });
-
-  it('should match snapshot', () =>
-    expect(carouselPagination.toJSON()).toMatchSnapshot());
 });

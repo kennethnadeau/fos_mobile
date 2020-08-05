@@ -90,7 +90,7 @@ async function _multiMerge(keyValuePairs, callback) {
   return null;
 }
 
-const _isObject = (obj) => typeof obj === 'object' && !Array.isArray(obj);
+const _isObject = (obj) => typeof obj === "object" && !Array.isArray(obj);
 const _deepMergeInto = (oldObject, newObject) => {
   const newKeys = Object.keys(newObject);
   const mergedObject = oldObject;

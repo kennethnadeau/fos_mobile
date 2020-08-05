@@ -1,5 +1,5 @@
-import {Navigation, Options} from 'react-native-navigation';
-import {SCREENS} from '@fos/constants';
+import { Navigation, Options } from "react-native-navigation";
+import { SCREENS } from "@fos/constants";
 
 const commonOptions: Partial<Options> = {
   topBar: {

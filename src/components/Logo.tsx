@@ -1,6 +1,6 @@
-import React, {FC} from 'react';
-import LogoSvg from '@fos/assets/svg/logo.svg';
-import {s, vs} from 'react-native-size-matters';
+import React, { FC } from "react";
+import LogoSvg from "@fos/assets/svg/logo.svg";
+import { s, vs } from "react-native-size-matters";
 
 const Logo: FC = () => {
   return (

@@ -1,6 +1,6 @@
-import React, {FC} from 'react';
-import {Input, InputProps} from 'react-native-elements';
-import {Colors} from '@fos/themes';
+import React, { FC } from "react";
+import { Input, InputProps } from "react-native-elements";
+import { Colors } from "@fos/themes";
 
 export type TextInputProps = InputProps & {
   hideClearIcon?: boolean;
@@ -13,7 +13,6 @@ const TextInput: FC<TextInputProps> = ({
   onClear,
   ...props
 }) => {
-  console.log(value);
   return (
     <Input
       {...props}
@@ -21,8 +20,8 @@ const TextInput: FC<TextInputProps> = ({
         hideClearIcon
           ? undefined
           : {
-              name: 'times-circle',
-              type: 'font-awesome',
+              name: "times-circle",
+              type: "font-awesome",
               color: value ? Colors.muted : Colors.transparent,
               onPress: onClear,
             }

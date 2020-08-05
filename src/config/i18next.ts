@@ -1,10 +1,10 @@
-import {InitOptions} from 'i18next';
-import resources from '@fos/locale/languages';
+import { InitOptions } from "i18next";
+import resources from "@fos/locale/languages";
 
-export const namespaces = ['common', 'screens', 'carouselItems'];
-export const defaultNamespace = 'common';
-export const defaultLang = 'en';
-export const fallbackLang = 'en';
+export const namespaces = ["common", "screens", "carouselItems"];
+export const defaultNamespace = "common";
+export const defaultLang = "en";
+export const fallbackLang = "en";
 
 export const i18nextConfig: InitOptions = {
   resources,

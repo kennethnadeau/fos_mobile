@@ -1,2 +1,2 @@
-export * from './api';
-export * from './i18next';
+export * from "./api";
+export * from "./i18next";

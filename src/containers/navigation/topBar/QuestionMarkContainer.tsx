@@ -1,8 +1,8 @@
-import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import {ScreenFC} from 'react-native-navigation-register-screens';
-import {SCREENS} from '@fos/constants';
-import {QuestionMarkIcon} from '@fos/components/navigation/topBar';
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import { ScreenFC } from "react-native-navigation-register-screens";
+import { SCREENS } from "@fos/constants";
+import { QuestionMarkIcon } from "@fos/components/navigation/topBar";
 
 const QuestionMarkContainer: ScreenFC = () => {
   return (

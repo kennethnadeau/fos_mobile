@@ -1,5 +1,5 @@
 import React, {useState, useRef, useCallback} from 'react';
-import {StyleSheet, Dimensions, Alert, ActivityIndicator} from 'react-native';
+import {StyleSheet, Dimensions, ActivityIndicator} from 'react-native';
 import {Overlay} from 'react-native-elements';
 import {ScreenFC} from 'react-native-navigation-register-screens';
 import {SCREENS} from '@fos/constants';
@@ -23,6 +23,9 @@ import {
 } from 'react-native-navigation-hooks/dist';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import {goToWelcomeScreen} from 'helpers/navigation';
+import Toast from '@fos/components/Toast';
+import Alert from '@fos/components/Alert';
+import {useTranslation} from 'react-i18next';
 const {auth} = apiService;
 
 type CarouselItem = 'requestCode' | 'verifyCode' | 'emailAddress' | 'name';
@@ -41,6 +44,7 @@ type OTPScreenProps = {
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
 
 const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
+  const {t} = useTranslation();
   const dispatch = useDispatch();
 
   const carouselRef = useRef<Carousel<CarouselItem>>(null);
@@ -61,6 +65,9 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
   const [registrationUuid, setRegistrationUuid] = useState('');
 
   const [showSpinner, setShowSpinner] = useState(false);
+
+  const [toastMessage, setToastMessage] = useState('');
+  const [showResendAlert, setShowResendAlert] = useState(false);
 
   const clearMobileNumber = () => setMobileNumber('');
   const clearEmailAddress = () => setEmailAddress('');
@@ -92,31 +99,13 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
         setOtpRequestStatus('sent');
         goToNextStep();
       })
-      .catch(() => Alert.alert('Whoops!', 'Something went wrong!'))
+      .catch(() => setToastMessage('Whoops! Something went wrong!'))
       .finally(() => {
         setOtpRequestStatus('idle');
       });
   };
 
-  const handleOtpCodeResend = () => {
-    Alert.alert('Resend Code', 'Are you sure?', [
-      {
-        text: 'NO',
-      },
-      {
-        text: 'YES',
-        onPress: () => {
-          setShowSpinner(true);
-
-          sendOtpCode()
-            .then(() => {
-              Alert.alert('Success', 'Code resent!');
-            })
-            .finally(() => setShowSpinner(false));
-        },
-      },
-    ]);
-  };
+  const handleOtpCodeResend = () => setShowResendAlert(true);
 
   const handleOnSnapToItem = (slideIndex: number) => {
     if (slideIndex === 1) {
@@ -148,6 +137,7 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
           // @ts-ignore
           goToWelcomeScreen(`${userInfo.firstName} ${userInfo.lastName}`);
         } catch (error) {
+          setToastMessage(t('Invalid Code'));
           setOtpCodeVerificationStatus('invalid');
         } finally {
           setShowSpinner(false);
@@ -165,6 +155,7 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
           goToNextStep();
         })
         .catch(() => {
+          setToastMessage(t('Invalid Code'));
           setOtpCodeVerificationStatus('invalid');
         })
         .finally(() => setShowSpinner(false));
@@ -185,7 +176,7 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
         setShowSpinner(false);
       })
       .catch(() => {
-        Alert.alert('Whoops!', 'Something went wrong.');
+        setToastMessage('Whoops! Something went wrong.');
       });
   };
 
@@ -255,12 +246,42 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
         ref={carouselRef}
         removeClippedSubviews
         renderItem={renderSlides}
-        scrollEnabled={false}
+        scrollEnabled={true}
         sliderWidth={viewportWidth}
       />
       <Overlay isVisible={showSpinner}>
         <ActivityIndicator />
       </Overlay>
+      <Toast isVisible={!!toastMessage} message={toastMessage} />
+      <Alert
+        body={t('Are you sure?')}
+        buttons={[
+          {
+            id: 'no',
+            title: t('NO'),
+            onPress: () => setShowResendAlert(false),
+          },
+          {
+            id: 'yes',
+            title: t('YES'),
+            onPress: () => {
+              setShowSpinner(true);
+              setShowResendAlert(false);
+
+              sendOtpCode()
+                .then(() => {
+                  setToastMessage(t('Code Resent'));
+                })
+                .catch(() => setToastMessage(t('Code Resend Failed')))
+                .finally(() => {
+                  setShowSpinner(false);
+                });
+            },
+          },
+        ]}
+        header={t('Resend Code')}
+        isVisible={showResendAlert}
+      />
     </SafeAreaView>
   );
 };

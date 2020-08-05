@@ -6,5 +6,12 @@
     "OTP Disclaimer": "Your phone number is how we identify your account. We will send a text to verify your mobile device - message and data rates may apply.",
     "Carousel Pagination": "Carousel Pagination",
     "Welcome Back": "Welcome back to $t(App Name), \n{{fullName}}!",
-    "Support": "Support"
+    "Support": "Support",
+    "Are you sure?": "Are you sure?",
+    "Yes": "Yes",
+    "No": "No",
+    "Code Resent": "Code Resent",
+    "Code Resend Failed": "Code Resend Failed",
+    "Resend Code": "Resend Code",
+    "Invalid Code": "Invalid Code"
 }

@@ -5,7 +5,7 @@ import {s, vs} from 'react-native-size-matters';
 import {Colors} from '@fos/themes';
 import RoundedButton from '../RoundedButton';
 
-export type AlertButton = {id: string; title: string; onPress: () => void};
+export type AlertButton = {id: string; title: string; onPress?: () => void};
 
 export type AlertProps = {
   header: string;

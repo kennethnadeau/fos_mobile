@@ -1,4 +1,4 @@
-import { apiConfig } from '@fos/config';
+import {apiConfig} from '@fos/config';
 
 describe('apiConfig', () => {
   it('should check for the baseUrl', () => {

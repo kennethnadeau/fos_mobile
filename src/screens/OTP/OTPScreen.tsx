@@ -154,7 +154,7 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
       }
     } else {
       try {
-        const { data } = await auth.postOtpRegistrationVerify(requestData);
+        const {data} = await auth.postOtpRegistrationVerify(requestData);
         setRegistrationUuid(data.uuid);
         setOtpCodeVerificationStatus('verified');
         goToNextStep();
@@ -169,14 +169,13 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({componentId, login}) => {
   const handleOnCreateUserPress = async () => {
     setShowSpinner(true);
     try {
-      await auth
-        .postAccountRegistration({
-          email: emailAddress,
-          firstName,
-          lastName,
-          phone: mobileNumber,
-          registrationUuid,
-        })
+      await auth.postAccountRegistration({
+        email: emailAddress,
+        firstName,
+        lastName,
+        phone: mobileNumber,
+        registrationUuid,
+      });
     } catch (e) {
       Alert.alert('Whoops!', 'Something went wrong.');
     } finally {

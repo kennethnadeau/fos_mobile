@@ -45,8 +45,4 @@ describe('<RequestOtpCode />', () => {
     const actual = requestCodeComponent.queryByA11yLabel('Request Code');
     expect(actual).not.toBeNull();
   });
-
-  it('should match snapshot', () => {
-    expect(requestCodeComponent.toJSON()).toMatchSnapshot();
-  });
 });

@@ -15,8 +15,4 @@ describe('<WelcomeScreen />', () => {
     const actual = welcomeScreen.queryByText('Welcome Back');
     expect(actual).not.toBeNull();
   });
-
-  it('should match snapshot', () => {
-    expect(welcomeScreen.toJSON()).toMatchSnapshot();
-  });
 });

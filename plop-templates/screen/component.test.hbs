@@ -8,8 +8,4 @@ describe('<{{> ScreenName }} />', () => {
   beforeEach(() => {
     rendered = render(<{{> ScreenName }} componentId="id" />);
   });
-
-  it('should match snapshot', () => {
-    expect(rendered.toJSON()).toMatchSnapshot();
-  });
 });

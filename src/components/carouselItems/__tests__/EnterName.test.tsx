@@ -53,8 +53,4 @@ describe('<Name />', () => {
 
     expect(actual).not.toBeNull();
   });
-
-  it('should match snapshot', () => {
-    expect(name.toJSON()).toMatchSnapshot();
-  });
 });

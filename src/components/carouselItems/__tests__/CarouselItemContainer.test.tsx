@@ -27,8 +27,4 @@ describe('<CarouselItemContainer />', () => {
 
     expect(actual).not.toBeNull();
   });
-
-  it('should match snapshot', () => {
-    expect(carouselItemContainer.toJSON()).toMatchSnapshot();
-  });
 });

@@ -32,8 +32,4 @@ describe('<LandingScreen />', () => {
 
     expect(actual).toBeDefined();
   });
-
-  it('should match snapshot', () => {
-    expect(rendered.toJSON()).toMatchSnapshot();
-  });
 });

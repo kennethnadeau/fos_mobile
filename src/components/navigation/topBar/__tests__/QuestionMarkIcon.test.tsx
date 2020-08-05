@@ -14,8 +14,4 @@ describe('<QuestionMarkIcon />', () => {
 
     expect(actual).not.toBeNull();
   });
-
-  it('should match snapshot', () => {
-    expect(questionMarkIcon).toMatchSnapshot();
-  });
 });

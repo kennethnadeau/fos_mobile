@@ -2,7 +2,7 @@ import React from 'react';
 import OTPScreen from './OTPScreen';
 import {render, RenderAPI} from '@fos/utils/testing';
 
-describe('<CreateNewAccountScreen />', () => {
+describe('<OTPScreen />', () => {
   let createNewAccountScreen: RenderAPI;
 
   beforeEach(() => {
@@ -31,9 +31,5 @@ describe('<CreateNewAccountScreen />', () => {
     expect(
       createNewAccountScreen.queryAllByA11yLabel('Enter Name'),
     ).not.toBeNull();
-  });
-
-  it('should match snapshot', () => {
-    expect(createNewAccountScreen.toJSON()).toMatchSnapshot();
   });
 });

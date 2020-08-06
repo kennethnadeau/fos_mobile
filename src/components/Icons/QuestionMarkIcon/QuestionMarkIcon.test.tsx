@@ -1,6 +1,6 @@
 import React from "react";
 import { render, RenderAPI } from "@fos/utils/testing";
-import { QuestionMarkIcon } from "../QuestionMarkIcon";
+import { QuestionMarkIcon } from "./QuestionMarkIcon";
 
 describe("<QuestionMarkIcon />", () => {
   let questionMarkIcon: RenderAPI;

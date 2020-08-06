@@ -878,10 +878,10 @@
   dependencies:
     "@types/hammerjs" "^2.0.36"
 
-"@fos/shared@^0.1.5":
-  version "0.1.5"
-  resolved "https://packagecloud.io/flatsorspikes/frontend/npm/@fos/shared/-/shared-0.1.5.tgz#65bc594ce548155cf138e2631498963bce4a2c63"
-  integrity sha1-ZbxZTOVIFVzxOOJjFJiWO85KLGM=
+"@fos/shared@^0.1.7":
+  version "0.1.7"
+  resolved "https://packagecloud.io/flatsorspikes/frontend/npm/@fos/shared/-/shared-0.1.7.tgz#af5c2c9f1b48444b80d1a1d18000ec0e19e803b4"
+  integrity sha1-r1wsnxtIREuA0aHRgADsDhnoA7Q=
   dependencies:
     axios "^0.19.2"
     camelcase-keys "^6.2.2"

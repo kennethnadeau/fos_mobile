@@ -1,12 +1,12 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
 import Alert from "@fos/components/Alert";
-import EnterEmailAddress from "@fos/components/carouselItems/EnterEmailAddress";
-import Name from "@fos/components/carouselItems/EnterName";
-import RequestOtpCode from "@fos/components/carouselItems/RequestOtpCode";
+import EnterEmailAddress from "@fos/components/Account/EnterEmailAddress";
+import Name from "@fos/components/Account/EnterName";
+import RequestOtpCode from "@fos/components/Account/RequestOtpCode";
 import VerifyOtpCode, {
   VerificationCodeStatus,
-} from "@fos/components/carouselItems/VerifyOtpCode";
-import Toast from "@fos/components/Toast";
+} from "@fos/components/Account/VerifyOtpCode";
+import Toast from "components/Toast/index.ts";
 import { SCREENS } from "@fos/constants";
 import {
   setPaginationDotsLength,
@@ -23,7 +23,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { vs } from "react-native-size-matters";
 import Carousel from "react-native-snap-carousel";
 import { useDispatch } from "react-redux";
-const { auth } = apiService;
+const { account, otp } = apiService;
 
 type CarouselItem = "requestCode" | "verifyCode" | "emailAddress" | "name";
 
@@ -89,8 +89,8 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({ login }) => {
 
   const sendOtpCode = useCallback(() => {
     const postRequestMethod = login
-      ? auth.postOtpAuthenticate
-      : auth.postOtpRegistration;
+      ? otp.postOtpAuthenticate
+      : otp.postOtpRegistration;
 
     return postRequestMethod({ phone: formatPhoneNumber() });
   }, [formatPhoneNumber, login]);
@@ -130,8 +130,8 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({ login }) => {
       try {
         const {
           data: otpVerificationResponse,
-        } = await auth.postOtpAuthenticateVerify(requestData);
-        const { data: userInfo } = await auth.getUserInfo(
+        } = await otp.postOtpAuthenticateVerify(requestData);
+        const { data: userInfo } = await account.getUserInfo(
           otpVerificationResponse.token,
         );
 
@@ -145,7 +145,7 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({ login }) => {
       }
     } else {
       try {
-        const { data } = await auth.postOtpRegistrationVerify(requestData);
+        const { data } = await otp.postOtpRegistrationVerify(requestData);
         setRegistrationUuid(data.uuid);
         setOtpCodeVerificationStatus("verified");
         goToNextStep();
@@ -161,7 +161,7 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({ login }) => {
   const handleOnCreateUserPress = async () => {
     setShowSpinner(true);
     try {
-      await auth.postAccountRegistration({
+      await account.postAccountRegistration({
         email: emailAddress,
         firstName,
         lastName,

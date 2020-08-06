@@ -1,6 +1,6 @@
 import React from "react";
 import { render, RenderAPI } from "@fos/utils/testing";
-import CarouselItemContainer from "../CarouselItemContainer";
+import CarouselItemContainer from "./CarouselItemContainer";
 import { Text } from "react-native-elements";
 
 const Sample = () => <Text>Sample</Text>;

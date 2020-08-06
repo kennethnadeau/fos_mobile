@@ -1,6 +1,6 @@
 import React from "react";
 import { render, RenderAPI } from "@fos/utils/testing";
-import QuestionMarkContainer from "../QuestionMarkContainer";
+import QuestionMarkContainer from "./QuestionMarkContainer";
 
 describe("<QuestionMarkContainer />", () => {
   let questionMarkContainer: RenderAPI;

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import { ScreenFC } from "react-native-navigation-register-screens";
-import Logo from "components/Logo/Logo";
-import FOSButton from "components/Button/FOSButton";
+import Logo from "@fos/components/Logo/Logo";
+import FOSButton from "@fos/components/Button/FOSButton";
 import { SCREENS } from "@fos/constants";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, Button } from "react-native-elements";

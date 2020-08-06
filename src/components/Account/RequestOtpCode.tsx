@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import FOSButton from "components/Button/FOSButton";
-import TextInput from "@fos/components/TextInput";
+import FOSButton from "@fos/components/Button/FOSButton";
+import TextInput from "@fos/components/TextInput/TextInput";
 import { useTranslation, Trans } from "react-i18next";
 import { StyleSheet, View, Keyboard } from "react-native";
 import { Text } from "react-native-elements";

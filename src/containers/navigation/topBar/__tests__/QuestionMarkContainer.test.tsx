@@ -9,7 +9,8 @@ describe("<QuestionMarkContainer />", () => {
     questionMarkContainer = render(<QuestionMarkContainer componentId="id" />);
   });
 
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip("should match snapshot", () =>
-    expect(questionMarkContainer.toJSON()).toMatchSnapshot());
+  it("should show support icon with the correct state", () => {
+    const actual = questionMarkContainer.queryAllByA11yLabel("Support");
+    expect(actual).not.toBeNull();
+  });
 });

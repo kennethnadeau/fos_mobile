@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import RoundedButton from "@fos/components/RoundedButton";
+import FOSButton from "@fos/components/Button";
 import TextInput from "@fos/components/TextInput";
 import { useTranslation } from "react-i18next";
 import { StyleSheet } from "react-native";
@@ -64,7 +64,7 @@ const EnterName: FC<EnterNameProps> = ({
         value={lastName}
       />
 
-      <RoundedButton
+      <FOSButton
         accessibilityLabel={createUserText}
         accessible
         disabled={!firstName || !lastName || loading}

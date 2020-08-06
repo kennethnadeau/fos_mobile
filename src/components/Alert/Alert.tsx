@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
 import { Text, Overlay } from "react-native-elements";
 import { s } from "react-native-size-matters";
-import RoundedButton from "../RoundedButton";
+import FOSButton from "../Button/FOSButton";
 import { styles } from "./styles";
 
 export type AlertButton = { id: string; title: string; onPress?: () => void };
@@ -36,7 +36,7 @@ const Alert: FC<AlertProps> = ({
       return (
         <View style={styles.btnContainer}>
           {buttons.map(({ id, ...props }) => (
-            <RoundedButton
+            <FOSButton
               accessibilityLabel={props.title}
               buttonStyle={styles.roundedBtn}
               containerStyle={styles.roundedBtnContainer}

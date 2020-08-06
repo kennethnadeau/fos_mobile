@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import RoundedButton from "@fos/components/RoundedButton";
+import FOSButton from "@fos/components/Button";
 import TextInput from "@fos/components/TextInput";
 import { useTranslation } from "react-i18next";
 import { StyleSheet } from "react-native";
@@ -49,7 +49,7 @@ const EmailAddress: FC<EnterEmailAddressProps> = ({
         value={emailAddress}
       />
 
-      <RoundedButton
+      <FOSButton
         accessibilityLabel={nextText}
         accessible
         disabled={!emailAddress || loading}

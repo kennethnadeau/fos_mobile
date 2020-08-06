@@ -62,3 +62,6 @@ buck-out/
 .vscode/
 .npmrc
 .env
+
+# Code Coverage
+coverage/

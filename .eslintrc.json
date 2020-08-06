@@ -1,55 +1,53 @@
 {
-    "root": true,
-    "extends": [
-        "@react-native-community"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "plugins": [
-        "@typescript-eslint"
-    ],
-    "overrides": [
-        {
-            "files": [
-                "__mocks__/**/*"
-            ],
-            "env": {
-                "jest": true
-            }
-        }
-    ],
-    "rules": {
-        "prettier/prettier": [
-            "error",
-            {
-                "singleQuote": false,
-                "trailingComma": "all",
-                "bracketSpacing": true
-            }
-        ],
-        "react-native/no-unused-styles": "error",
-        "react-native/sort-styles": [
-            "error",
-            "asc"
-        ],
-        "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn",
-        "react/jsx-sort-props": [
-            "error",
-            {
-                "ignoreCase": true
-            }
-        ],
-        "no-console": "error",
-        "no-else-return": ["error", { "allowElseIf": false }],
-        "no-unused-vars": "error",
-        "object-curly-spacing": [2, "always"],
-        "prefer-object-spread": "error",
-        "quotes": [2, "double"],
-        "semi": [2, "always"],
-        "space-before-function-paren": ["error", {
-            "anonymous": "always",
-            "named": "never",
-            "asyncArrow": "always"
-        }]
-    }
+  "root": true,
+  "extends": "@react-native-community",
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+      "@typescript-eslint"
+  ],
+  "overrides": [
+      {
+          "files": [
+              "__mocks__/**/*"
+          ],
+          "env": {
+              "jest": true
+          }
+      }
+  ],
+  "rules": {
+      "prettier/prettier": [
+          "error",
+          {
+              "singleQuote": false,
+              "trailingComma": "all",
+              "bracketSpacing": true
+          }
+      ],
+      "react-native/no-unused-styles": "error",
+      "react-native/sort-styles": [
+          "error",
+          "asc"
+      ],
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "react/jsx-sort-props": [
+          "error",
+          {
+              "ignoreCase": true
+          }
+      ],
+      "no-console": "error",
+      "no-else-return": ["error", { "allowElseIf": false }],
+      "no-unused-vars": "error",
+      "object-curly-spacing": [2, "always"],
+      "prefer-object-spread": "error",
+      "quotes": [2, "double"],
+      "semi": [2, "always"],
+      "space-before-function-paren": ["error", {
+          "anonymous": "always",
+          "named": "never",
+          "asyncArrow": "always"
+      }]
+  }
 }

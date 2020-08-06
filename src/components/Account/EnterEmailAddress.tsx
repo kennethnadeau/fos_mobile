@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import FOSButton from "@fos/components/Button/FOSButton";
-import TextInput from "@fos/components/TextInput/TextInput";
+import FOSButton from "@fos/components/Button";
+import TextInput from "@fos/components/TextInput";
 import { useTranslation } from "react-i18next";
 import { StyleSheet } from "react-native";
 import { s, vs } from "react-native-size-matters";

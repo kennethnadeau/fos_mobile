@@ -10,37 +10,28 @@ import Toast from "components/Toast/index.ts";
 import { SCREENS } from "@fos/constants";
 import {
   setPaginationDotsLength,
-  updatePaginationActiveDotIndex,
+  // updatePaginationActiveDotIndex,
 } from "@fos/redux/slices/navigationSlice";
 import { apiService } from "@fos/shared";
 import OTPInputView from "@twotalltotems/react-native-otp-input";
 import { goToWelcomeScreen } from "helpers/navigation";
 import { useTranslation } from "react-i18next";
-import { ActivityIndicator, Dimensions, StyleSheet } from "react-native";
+import { ActivityIndicator, StyleSheet } from "react-native";
 import { Overlay } from "react-native-elements";
 import { ScreenFC } from "react-native-navigation-register-screens";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { vs } from "react-native-size-matters";
 import Carousel from "react-native-snap-carousel";
 import { useDispatch } from "react-redux";
+import CarouselItems from "./CarouselItems";
+
 const { account, otp } = apiService;
 
 type CarouselItem = "requestCode" | "verifyCode" | "emailAddress" | "name";
 
-const carouselItems: Array<CarouselItem> = [
-  "requestCode",
-  "verifyCode",
-  "emailAddress",
-  "name",
-];
-
 type OTPScreenProps = {
   login?: boolean;
 };
-
-const { width: viewportWidth, height: viewportHeight } = Dimensions.get(
-  "window",
-);
 
 const OTPScreen: ScreenFC<OTPScreenProps> = ({ login }) => {
   const { t } = useTranslation("screens");
@@ -110,13 +101,6 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({ login }) => {
   };
 
   const handleOtpCodeResend = () => setShowResendAlert(true);
-
-  const handleOnSnapToItem = (slideIndex: number) => {
-    if (slideIndex === 1) {
-      otpCodeInputRef.current?.focusField(0);
-    }
-    dispatch(updatePaginationActiveDotIndex(slideIndex));
-  };
 
   const handleOtpCodeVerification = async (code: string) => {
     setShowSpinner(true);
@@ -258,18 +242,11 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({ login }) => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <Carousel
-        data={login ? carouselItems.slice(0, 2) : carouselItems}
-        itemHeight={viewportHeight}
-        itemWidth={viewportWidth}
-        keyboardShouldPersistTaps="always"
-        lockScrollWhileSnapping
-        onSnapToItem={handleOnSnapToItem}
-        ref={carouselRef}
-        removeClippedSubviews
-        renderItem={renderSlides}
-        scrollEnabled={false}
-        sliderWidth={viewportWidth}
+      <CarouselItems
+        carouselRef={carouselRef}
+        login={login}
+        otpCodeInputRef={otpCodeInputRef}
+        renderSlides={renderSlides}
       />
       <Overlay isVisible={showSpinner}>
         <ActivityIndicator />

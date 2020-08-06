@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import RoundedButton from "@fos/components/RoundedButton";
+import FOSButton from "components/Button/FOSButton";
 import TextInput from "@fos/components/TextInput";
 import { useTranslation, Trans } from "react-i18next";
 import { StyleSheet, View, Keyboard } from "react-native";
@@ -70,7 +70,7 @@ const RequestOtpCode: FC<RequestCodeProps> = ({
           value={mobileNumber}
         />
       </View>
-      <RoundedButton
+      <FOSButton
         accessibilityLabel={requestCodeText}
         accessible
         containerStyle={styles.btnRequestCode}

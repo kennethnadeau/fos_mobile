@@ -1,11 +1,11 @@
-import React, {FC} from 'react';
-import {View, StyleSheet, StyleProp, ViewStyle} from 'react-native';
-import {Text, Overlay} from 'react-native-elements';
-import {s, vs} from 'react-native-size-matters';
-import {Colors} from '@fos/themes';
-import RoundedButton from '../RoundedButton';
+import React, { FC } from "react";
+import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import { Text, Overlay } from "react-native-elements";
+import { s, vs } from "react-native-size-matters";
+import { Colors } from "@fos/themes";
+import RoundedButton from "../RoundedButton";
 
-export type AlertButton = {id: string; title: string; onPress?: () => void};
+export type AlertButton = { id: string; title: string; onPress?: () => void };
 
 export type AlertProps = {
   header: string;
@@ -31,10 +31,11 @@ const Alert: FC<AlertProps> = ({
   const internalButtonRendering = () => {
     if (renderButtons && !buttons?.length) {
       return renderButtons();
-    } else if (!renderButtons && buttons?.length) {
+    }
+    if (!renderButtons && buttons?.length) {
       return (
         <View style={styles.btnContainer}>
-          {buttons.map(({id, ...props}) => (
+          {buttons.map(({ id, ...props }) => (
             <RoundedButton
               accessibilityLabel={props.title}
               buttonStyle={styles.roundedBtn}
@@ -46,9 +47,8 @@ const Alert: FC<AlertProps> = ({
           ))}
         </View>
       );
-    } else {
-      return null;
     }
+    return null;
   };
 
   return (
@@ -57,7 +57,7 @@ const Alert: FC<AlertProps> = ({
       isVisible={isVisible}
       overlayStyle={[
         styles.overlay,
-        {height: s(height), width: s(width)},
+        { height: s(height), width: s(width) },
         overlayStyle,
       ]}>
       <View style={styles.container}>
@@ -72,22 +72,22 @@ const Alert: FC<AlertProps> = ({
 const styles = StyleSheet.create({
   body: {
     fontSize: s(16),
-    textAlign: 'center',
+    textAlign: "center",
   },
   btnContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    width: '100%',
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    width: "100%",
   },
   container: {
-    alignItems: 'center',
+    alignItems: "center",
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     padding: s(2),
   },
   header: {
     fontSize: s(20),
-    fontWeight: '700',
+    fontWeight: "700",
   },
   overlay: {
     backgroundColor: Colors.secondary,
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     paddingVertical: vs(30),
   },
   roundedBtn: {
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
     borderRadius: s(40),
     height: s(40),
   },

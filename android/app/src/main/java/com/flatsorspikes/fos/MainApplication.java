@@ -1,4 +1,4 @@
-package com.flatsorspikes;
+package com.flatsorspikes.fos;
 
 import android.app.Application;
 import android.content.Context;

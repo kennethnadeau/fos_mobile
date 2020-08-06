@@ -1,4 +1,4 @@
-package com.flatsorspikes;
+package com.flatsorspikes.fos;
 
 import android.os.Bundle;
 import com.reactnativenavigation.NavigationActivity;

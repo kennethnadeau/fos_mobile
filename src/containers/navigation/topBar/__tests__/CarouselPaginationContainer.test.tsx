@@ -11,7 +11,10 @@ describe("<CarouselPaginationContainer />", () => {
     );
   });
 
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip("should match snapshot", () =>
-    expect(carouselPaginationContainer.toJSON()).toMatchSnapshot());
+  it("should show pagination with the correct state", () => {
+    const actual = carouselPaginationContainer.queryByA11yLabel(
+      "Carousel Pagination",
+    );
+    expect(actual).not.toBeNull();
+  });
 });

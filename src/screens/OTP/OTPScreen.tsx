@@ -1,28 +1,28 @@
-import React, { useState, useRef, useCallback } from "react";
-import { StyleSheet, Dimensions, Alert, ActivityIndicator } from "react-native";
-import { Overlay } from "react-native-elements";
-import { ScreenFC } from "react-native-navigation-register-screens";
-import { SCREENS } from "@fos/constants";
-import { SafeAreaView } from "react-native-safe-area-context";
-import Carousel from "react-native-snap-carousel";
-import { useDispatch } from "react-redux";
-import {
-  updatePaginationActiveDotIndex,
-  setPaginationDotsLength,
-} from "redux/slices/navigationSlice";
+import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
+import Alert from "@fos/components/Alert";
+import EnterEmailAddress from "@fos/components/carouselItems/EnterEmailAddress";
+import Name from "@fos/components/carouselItems/EnterName";
 import RequestOtpCode from "@fos/components/carouselItems/RequestOtpCode";
 import VerifyOtpCode, {
   VerificationCodeStatus,
 } from "@fos/components/carouselItems/VerifyOtpCode";
-import EnterEmailAddress from "@fos/components/carouselItems/EnterEmailAddress";
-import Name from "@fos/components/carouselItems/EnterName";
-import { apiService } from "@fos/shared";
+import Toast from "@fos/components/Toast";
+import { SCREENS } from "@fos/constants";
 import {
-  useNavigationComponentDidAppear,
-  useNavigationComponentDidDisappear,
-} from "react-native-navigation-hooks/dist";
+  setPaginationDotsLength,
+  updatePaginationActiveDotIndex,
+} from "@fos/redux/slices/navigationSlice";
+import { apiService } from "@fos/shared";
 import OTPInputView from "@twotalltotems/react-native-otp-input";
 import { goToWelcomeScreen } from "helpers/navigation";
+import { useTranslation } from "react-i18next";
+import { ActivityIndicator, Dimensions, StyleSheet } from "react-native";
+import { Overlay } from "react-native-elements";
+import { ScreenFC } from "react-native-navigation-register-screens";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { vs } from "react-native-size-matters";
+import Carousel from "react-native-snap-carousel";
+import { useDispatch } from "react-redux";
 const { auth } = apiService;
 
 type CarouselItem = "requestCode" | "verifyCode" | "emailAddress" | "name";
@@ -42,7 +42,8 @@ const { width: viewportWidth, height: viewportHeight } = Dimensions.get(
   "window",
 );
 
-const OTPScreen: ScreenFC<OTPScreenProps> = ({ componentId, login }) => {
+const OTPScreen: ScreenFC<OTPScreenProps> = ({ login }) => {
+  const { t } = useTranslation("screens");
   const dispatch = useDispatch();
 
   const carouselRef = useRef<Carousel<CarouselItem>>(null);
@@ -64,10 +65,18 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({ componentId, login }) => {
 
   const [showSpinner, setShowSpinner] = useState(false);
 
+  const [toastMessage, setToastMessage] = useState("");
+  const [showResendAlert, setShowResendAlert] = useState(false);
+  const [showInvalidCodeAlert, setShowInvalidCodeAlert] = useState(false);
+
   const clearMobileNumber = () => setMobileNumber("");
   const clearEmailAddress = () => setEmailAddress("");
   const clearFirstName = () => setFirstName("");
   const clearLastName = () => setLastName("");
+
+  useLayoutEffect(() => {
+    dispatch(setPaginationDotsLength(login ? 2 : 4));
+  }, [dispatch, login]);
 
   const goToNextStep = () => {
     carouselRef.current?.snapToNext();
@@ -94,32 +103,13 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({ componentId, login }) => {
       setOtpRequestStatus("sent");
       goToNextStep();
     } catch (e) {
-      Alert.alert("Whoops!", "Something went wrong!");
+      setToastMessage("Whoops! Something went wrong!");
     } finally {
       setOtpRequestStatus("idle");
     }
   };
 
-  const handleOtpCodeResend = () => {
-    Alert.alert("Resend Code", "Are you sure?", [
-      {
-        text: "NO",
-      },
-      {
-        text: "YES",
-        onPress: async () => {
-          setShowSpinner(true);
-          // TODO: add error-handling
-          try {
-            await sendOtpCode();
-            Alert.alert("Success", "Code resent!");
-          } finally {
-            setShowSpinner(false);
-          }
-        },
-      },
-    ]);
-  };
+  const handleOtpCodeResend = () => setShowResendAlert(true);
 
   const handleOnSnapToItem = (slideIndex: number) => {
     if (slideIndex === 1) {
@@ -142,14 +132,13 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({ componentId, login }) => {
           data: otpVerificationResponse,
         } = await auth.postOtpAuthenticateVerify(requestData);
         const { data: userInfo } = await auth.getUserInfo(
-          // @ts-ignore
           otpVerificationResponse.token,
         );
 
         setOtpCodeVerificationStatus("verified");
-        // @ts-ignore
         goToWelcomeScreen(`${userInfo.firstName} ${userInfo.lastName}`);
       } catch (error) {
+        setShowInvalidCodeAlert(true);
         setOtpCodeVerificationStatus("invalid");
       } finally {
         setShowSpinner(false);
@@ -161,6 +150,7 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({ componentId, login }) => {
         setOtpCodeVerificationStatus("verified");
         goToNextStep();
       } catch (e) {
+        setShowInvalidCodeAlert(true);
         setOtpCodeVerificationStatus("invalid");
       } finally {
         setShowSpinner(false);
@@ -179,7 +169,7 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({ componentId, login }) => {
         registrationUuid,
       });
     } catch (e) {
-      Alert.alert("Whoops!", "Something went wrong.");
+      setToastMessage("Whoops! Something went wrong.");
     } finally {
       setShowSpinner(false);
     }
@@ -227,18 +217,44 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({ componentId, login }) => {
     ),
   };
 
-  useNavigationComponentDidAppear(
-    () => dispatch(setPaginationDotsLength(login ? 2 : 4)),
-    componentId,
-  );
+  const resendCodeAlertButtons = [
+    {
+      id: "no",
+      title: t("NO"),
+      onPress: () => setShowResendAlert(false),
+    },
+    {
+      id: "yes",
+      title: t("YES"),
+      onPress: async () => {
+        setShowSpinner(true);
+        setShowResendAlert(false);
 
-  useNavigationComponentDidDisappear(
-    () => dispatch(setPaginationDotsLength(0)),
-    componentId,
-  );
+        try {
+          await sendOtpCode();
+          setToastMessage(t("Code Resent"));
+        } catch {
+          setToastMessage(t("Code Resend Failed"));
+        } finally {
+          setShowSpinner(false);
+        }
+      },
+    },
+  ];
 
   const renderSlides = ({ item }: { item: CarouselItem }) =>
     carouselItemMap[item];
+
+  const invalidCodeAlertButtons = [
+    {
+      id: "try-again",
+      title: t("Try Again"),
+      onPress: () => {
+        setOtpCodeVerificationStatus("unverified");
+        setShowInvalidCodeAlert(false);
+      },
+    },
+  ];
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -258,6 +274,19 @@ const OTPScreen: ScreenFC<OTPScreenProps> = ({ componentId, login }) => {
       <Overlay isVisible={showSpinner}>
         <ActivityIndicator />
       </Overlay>
+      <Toast isVisible={!!toastMessage} message={toastMessage} />
+      <Alert
+        body={t("Are you sure?")}
+        buttons={resendCodeAlertButtons}
+        header={t("Resend Code")}
+        isVisible={showResendAlert}
+      />
+      <Alert
+        buttons={invalidCodeAlertButtons}
+        header={t("Invalid Code")}
+        height={vs(120)}
+        isVisible={showInvalidCodeAlert}
+      />
     </SafeAreaView>
   );
 };

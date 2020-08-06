@@ -1,6 +1,8 @@
 {
     "root": true,
-    "extends": "@react-native-community",
+    "extends": [
+        "@react-native-community"
+    ],
     "parser": "@typescript-eslint/parser",
     "plugins": [
         "@typescript-eslint"
@@ -37,8 +39,9 @@
                 "ignoreCase": true
             }
         ],
-        "no-unused-vars": "error",
         "no-console": "error",
+        "no-else-return": ["error", { "allowElseIf": false }],
+        "no-unused-vars": "error",
         "object-curly-spacing": [2, "always"],
         "prefer-object-spread": "error",
         "quotes": [2, "double"],

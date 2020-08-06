@@ -1,5 +1,5 @@
 import React from "react";
-import Toast, { ToastProps } from "../Toast";
+import Toast, { ToastProps } from "./Toast";
 import { render, RenderAPI } from "@fos/utils/testing";
 
 describe("<Toast />", () => {

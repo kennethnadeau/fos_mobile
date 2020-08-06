@@ -15,7 +15,7 @@
     "postinstall": "npx patch-package"
   },
   "dependencies": {
-    "@fos/shared": "^0.1.5",
+    "@fos/shared": "^0.1.7",
     "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/clipboard": "^1.2.3",
     "@react-native-community/masked-view": "^0.1.10",

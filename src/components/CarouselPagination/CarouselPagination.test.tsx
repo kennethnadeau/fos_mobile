@@ -1,6 +1,6 @@
 import React from "react";
 import { render, RenderAPI } from "@fos/utils/testing";
-import { CarouselPagination } from "../CarouselPagination";
+import { CarouselPagination } from "./CarouselPagination";
 
 describe("<CarouselPagination />", () => {
   let carouselPagination: RenderAPI;

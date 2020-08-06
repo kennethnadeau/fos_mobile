@@ -1,9 +1,9 @@
 import React, { FC } from "react";
-import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import { View, StyleProp, ViewStyle } from "react-native";
 import { Text, Overlay } from "react-native-elements";
-import { s, vs } from "react-native-size-matters";
-import { Colors } from "@fos/themes";
+import { s } from "react-native-size-matters";
 import RoundedButton from "../RoundedButton";
+import { styles } from "./styles";
 
 export type AlertButton = { id: string; title: string; onPress?: () => void };
 
@@ -68,44 +68,5 @@ const Alert: FC<AlertProps> = ({
     </Overlay>
   );
 };
-
-const styles = StyleSheet.create({
-  body: {
-    fontSize: s(16),
-    textAlign: "center",
-  },
-  btnContainer: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    width: "100%",
-  },
-  container: {
-    alignItems: "center",
-    flex: 1,
-    justifyContent: "space-between",
-    padding: s(2),
-  },
-  header: {
-    fontSize: s(20),
-    fontWeight: "700",
-  },
-  overlay: {
-    backgroundColor: Colors.secondary,
-    borderRadius: s(12),
-    paddingVertical: vs(30),
-  },
-  roundedBtn: {
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
-    borderRadius: s(40),
-    height: s(40),
-  },
-  roundedBtnContainer: {
-    borderRadius: s(40),
-    width: s(100),
-  },
-  roundedBtnTitle: {
-    fontSize: s(16),
-  },
-});
 
 export default Alert;

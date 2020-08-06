@@ -1,6 +1,6 @@
 import React from "react";
 import { render, RenderAPI } from "@fos/utils/testing";
-import EnterName, { EnterNameProps } from "../EnterName";
+import EnterName, { EnterNameProps } from "./EnterName";
 
 describe("<Name />", () => {
   let name: RenderAPI;

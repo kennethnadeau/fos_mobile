@@ -1,6 +1,6 @@
 import React from "react";
-import RequestOtpCode, { RequestCodeProps } from "../RequestOtpCode";
 import { render, RenderAPI } from "@fos/utils/testing";
+import RequestOtpCode, { RequestCodeProps } from "./RequestOtpCode";
 
 describe("<RequestOtpCode />", () => {
   const props: RequestCodeProps = {

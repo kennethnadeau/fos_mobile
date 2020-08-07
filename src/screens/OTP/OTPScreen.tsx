@@ -1,5 +1,5 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
-import Alert from "@fos/components/Alert";
+import { Alert } from "@fos/components/Alert";
 import EnterEmailAddress from "@fos/components/Account/EnterEmailAddress";
 import Name from "@fos/components/Account/EnterName";
 import RequestOtpCode from "@fos/components/Account/RequestOtpCode";

@@ -1,13 +1,14 @@
-import { reducer as formReducer } from "redux-form";
 import { combineReducers } from "redux";
 
 import userReducer from "../slices/userSlice";
 import navigationReducer from "../slices/navigationSlice";
 
+import otpReducer from "./otpReducer";
+
 const rootReducer = combineReducers({
   user: userReducer,
   navigation: navigationReducer,
-  form: formReducer,
+  otp: otpReducer,
 });
 
 export default rootReducer;

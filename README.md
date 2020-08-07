@@ -24,6 +24,11 @@ The easiest way to install Xcode is via the Mac App Store. Installing Xcode will
 
 If you have already installed Xcode on your system, make sure it is version 9.4 or newer.
 
+### Android Studio
+
+Install Android Studio and set up a device:
+From the homescreen, click Configure > AVD. Follow the steps on the screen.
+
 #### Command Line Tools
 
 You will also need to install the Xcode Command Line Tools. Open Xcode, then choose "Preferences..." from the Xcode menu. Go to the Locations panel and install the tools by selecting the most recent version in the Command Line Tools dropdown.
@@ -51,6 +56,7 @@ Run the following commands in separate Terminal windows at root of source direct
 ```sh
 $ yarn start
 $ yarn ios
+$ yarn android
 ```
 
 ## File Generator
@@ -75,3 +81,23 @@ If the simulator has errors, but the build works:
 - delete and reinstall node_modules
 - yarn start --reset-cache
 - delete the Derived Data folder in XCode
+
+If "yarn android" builds with errors:
+- make sure you have SDK 28
+
+1. File /Users/<your_name>/.android/repositories.cfg could not be loaded.
+- make sure you have a device set up in Android Studio
+
+2. Failed to install the following Android SDK packages as some licences have not been accepted.
+- In Android Studio, go to Configure > SDK. In the left panel, Appearance & Behavior > System Settings > Android SDK. Check Show Package Details. Check Android 9.0 (Pie), Android SDK Platform 28, Sources for Android 28, Google Play Intel x86 Atom System Image. Click OK, accept the agreement.
+- In the SDK Tools tab, install: Android SDK Build-Tools, Android Emulator, Android SDK Platform-Tools, Android SDK Tools, Intel x86 Emulator Accelerator (HAXM installer)
+
+3. com.android.builder.testing.api.DeviceException: No connected devices!
+- Go to Configure > AVD, click the Play button to launch the emulator.
+- In terminal, run: `yarn android`
+
+4. error Failed to launch emulator. Reason: No emulators found as an output of `emulator -list-avds`.
+- Find the path where the SDK platform tools were installed. Then run (e.g.):
+```sh
+$ echo 'export PATH="/Users/<your_name>/Library/Android/sdk/platform-tools:/Users/<your_name>/Library/Android/sdk/tools:$PATH"' >> ~/.bash_profile && source ~/.bash_profile
+```

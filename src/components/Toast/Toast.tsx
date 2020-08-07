@@ -11,7 +11,7 @@ export type ToastProps = ViewProps & {
   delay?: number;
 };
 
-const Toast: FC<ToastProps> = ({
+export const Toast: FC<ToastProps> = ({
   message,
   isVisible = false,
   delay = 2000,
@@ -51,5 +51,3 @@ const styles = StyleSheet.create({
   },
   message: { fontSize: s(16), fontWeight: "900" },
 });
-
-export default Toast;

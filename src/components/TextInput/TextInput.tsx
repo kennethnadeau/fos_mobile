@@ -7,7 +7,7 @@ export type TextInputProps = InputProps & {
   onClear?: () => void;
 };
 
-const TextInput: FC<TextInputProps> = ({
+export const TextInput: FC<TextInputProps> = ({
   value,
   hideClearIcon = false,
   onClear,
@@ -30,5 +30,3 @@ const TextInput: FC<TextInputProps> = ({
     />
   );
 };
-
-export default TextInput;

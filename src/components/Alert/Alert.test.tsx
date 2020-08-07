@@ -1,6 +1,6 @@
 import React from "react";
 import { render, RenderAPI } from "@fos/utils/testing";
-import Alert, { AlertProps } from "./Alert";
+import { Alert, AlertProps } from "./Alert";
 import { Button } from "react-native-elements";
 
 describe("<Alert />", () => {

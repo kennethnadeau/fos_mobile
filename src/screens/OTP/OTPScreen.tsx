@@ -14,7 +14,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { vs } from "react-native-size-matters";
 import Carousel from "react-native-snap-carousel";
 import { useDispatch } from "react-redux";
-import { setOtpCodeVerificationStatus } from "@fos/redux/reducers/otpReducer";
+import {
+  clearOtpForm,
+  setOtpCodeVerificationStatus,
+} from "@fos/redux/reducers/otpReducer";
 
 import { CarouselItems } from "./CarouselItems";
 import EnterEmailAddressContainer from "./EnterEmailAddressContainer";
@@ -48,6 +51,7 @@ const OTPScreen: ScreenFC<OTPScreenProps> = (props: any) => {
   const [showInvalidCodeAlert, setShowInvalidCodeAlert] = useState(false);
 
   useLayoutEffect(() => {
+    dispatch(clearOtpForm());
     dispatch(setPaginationDotsLength(login ? 2 : 4));
   }, [dispatch, login]);
 

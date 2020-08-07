@@ -73,11 +73,11 @@ const VerifyOtpCodeContainer: FC<VerifyOtpCodeContainerProps> = (props) => {
         const { data: userInfo } = await account.getUserInfo(
           otpVerificationResponse.token,
         );
-        setOtpCodeVerificationStatus("verified");
+        dispatch(setOtpCodeVerificationStatus("verified"));
         goToWelcomeScreen(`${userInfo.firstName} ${userInfo.lastName}`);
       } catch (error) {
         setShowInvalidCodeAlert(true);
-        setOtpCodeVerificationStatus("invalid");
+        dispatch(setOtpCodeVerificationStatus("invalid"));
       } finally {
         setShowSpinner(false);
       }
@@ -85,11 +85,11 @@ const VerifyOtpCodeContainer: FC<VerifyOtpCodeContainerProps> = (props) => {
       try {
         const { data } = await otp.postOtpRegistrationVerify(requestData);
         dispatch(setRegistrationUuid(data.uuid));
-        setOtpCodeVerificationStatus("verified");
+        dispatch(setOtpCodeVerificationStatus("verified"));
         goToNextStep();
       } catch (e) {
         setShowInvalidCodeAlert(true);
-        setOtpCodeVerificationStatus("invalid");
+        dispatch(setOtpCodeVerificationStatus("invalid"));
       } finally {
         setShowSpinner(false);
       }

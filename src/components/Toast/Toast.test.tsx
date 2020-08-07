@@ -5,8 +5,7 @@ import { render, RenderAPI } from "@fos/utils/testing";
 describe("<Toast />", () => {
   let toast: RenderAPI;
   const toastProps: ToastProps = {
-    message: "Lorem Ipsum",
-    isVisible: true,
+    toastMessage: "Lorem Ipsum",
   };
 
   beforeEach(() => {
@@ -14,14 +13,14 @@ describe("<Toast />", () => {
   });
 
   it("should show message", () => {
-    const actual = toast.queryByText(toastProps.message);
+    const actual = toast.queryByText(toastProps.toastMessage);
 
     expect(actual).not.toBeNull();
   });
 
   it("should be possible to hide", () => {
     toast.rerender(
-      <Toast {...toastProps} accessibilityLabel="Toast" isVisible={false} />,
+      <Toast {...toastProps} accessibilityLabel="Toast" toastMessage="" />,
     );
     const actual = toast.queryByA11yLabel("Toast");
 

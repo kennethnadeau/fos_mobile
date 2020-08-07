@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { useDispatch, connect } from "react-redux";
 
 import EnterEmailAddress from "@fos/components/Account/EnterEmailAddress";
-import { setEmailAddress } from "@fos/redux/reducers/otpReducer";
+import { setEmailAddress } from "redux/reducers/otpReducer";
 
 type EnterEmailAddressContainerProps = {
   emailAddress: string;

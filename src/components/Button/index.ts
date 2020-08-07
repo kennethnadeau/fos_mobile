@@ -1,1 +1,1 @@
-export { default } from "./FOSButton";
+export * from "./FOSButton";

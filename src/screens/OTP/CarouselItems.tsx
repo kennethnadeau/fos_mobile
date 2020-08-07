@@ -26,7 +26,7 @@ const { width: viewportWidth, height: viewportHeight } = Dimensions.get(
   "window",
 );
 
-const CarouselItems = (props: CarouselItemProps) => {
+export const CarouselItems = (props: CarouselItemProps) => {
   const { login, carouselRef, otpCodeInputRef, renderSlides } = props;
   const dispatch = useDispatch();
 
@@ -53,5 +53,3 @@ const CarouselItems = (props: CarouselItemProps) => {
     />
   );
 };
-
-export default CarouselItems;

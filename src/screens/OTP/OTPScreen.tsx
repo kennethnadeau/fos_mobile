@@ -6,12 +6,9 @@ import RequestOtpCode from "@fos/components/Account/RequestOtpCode";
 import VerifyOtpCode, {
   VerificationCodeStatus,
 } from "@fos/components/Account/VerifyOtpCode";
-import Toast from "components/Toast/index.ts";
+import { Toast } from "@fos/components/Toast";
 import { SCREENS } from "@fos/constants";
-import {
-  setPaginationDotsLength,
-  // updatePaginationActiveDotIndex,
-} from "@fos/redux/slices/navigationSlice";
+import { setPaginationDotsLength } from "@fos/redux/slices/navigationSlice";
 import { apiService } from "@fos/shared";
 import OTPInputView from "@twotalltotems/react-native-otp-input";
 import { goToWelcomeScreen } from "helpers/navigation";
@@ -23,7 +20,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { vs } from "react-native-size-matters";
 import Carousel from "react-native-snap-carousel";
 import { useDispatch } from "react-redux";
-import CarouselItems from "./CarouselItems";
+
+import { CarouselItems } from "./CarouselItems";
 
 const { account, otp } = apiService;
 

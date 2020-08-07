@@ -1,9 +1,10 @@
 import React, { FC } from "react";
-import FOSButton from "@fos/components/Button";
-import TextInput from "@fos/components/TextInput";
 import { useTranslation } from "react-i18next";
 import { StyleSheet } from "react-native";
 import { s, vs } from "react-native-size-matters";
+
+import { FOSButton } from "../Button";
+import { TextInput } from "../TextInput";
 import CarouselItemContainer from "./CarouselItemContainer";
 import FooterText from "./FooterText";
 

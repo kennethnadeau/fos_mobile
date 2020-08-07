@@ -2,7 +2,8 @@ import React, { FC } from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
 import { Text, Overlay } from "react-native-elements";
 import { s } from "react-native-size-matters";
-import FOSButton from "../Button/FOSButton";
+
+import { FOSButton } from "../Button";
 import { styles } from "./styles";
 
 export type AlertButton = { id: string; title: string; onPress?: () => void };
@@ -18,7 +19,7 @@ export type AlertProps = {
   overlayStyle?: StyleProp<ViewStyle>;
 };
 
-const Alert: FC<AlertProps> = ({
+export const Alert: FC<AlertProps> = ({
   header,
   body,
   renderButtons,
@@ -68,5 +69,3 @@ const Alert: FC<AlertProps> = ({
     </Overlay>
   );
 };
-
-export default Alert;

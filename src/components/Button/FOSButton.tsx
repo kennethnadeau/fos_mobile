@@ -29,7 +29,7 @@ const heightMap: SizeMap = {
   large: s(50),
 };
 
-const FOSButton = ({
+export const FOSButton = ({
   buttonStyle,
   titleStyle,
   containerStyle,
@@ -55,5 +55,3 @@ const defaultStyles = StyleSheet.create({
     width: "100%",
   },
 });
-
-export default FOSButton;

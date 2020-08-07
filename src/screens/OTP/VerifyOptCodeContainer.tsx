@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from "react";
+import React, { FC } from "react";
 import { useDispatch, connect } from "react-redux";
 import OTPInputView from "@twotalltotems/react-native-otp-input";
 
@@ -10,7 +10,7 @@ import {
   setOtpCode,
   setOtpCodeVerificationStatus,
   setRegistrationUuid,
-} from "@fos/redux/slices/otpSlice";
+} from "@fos/redux/reducers/otpReducer";
 
 import { goToWelcomeScreen } from "helpers/navigation";
 
@@ -24,6 +24,7 @@ type VerifyOtpCodeContainerProps = {
     otpCodeVerificationStatus: VerificationCodeStatus;
   };
   otpCodeInputRef: React.MutableRefObject<OTPInputView | null>;
+  formatPhoneNumber: () => string;
   goToNextStep: () => void;
   setShowInvalidCodeAlert: (show: boolean) => void;
   setShowResendAlert: (show: boolean) => void;
@@ -32,11 +33,11 @@ type VerifyOtpCodeContainerProps = {
 };
 
 const VerifyOtpCodeContainer: FC<VerifyOtpCodeContainerProps> = (props) => {
-  console.log("VER OPT CODE CONTAINER", props);
   const {
     login,
     otpForm,
     otpCodeInputRef,
+    formatPhoneNumber,
     goToNextStep,
     setShowInvalidCodeAlert,
     setShowSpinner,
@@ -53,11 +54,6 @@ const VerifyOtpCodeContainer: FC<VerifyOtpCodeContainerProps> = (props) => {
   const codeChange = (code: string) => {
     dispatch(setOtpCode(code));
   };
-  // TODO: abstract
-  const formatPhoneNumber = useCallback(
-    () => `${countryCode.replace("+", "")}${mobileNumber}`,
-    [countryCode, mobileNumber],
-  );
 
   const handleOtpCodeResend = () => setShowResendAlert(true);
 
@@ -77,7 +73,6 @@ const VerifyOtpCodeContainer: FC<VerifyOtpCodeContainerProps> = (props) => {
         const { data: userInfo } = await account.getUserInfo(
           otpVerificationResponse.token,
         );
-
         setOtpCodeVerificationStatus("verified");
         goToWelcomeScreen(`${userInfo.firstName} ${userInfo.lastName}`);
       } catch (error) {

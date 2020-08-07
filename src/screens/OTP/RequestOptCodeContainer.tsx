@@ -2,16 +2,27 @@ import React, { FC, useState } from "react";
 import { useDispatch, connect } from "react-redux";
 
 import RequestOtpCode from "@fos/components/Account/RequestOtpCode";
-import { setCountryCode, setMobileNumber } from "@fos/redux/slices/otpSlice";
+import {
+  setCountryCode,
+  setMobileNumber,
+} from "@fos/redux/reducers/otpReducer";
 
 type RequestOtpCodeContainerProps = {
-  countryCode: string,
+  countryCode: string;
   mobileNumber: string;
+  goToNextStep: () => void;
+  sendOtpCode: () => void;
+  setToastMessage: (message: string) => void;
 };
 
 const RequestOtpCodeContainer: FC<RequestOtpCodeContainerProps> = (props) => {
-  console.log('REQ CONTAINER', props)
-  const { countryCode, mobileNumber } = props;
+  const {
+    countryCode,
+    mobileNumber,
+    sendOtpCode,
+    goToNextStep,
+    setToastMessage,
+  } = props;
   const dispatch = useDispatch();
 
   const [otpRequestStatus, setOtpRequestStatus] = useState<
@@ -30,15 +41,15 @@ const RequestOtpCodeContainer: FC<RequestOtpCodeContainerProps> = (props) => {
 
   const handleOtpCodeRequest = async () => {
     setOtpRequestStatus("sending");
-    // try {
-    //   await sendOtpCode();
-    //   setOtpRequestStatus("sent");
-    //   goToNextStep();
-    // } catch (e) {
-    //   setToastMessage("Whoops! Something went wrong!");
-    // } finally {
-    //   setOtpRequestStatus("idle");
-    // }
+    try {
+      await sendOtpCode();
+      setOtpRequestStatus("sent");
+      goToNextStep();
+    } catch (e) {
+      setToastMessage("Whoops! Something went wrong!");
+    } finally {
+      setOtpRequestStatus("idle");
+    }
   };
 
   return (

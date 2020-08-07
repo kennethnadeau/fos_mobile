@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
 
-import otpReducer from "../slices/otpSlice";
 import userReducer from "../slices/userSlice";
 import navigationReducer from "../slices/navigationSlice";
+
+import otpReducer from "./otpReducer";
 
 const rootReducer = combineReducers({
   user: userReducer,

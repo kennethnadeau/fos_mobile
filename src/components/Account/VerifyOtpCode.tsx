@@ -41,6 +41,7 @@ const VerifyOtpCode = forwardRef<OTPInputView, VerifyCodeProps>(
       verified: { ...styles.codeInputField, ...styles.verified },
     };
 
+    console.log('STATUS', verificationStatus)
     return (
       <CarouselItemContainer
         containerProps={{

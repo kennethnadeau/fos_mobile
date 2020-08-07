@@ -1,32 +1,36 @@
 import React, { FC, useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
 import { StyleSheet, ViewProps, View } from "react-native";
 import { Text } from "react-native-elements";
 import { vs, s } from "react-native-size-matters";
-import { Colors } from "@fos/themes";
 import * as Animatable from "react-native-animatable";
 
+import { Colors } from "@fos/themes";
+import { setToastMessage } from "@fos/redux/slices/toastSlice";
+
 export type ToastProps = ViewProps & {
-  message: string;
-  isVisible?: boolean;
+  toastMessage: string;
   delay?: number;
 };
 
 export const Toast: FC<ToastProps> = ({
-  message,
-  isVisible = false,
+  toastMessage,
   delay = 2000,
   ...viewProps
 }) => {
   const animatableView = useRef<Animatable.View & View>(null);
+  const dispatch = useDispatch();
+  const isVisible = !!toastMessage;
 
   useEffect(() => {
     if (isVisible) {
       setTimeout(() => {
         // @ts-ignore
         animatableView.current?.bounceOutUp();
+        dispatch(setToastMessage(""));
       }, delay);
     }
-  }, [delay, isVisible]);
+  }, [delay, isVisible, dispatch]);
 
   return isVisible ? (
     <Animatable.View
@@ -36,7 +40,7 @@ export const Toast: FC<ToastProps> = ({
       style={styles.container}
       useNativeDriver
       {...viewProps}>
-      <Text style={styles.message}>{message}</Text>
+      <Text style={styles.message}>{toastMessage}</Text>
     </Animatable.View>
   ) : null;
 };

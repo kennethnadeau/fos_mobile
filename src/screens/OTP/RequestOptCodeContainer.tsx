@@ -1,28 +1,19 @@
 import React, { FC, useState } from "react";
 import { useDispatch, connect } from "react-redux";
 
+import { setToastMessage } from "@fos/redux/slices/toastSlice";
 import RequestOtpCode from "@fos/components/Account/RequestOtpCode";
-import {
-  setCountryCode,
-  setMobileNumber,
-} from "@fos/redux/reducers/otpReducer";
+import { setCountryCode, setMobileNumber } from "redux/reducers/otpReducer";
 
 type RequestOtpCodeContainerProps = {
   countryCode: string;
   mobileNumber: string;
   goToNextStep: () => void;
   sendOtpCode: () => void;
-  setToastMessage: (message: string) => void;
 };
 
 const RequestOtpCodeContainer: FC<RequestOtpCodeContainerProps> = (props) => {
-  const {
-    countryCode,
-    mobileNumber,
-    sendOtpCode,
-    goToNextStep,
-    setToastMessage,
-  } = props;
+  const { countryCode, mobileNumber, sendOtpCode, goToNextStep } = props;
   const dispatch = useDispatch();
 
   const [otpRequestStatus, setOtpRequestStatus] = useState<
@@ -46,7 +37,7 @@ const RequestOtpCodeContainer: FC<RequestOtpCodeContainerProps> = (props) => {
       setOtpRequestStatus("sent");
       goToNextStep();
     } catch (e) {
-      setToastMessage("Whoops! Something went wrong!");
+      dispatch(setToastMessage("Whoops! Something went wrong!"));
     } finally {
       setOtpRequestStatus("idle");
     }

@@ -1,7 +1,8 @@
 import React, { FC, useState } from "react";
-import { connect } from "react-redux";
+import { useDispatch, connect } from "react-redux";
 
 import { apiService } from "@fos/shared";
+import { setToastMessage } from "@fos/redux/slices/toastSlice";
 
 import Name from "@fos/components/Account/EnterName";
 import { goToWelcomeScreen } from "helpers/navigation";
@@ -16,11 +17,12 @@ type NameContainerProps = {
   };
   formatPhoneNumber: () => string;
   setShowSpinner: (show: boolean) => void;
-  setToastMessage: (message: string) => void;
 };
 
 const NameContainer: FC<NameContainerProps> = (props) => {
-  const { otp, formatPhoneNumber, setShowSpinner, setToastMessage } = props;
+  const { otp, formatPhoneNumber, setShowSpinner } = props;
+  const dispatch = useDispatch();
+
   const { emailAddress, registrationUuid } = otp;
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -39,7 +41,7 @@ const NameContainer: FC<NameContainerProps> = (props) => {
       });
       goToWelcomeScreen(`${firstName} ${lastName}`);
     } catch (e) {
-      setToastMessage("Whoops! Something went wrong.");
+      dispatch(setToastMessage("Whoops! Something went wrong."));
     } finally {
       setShowSpinner(false);
     }

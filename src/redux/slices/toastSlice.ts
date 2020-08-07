@@ -7,7 +7,6 @@ const { actions, reducer } = createSlice({
   },
   reducers: {
     setToastMessage(state, { payload }: PayloadAction<string>) {
-      console.log('SET MESS', payload)
       state.message = payload;
       return state;
     },

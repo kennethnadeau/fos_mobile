@@ -1,9 +1,8 @@
-import React, { useCallback, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { ScreenWrapper } from "@fos/components/ScreenWrapper";
 import { SCREENS } from "@fos/constants";
-import { apiService } from "@fos/shared";
 import { setToastMessage } from "@fos/redux/slices/toastSlice";
 import RequestOtpCode from "@fos/components/Account/RequestOtpCode";
 import {
@@ -18,9 +17,12 @@ import {
   setCurrentScreen,
   updatePaginationActiveDotIndex,
 } from "redux/slices/navigationSlice";
-import { getDotIndex } from "../helpers";
-
-const { otp } = apiService;
+import {
+  formatPhoneNumber,
+  getDotIndex,
+  handleListener,
+  sendOtpCode,
+} from "../helpers";
 
 // TODO: figure out type here
 const RequestOtpCodeScreen: ScreenFC<any> = (props) => {
@@ -48,25 +50,19 @@ const RequestOtpCodeScreen: ScreenFC<any> = (props) => {
     dispatch(setCurrentScreen(SCREENS.REQUEST_CODE));
     const dotIndex = getDotIndex(SCREENS.REQUEST_CODE, login);
     dispatch(updatePaginationActiveDotIndex(dotIndex));
-  }, [dispatch, login]);
-
-  const formatPhoneNumber = useCallback(
-    () => `${countryCode.replace("+", "")}${mobileNumber}`,
-    [countryCode, mobileNumber],
-  );
-
-  const sendOtpCode = useCallback(() => {
-    const postRequestMethod = login
-      ? otp.postOtpAuthenticate
-      : otp.postOtpRegistration;
-
-    return postRequestMethod({ phone: formatPhoneNumber() });
-  }, [formatPhoneNumber, login]);
+    return handleListener({
+      screenName: SCREENS.REQUEST_CODE,
+      componentId,
+      login,
+      dispatch,
+    });
+  }, [dispatch, login, componentId]);
 
   const handleOtpCodeRequest = async () => {
     setOtpRequestStatus("sending");
     try {
-      await sendOtpCode();
+      const formattedNumber = formatPhoneNumber(countryCode, mobileNumber);
+      await sendOtpCode(login, formattedNumber);
       setOtpRequestStatus("sent");
       goToVerifyScreen(componentId, login);
     } catch (e) {

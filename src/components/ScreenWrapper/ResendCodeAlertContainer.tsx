@@ -1,8 +1,7 @@
-import React, { FC, useCallback } from "react";
+import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
-import { apiService } from "@fos/shared";
 import { Alert } from "@fos/components/Alert";
 import {
   setShowSpinner,
@@ -10,9 +9,8 @@ import {
 } from "@fos/redux/slices/flagsSlice";
 import { setToastMessage } from "@fos/redux/slices/toastSlice";
 import { selectResendAlert } from "@fos/redux/selectors/flagsSelector";
-import { selectOtpState } from "redux/selectors/otpSelectors";
-
-const { otp } = apiService;
+import { selectOtpState } from "@fos/redux/selectors/otpSelectors";
+import { formatPhoneNumber, sendOtpCode } from "@fos/screens/helpers";
 
 type ResendCodeAlertContainerProps = {
   login: boolean;
@@ -28,19 +26,6 @@ const ResendCodeAlertContainer: FC<ResendCodeAlertContainerProps> = ({
   const showResendAlert = useSelector(selectResendAlert);
 
   const { countryCode, mobileNumber } = otpState;
-  const formatPhoneNumber = useCallback(
-    () => `${countryCode.replace("+", "")}${mobileNumber}`,
-    [countryCode, mobileNumber],
-  );
-
-  // TODO: abstract this
-  const sendOtpCode = useCallback(() => {
-    const postRequestMethod = login
-      ? otp.postOtpAuthenticate
-      : otp.postOtpRegistration;
-
-    return postRequestMethod({ phone: formatPhoneNumber() });
-  }, [formatPhoneNumber, login]);
 
   const resendCodeAlertButtons = [
     {
@@ -56,7 +41,8 @@ const ResendCodeAlertContainer: FC<ResendCodeAlertContainerProps> = ({
         dispatch(setShowResendAlert(false));
 
         try {
-          await sendOtpCode();
+          const formattedNumber = formatPhoneNumber(countryCode, mobileNumber);
+          await sendOtpCode(login, formattedNumber);
           dispatch(setToastMessage(t("Code Resent")));
         } catch (e) {
           dispatch(setToastMessage(`${t("Code Resend Failed")}: ${e}`));

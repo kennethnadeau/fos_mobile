@@ -5,6 +5,7 @@ const initialState = {
     pagination: {
       dotsLength: 0,
       activeDotIndex: 0,
+      currentScreen: "",
     },
   },
 };
@@ -13,6 +14,9 @@ const { actions, reducer } = createSlice({
   name: "navigation",
   initialState,
   reducers: {
+    setCurrentScreen(state, { payload }: PayloadAction<string>) {
+      state.topBar.pagination.currentScreen = payload;
+    },
     setPaginationDotsLength(state, { payload }: PayloadAction<number>) {
       state.topBar.pagination.dotsLength = payload;
     },
@@ -23,6 +27,7 @@ const { actions, reducer } = createSlice({
 });
 
 export const {
+  setCurrentScreen,
   setPaginationDotsLength,
   updatePaginationActiveDotIndex,
 } = actions;

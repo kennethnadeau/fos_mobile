@@ -1,36 +1,48 @@
-import React, { FC, useState } from "react";
-import { useDispatch, connect } from "react-redux";
+import React, { useCallback, useLayoutEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { apiService } from "@fos/shared";
 import { setToastMessage } from "@fos/redux/slices/toastSlice";
 
 import Name from "@fos/components/Account/EnterName";
 import { goToWelcomeScreen } from "helpers/navigation";
+import { SCREENS } from "@fos/constants";
+import { ScreenFC } from "react-native-navigation-register-screens";
+import { selectOtpState } from "redux/selectors/otpSelectors";
+import { setShowSpinner } from "redux/slices/flagsSlice";
+import { updatePaginationActiveDotIndex } from "redux/slices/navigationSlice";
+import { getDotIndex } from "../helpers";
 
 const { account } = apiService;
 
-type NameContainerProps = {
-  otp: {
-    emailAddress: string;
-    mobileNumber: string;
-    registrationUuid: string;
-  };
-  formatPhoneNumber: () => string;
-  setShowSpinner: (show: boolean) => void;
-};
-
-const NameContainer: FC<NameContainerProps> = (props) => {
-  const { otp, formatPhoneNumber, setShowSpinner } = props;
+const EnterNameScreen: ScreenFC<any> = () => {
   const dispatch = useDispatch();
+  const otpState = useSelector(selectOtpState);
 
-  const { emailAddress, registrationUuid } = otp;
+  useLayoutEffect(() => {
+    const dotIndex = getDotIndex(SCREENS.ENTER_NAME);
+    dispatch(updatePaginationActiveDotIndex(dotIndex));
+  }, [dispatch]);
+
+  const {
+    countryCode,
+    emailAddress,
+    mobileNumber,
+    registrationUuid,
+  } = otpState;
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const clearFirstName = () => setFirstName("");
   const clearLastName = () => setLastName("");
 
+  // TODO: abstract this
+  const formatPhoneNumber = useCallback(
+    () => `${countryCode.replace("+", "")}${mobileNumber}`,
+    [countryCode, mobileNumber],
+  );
+
   const handleOnCreateUserPress = async () => {
-    setShowSpinner(true);
+    dispatch(setShowSpinner(true));
     try {
       await account.postAccountRegistration({
         email: emailAddress,
@@ -43,7 +55,7 @@ const NameContainer: FC<NameContainerProps> = (props) => {
     } catch (e) {
       dispatch(setToastMessage("Whoops! Something went wrong."));
     } finally {
-      setShowSpinner(false);
+      dispatch(setShowSpinner(false));
     }
   };
 
@@ -59,8 +71,6 @@ const NameContainer: FC<NameContainerProps> = (props) => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  otp: state.otp,
-});
+EnterNameScreen.screenName = SCREENS.ENTER_NAME;
 
-export default connect(mapStateToProps)(NameContainer);
+export default EnterNameScreen;

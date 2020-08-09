@@ -1,32 +1,35 @@
 import React, { FC } from "react";
 import { StyleSheet, View } from "react-native";
-import { Pagination } from "react-native-snap-carousel";
-import { Colors } from "@fos/themes";
 import { useTranslation } from "react-i18next";
+import { Dot } from "@fos/components/Dot";
 
 type CarouselPaginationProps = {
   dotsLength: number;
   activeDotIndex: number;
 };
 
+// TODO: rename this
 export const CarouselPagination: FC<CarouselPaginationProps> = (props) => {
   const { t } = useTranslation();
+  const { activeDotIndex, dotsLength } = props;
+  const dots = [];
+  for (let i = 0; i < dotsLength; i = i + 1) {
+    const isActive = i === activeDotIndex;
+    dots.push(<Dot active={isActive} key={`dot_${i}`} />);
+  }
 
   return (
     <View accessibilityLabel={t("Carousel Pagination")} accessible>
-      <Pagination
-        {...props}
-        containerStyle={styles.paginationContainer}
-        dotColor={Colors.white}
-        inactiveDotColor={Colors.muted}
-        inactiveDotScale={0.8}
-      />
+      <View style={styles.dotContainer}>{dots}</View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  paginationContainer: {
+  dotContainer: {
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "center",
     paddingVertical: 0,
   },
 });

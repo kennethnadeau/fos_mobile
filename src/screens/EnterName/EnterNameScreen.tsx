@@ -14,7 +14,7 @@ import {
   setCurrentScreen,
   updatePaginationActiveDotIndex,
 } from "redux/slices/navigationSlice";
-import { SHOULD_SHOW_API_ERRORS_RAW } from "config/api";
+import { API_ERRORS_PRESENTED } from "config/api";
 import { getDotIndex, handleListener } from "../helpers";
 
 const { account } = apiService;
@@ -64,7 +64,7 @@ const EnterNameScreen: ScreenFC<any> = (props) => {
       });
       goToWelcomeScreen(`${firstName} ${lastName}`);
     } catch (e) {
-      const message = SHOULD_SHOW_API_ERRORS_RAW
+      const message = API_ERRORS_PRESENTED
         ? e
         : "Whoops! Something went wrong!";
       dispatch(setToastMessage(message));

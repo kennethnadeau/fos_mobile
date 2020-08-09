@@ -5,4 +5,4 @@ export const apiConfig = {
 };
 
 export const FLURRY_API_KEY = ENV.FLURRY_API_KEY;
-export const SHOULD_SHOW_API_ERRORS_RAW = ENV.SHOULD_SHOW_API_ERRORS_RAW;
+export const API_ERRORS_PRESENTED = ENV.API_ERRORS_PRESENTED;

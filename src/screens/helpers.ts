@@ -17,7 +17,7 @@ export const getDotIndex = (screenName: string, login: boolean = false) => {
 type HandleListenerProps = {
   screenName: string;
   componentId: string;
-  login: boolean;
+  login?: boolean;
   dispatch: Dispatch<any>;
 };
 

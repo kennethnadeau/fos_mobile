@@ -3,13 +3,13 @@ import { StyleSheet, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { Dot } from "@fos/components/Dot";
 
-type CarouselPaginationProps = {
+type DotPaginationProps = {
   dotsLength: number;
   activeDotIndex: number;
 };
 
 // TODO: rename this
-export const CarouselPagination: FC<CarouselPaginationProps> = (props) => {
+export const DotPagination: FC<DotPaginationProps> = (props) => {
   const { t } = useTranslation();
   const { activeDotIndex, dotsLength } = props;
   const dots = [];
@@ -19,7 +19,7 @@ export const CarouselPagination: FC<CarouselPaginationProps> = (props) => {
   }
 
   return (
-    <View accessibilityLabel={t("Carousel Pagination")} accessible>
+    <View accessibilityLabel={t("Dot Pagination")} accessible>
       <View style={styles.dotContainer}>{dots}</View>
     </View>
   );

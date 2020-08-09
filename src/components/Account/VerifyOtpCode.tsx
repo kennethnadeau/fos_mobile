@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import CarouselItemContainer from "./CarouselItemContainer";
+import AuthenticationContainer from "./AuthenticationContainer";
 import { Text } from "react-native-elements";
 import { s, vs } from "react-native-size-matters";
 import { Colors } from "@fos/themes";
@@ -31,7 +31,7 @@ const VerifyOtpCode = forwardRef<OTPInputView, VerifyCodeProps>(
     },
     ref,
   ) => {
-    const { t } = useTranslation("carouselItems");
+    const { t } = useTranslation("dotItems");
 
     const verificationStatusBorderColor: {
       [key in VerificationCodeStatus]: TextStyle;
@@ -42,7 +42,7 @@ const VerifyOtpCode = forwardRef<OTPInputView, VerifyCodeProps>(
     };
 
     return (
-      <CarouselItemContainer
+      <AuthenticationContainer
         containerProps={{
           accessible: true,
           accessibilityLabel: t("Enter Verification Code"),
@@ -81,7 +81,7 @@ const VerifyOtpCode = forwardRef<OTPInputView, VerifyCodeProps>(
             Resend Code
           </Trans>
         </FooterText>
-      </CarouselItemContainer>
+      </AuthenticationContainer>
     );
   },
 );

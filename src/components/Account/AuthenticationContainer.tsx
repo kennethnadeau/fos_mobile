@@ -3,14 +3,14 @@ import { View, StyleSheet, ViewStyle, ViewProps } from "react-native";
 import { Text } from "react-native-elements";
 import { vs, s } from "react-native-size-matters";
 
-export type SliderItemContainerProps = {
+export type AuthenticationContainerProps = {
   header: string;
   children: JSX.Element | JSX.Element[];
   containerStyle?: ViewStyle;
   containerProps?: ViewProps;
 };
 
-const CarouselItemContainer: FC<SliderItemContainerProps> = ({
+const AuthenticationContainer: FC<AuthenticationContainerProps> = ({
   header,
   children,
   containerStyle,
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
   header: { marginVertical: vs(20) },
 });
 
-export default CarouselItemContainer;
+export default AuthenticationContainer;

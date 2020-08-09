@@ -19,6 +19,57 @@ export function goToOTPScreen(componentId: string, login = false) {
       options: commonOptions,
       passProps: {
         login,
+        componentId,
+      },
+    },
+  });
+}
+
+export function goToRequestScreen(componentId: string, login = false) {
+  Navigation.push(componentId, {
+    component: {
+      name: SCREENS.REQUEST_CODE,
+      options: commonOptions,
+      passProps: {
+        login,
+        componentId,
+      },
+    },
+  });
+}
+
+export function goToVerifyScreen(componentId: string, login = false) {
+  Navigation.push(componentId, {
+    component: {
+      name: SCREENS.VERIFY_CODE,
+      options: commonOptions,
+      passProps: {
+        login,
+        componentId,
+      },
+    },
+  });
+}
+
+export function goToEnterEmailScreen(componentId: string) {
+  Navigation.push(componentId, {
+    component: {
+      name: SCREENS.ENTER_EMAIL,
+      options: commonOptions,
+      passProps: {
+        componentId,
+      },
+    },
+  });
+}
+
+export function goToEnterNameScreen(componentId: string) {
+  Navigation.push(componentId, {
+    component: {
+      name: SCREENS.ENTER_NAME,
+      options: commonOptions,
+      passProps: {
+        componentId,
       },
     },
   });

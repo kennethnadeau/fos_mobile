@@ -9,7 +9,7 @@ import { Text, Button } from "react-native-elements";
 import { vs, s, ms } from "react-native-size-matters";
 import { useTranslation } from "react-i18next";
 import LandingHeaderBg from "@fos/assets/svg/landingHeaderBg.svg";
-import { goToOTPScreen } from "@fos/helpers/navigation";
+import { goToRequestScreen } from "@fos/helpers/navigation";
 import { Colors } from "@fos/themes";
 import RNBootSplash from "react-native-bootsplash";
 
@@ -33,7 +33,7 @@ const LandingScreen: ScreenFC = ({ componentId }) => {
           accessibilityLabel={createNewAccountText}
           accessible
           containerStyle={styles.createNewAccountBtnContainer}
-          onPress={() => goToOTPScreen(componentId)}
+          onPress={() => goToRequestScreen(componentId)}
           size="large"
           title={createNewAccountText}
           titleStyle={styles.createNewAccountBtnTitle}
@@ -42,7 +42,7 @@ const LandingScreen: ScreenFC = ({ componentId }) => {
           accessibilityLabel={loginText}
           accessible
           buttonStyle={styles.loginBtn}
-          onPress={() => goToOTPScreen(componentId, true)}
+          onPress={() => goToRequestScreen(componentId, true)}
           title={loginText}
           type="clear"
         />

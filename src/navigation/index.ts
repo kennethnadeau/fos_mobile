@@ -7,7 +7,7 @@ import { Colors } from "@fos/themes";
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setDefaultOptions({
     topBar: {
-      noBorder: true,
+      noBorder: false,
       background: {
         color: Colors.primary,
       },

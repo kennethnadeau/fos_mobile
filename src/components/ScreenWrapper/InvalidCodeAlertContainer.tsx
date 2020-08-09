@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { vs } from "react-native-size-matters";
 
 import { Alert } from "@fos/components/Alert";
@@ -8,25 +8,21 @@ import {
   setOtpCode,
   setOtpCodeVerificationStatus,
 } from "redux/reducers/otpReducer";
+import { setShowInvalidCodeAlert } from "@fos/redux/slices/flagsSlice";
+import { selectInvalidCodeAlert } from "redux/selectors/flagsSelector";
 
-type InvalidCodeAlertContainerProps = {
-  showInvalidCodeAlert: boolean;
-  setShowInvalidCodeAlert: (show: boolean) => void;
-};
-
-const InvalidCodeAlertContainer: FC<InvalidCodeAlertContainerProps> = (
-  props,
-) => {
-  const { showInvalidCodeAlert, setShowInvalidCodeAlert } = props;
+// TODO: move this file
+const InvalidCodeAlertContainer: FC = () => {
   const { t } = useTranslation("screens");
   const dispatch = useDispatch();
+  const showInvalidCodeAlert = useSelector(selectInvalidCodeAlert);
 
   const invalidCodeAlertButtons = [
     {
       id: "try-again",
       title: t("Try Again"),
       onPress: () => {
-        setShowInvalidCodeAlert(false);
+        dispatch(setShowInvalidCodeAlert(false));
         dispatch(setOtpCodeVerificationStatus("unverified"));
         dispatch(setOtpCode(""));
       },

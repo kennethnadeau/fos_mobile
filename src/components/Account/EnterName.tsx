@@ -5,7 +5,7 @@ import { s, vs } from "react-native-size-matters";
 
 import { FOSButton } from "../Button";
 import { TextInput } from "../TextInput";
-import CarouselItemContainer from "./CarouselItemContainer";
+import AuthenticationContainer from "./AuthenticationContainer";
 import FooterText from "./FooterText";
 
 export type EnterNameProps = {
@@ -29,7 +29,7 @@ const EnterName: FC<EnterNameProps> = ({
   onCreateUserPress,
   loading = false,
 }) => {
-  const { t } = useTranslation("carouselItems");
+  const { t } = useTranslation("dotItems");
 
   const enterNameText = t("Enter Name");
   const firstNameText = t("First Name");
@@ -37,12 +37,12 @@ const EnterName: FC<EnterNameProps> = ({
   const createUserText = t("Create User");
 
   return (
-    <CarouselItemContainer
+    <AuthenticationContainer
       containerProps={{
         accessible: true,
         accessibilityLabel: enterNameText,
       }}
-      containerStyle={styles.carouselContainer}
+      containerStyle={styles.dotContainer}
       header={enterNameText}>
       <TextInput
         accessibilityLabel={firstNameText}
@@ -78,12 +78,12 @@ const EnterName: FC<EnterNameProps> = ({
       <FooterText style={styles.footer}>
         {t("Enter name footer text")}
       </FooterText>
-    </CarouselItemContainer>
+    </AuthenticationContainer>
   );
 };
 
 const styles = StyleSheet.create({
-  carouselContainer: {
+  dotContainer: {
     paddingHorizontal: s(28),
   },
   footer: { marginTop: vs(16), textAlign: "center" },

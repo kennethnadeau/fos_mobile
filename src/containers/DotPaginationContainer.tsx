@@ -3,15 +3,15 @@ import { ScreenFC } from "react-native-navigation-register-screens";
 import { SCREENS } from "@fos/constants";
 import { useSelector } from "react-redux";
 import { selectPagination } from "@fos/redux/selectors/navigationSelectors";
-import { CarouselPagination } from "@fos/components/CarouselPagination";
+import { DotPagination } from "components/DotPagination";
 
-const CarouselPaginationContainer: ScreenFC = () => {
+const DotPaginationContainer: ScreenFC = () => {
   const pagination = useSelector(selectPagination);
 
-  return <CarouselPagination {...pagination} />;
+  return <DotPagination {...pagination} />;
 };
 
 // TODO: make this more generic
-CarouselPaginationContainer.screenName = SCREENS.COMPONENTS.TOP_BAR.PAGINATION;
+DotPaginationContainer.screenName = SCREENS.COMPONENTS.TOP_BAR.PAGINATION;
 
-export default CarouselPaginationContainer;
+export default DotPaginationContainer;

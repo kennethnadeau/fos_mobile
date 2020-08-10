@@ -1,7 +1,7 @@
 import { InitOptions } from "i18next";
 import resources from "@fos/locale/languages";
 
-export const namespaces = ["common", "screens", "carouselItems"];
+export const namespaces = ["common", "screens", "dotItems"];
 export const defaultNamespace = "common";
 export const defaultLang = "en";
 export const fallbackLang = "en";

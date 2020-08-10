@@ -1,9 +1,9 @@
 import screens from "./screens";
-import carouselItems from "./carouselItems";
+import dotItems from "./dotItems";
 import common from "./common.json";
 
 export default {
   common,
   screens,
-  carouselItems,
+  dotItems,
 };

@@ -18,7 +18,7 @@ describe("<RequestOtpCode />", () => {
     requestCodeComponent = render(<RequestOtpCode {...props} />);
   });
 
-  it("should have carousel item description", () => {
+  it("should have dot item description", () => {
     const actual = requestCodeComponent.queryByA11yLabel("Enter Mobile Number");
 
     expect(actual).not.toBeNull();

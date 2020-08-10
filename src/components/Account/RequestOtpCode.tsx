@@ -6,7 +6,7 @@ import { ms, s, vs } from "react-native-size-matters";
 
 import { FOSButton } from "../Button";
 import { TextInput } from "../TextInput";
-import CarouselItemContainer from "./CarouselItemContainer";
+import AuthenticationContainer from "./AuthenticationContainer";
 import FooterText from "./FooterText";
 
 export type RequestCodeProps = {
@@ -28,7 +28,7 @@ const RequestOtpCode: FC<RequestCodeProps> = ({
   onRequestCodePress,
   loading,
 }) => {
-  const { t } = useTranslation("carouselItems");
+  const { t } = useTranslation("dotItems");
 
   const enterMobileNumberText = t("Enter Mobile Number");
   const yourNumberText = t("Your Number");
@@ -40,7 +40,7 @@ const RequestOtpCode: FC<RequestCodeProps> = ({
   };
 
   return (
-    <CarouselItemContainer
+    <AuthenticationContainer
       containerProps={{
         accessible: true,
         accessibilityLabel: enterMobileNumberText,
@@ -86,7 +86,7 @@ const RequestOtpCode: FC<RequestCodeProps> = ({
       </FooterText>
 
       <FooterText style={styles.disclaimer}>{t("OTP Disclaimer")}</FooterText>
-    </CarouselItemContainer>
+    </AuthenticationContainer>
   );
 };
 

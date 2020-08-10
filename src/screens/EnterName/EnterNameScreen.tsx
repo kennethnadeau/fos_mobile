@@ -10,19 +10,30 @@ import { SCREENS } from "@fos/constants";
 import { ScreenFC } from "react-native-navigation-register-screens";
 import { selectOtpState } from "redux/selectors/otpSelectors";
 import { setShowSpinner } from "redux/slices/flagsSlice";
-import { updatePaginationActiveDotIndex } from "redux/slices/navigationSlice";
-import { getDotIndex } from "../helpers";
+import {
+  setCurrentScreen,
+  updatePaginationActiveDotIndex,
+} from "redux/slices/navigationSlice";
+import { API_ERRORS_PRESENTED } from "config/api";
+import { getDotIndex, handleListener } from "../helpers";
 
 const { account } = apiService;
 
-const EnterNameScreen: ScreenFC<any> = () => {
+const EnterNameScreen: ScreenFC<any> = (props) => {
+  const { componentId } = props;
   const dispatch = useDispatch();
   const otpState = useSelector(selectOtpState);
 
   useLayoutEffect(() => {
+    dispatch(setCurrentScreen(SCREENS.ENTER_NAME));
     const dotIndex = getDotIndex(SCREENS.ENTER_NAME);
     dispatch(updatePaginationActiveDotIndex(dotIndex));
-  }, [dispatch]);
+    return handleListener({
+      screenName: SCREENS.ENTER_NAME,
+      componentId,
+      dispatch,
+    });
+  }, [dispatch, componentId]);
 
   const {
     countryCode,
@@ -53,7 +64,10 @@ const EnterNameScreen: ScreenFC<any> = () => {
       });
       goToWelcomeScreen(`${firstName} ${lastName}`);
     } catch (e) {
-      dispatch(setToastMessage("Whoops! Something went wrong."));
+      const message = API_ERRORS_PRESENTED
+        ? e
+        : "Whoops! Something went wrong!";
+      dispatch(setToastMessage(message));
     } finally {
       dispatch(setShowSpinner(false));
     }

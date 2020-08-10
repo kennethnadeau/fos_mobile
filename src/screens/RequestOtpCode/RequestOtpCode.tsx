@@ -17,6 +17,7 @@ import {
   setCurrentScreen,
   updatePaginationActiveDotIndex,
 } from "redux/slices/navigationSlice";
+import { API_ERRORS_PRESENTED } from "config/api";
 import {
   formatPhoneNumber,
   getDotIndex,
@@ -66,7 +67,10 @@ const RequestOtpCodeScreen: ScreenFC<any> = (props) => {
       setOtpRequestStatus("sent");
       goToVerifyScreen(componentId, login);
     } catch (e) {
-      dispatch(setToastMessage("Whoops! Something went wrong!"));
+      const message = API_ERRORS_PRESENTED
+        ? e
+        : "Whoops! Something went wrong!";
+      dispatch(setToastMessage(message));
     } finally {
       setOtpRequestStatus("idle");
     }

@@ -25,7 +25,7 @@ import {
   setCurrentScreen,
   updatePaginationActiveDotIndex,
 } from "redux/slices/navigationSlice";
-import { getDotIndex } from "../helpers";
+import { getDotIndex, handleListener } from "../helpers";
 
 const { account, otp } = apiService;
 
@@ -45,10 +45,16 @@ const VerifyOtpCodeScreen: ScreenFC<any> = (props) => {
   } = otpForm;
 
   useLayoutEffect(() => {
-    dispatch(setCurrentScreen(SCREENS.REQUEST_CODE));
+    dispatch(setCurrentScreen(SCREENS.VERIFY_CODE));
     const dotIndex = getDotIndex(SCREENS.VERIFY_CODE, login);
     dispatch(updatePaginationActiveDotIndex(dotIndex));
-  }, [dispatch, login]);
+    return handleListener({
+      screenName: SCREENS.VERIFY_CODE,
+      componentId,
+      login,
+      dispatch,
+    });
+  }, [dispatch, login, componentId]);
 
   const codeChange = (code: string) => {
     dispatch(setOtpCode(code));
